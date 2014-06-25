@@ -13,6 +13,79 @@
 
 NSString *API_KEY = @"AIzaSyDaH4drNihEXKczFmLljH9ENMjPlsuwFIg";
 
+void (^_completionHandler)(UIBackgroundFetchResult);
+
+- (NSManagedObjectContext *) managedObjectContext {
+    @synchronized(self) {
+        if (_managedObjectContext != nil) {
+            return _managedObjectContext;
+        }
+        NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
+        _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+        [_managedObjectContext setPersistentStoreCoordinator: coordinator];
+    }
+    return _managedObjectContext;
+}
+
+- (NSManagedObjectContext *) newManagedObjectContext {
+    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
+    NSManagedObjectContext *moc = [[NSManagedObjectContext alloc] init];
+    [moc setPersistentStoreCoordinator:coordinator];
+    return moc;
+}
+
+-(NSManagedObjectContext *)getManagedObjectContextForBackgroundThread {
+    @synchronized(self) {
+        if (_childObjectContext != nil) {
+            return _childObjectContext;
+        }
+        _childObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+        [_childObjectContext setParentContext:[self managedObjectContext]];
+        return _childObjectContext;
+    }
+}
+
+- (NSManagedObjectModel *)managedObjectModel {
+    @synchronized(self) {
+        if (_managedObjectModel != nil) {
+            return _managedObjectModel;
+        }
+        _managedObjectModel = [NSManagedObjectModel mergedModelFromBundles:nil];
+    }
+    return _managedObjectModel;
+}
+
+- (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
+    @synchronized(self) {
+        if (_persistentStoreCoordinator != nil) {
+            return _persistentStoreCoordinator;
+        }
+        NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"ArbApp.sqlite"]];
+        NSError *error = nil;
+        _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+        if(![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeUrl options:nil error:&error]) {
+        }
+    }
+    return _persistentStoreCoordinator;
+}
+
+- (void)saveContext
+{
+    NSError *error = nil;
+    [_managedObjectContext save:&error];
+}
+
+- (void)saveContextForBackgroundThread {
+    [_childObjectContext save:nil];
+    [_managedObjectContext performBlock:^{
+        [_managedObjectContext save:nil];
+    }];
+}
+
+- (NSString *)applicationDocumentsDirectory {
+    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [GMSServices provideAPIKey:API_KEY];

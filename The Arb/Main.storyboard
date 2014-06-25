@@ -26,10 +26,47 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="br6-Xa-Ncg" kind="modal" identifier="SegueMainMap" id="vii-c0-FoW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LJn-gi-Pkz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-551" y="151"/>
+            <point key="canvasLocation" x="-761" y="487"/>
+        </scene>
+        <!--Main Map View Controller - The Arb-->
+        <scene sceneID="RzZ-zD-4n6">
+            <objects>
+                <viewController id="POy-kb-4qQ" customClass="MainMapViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="o4z-8z-Uaa"/>
+                        <viewControllerLayoutGuide type="bottom" id="36y-Wx-Azl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="aKI-CO-bh3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="The Arb" id="nAr-6H-hn6"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3IY-oH-x0I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="216" y="487"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="JmL-q3-XUO">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="br6-Xa-Ncg" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="XBo-nP-6Av">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="POy-kb-4qQ" kind="relationship" relationship="rootViewController" id="QAE-HF-WnM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cno-tX-O8Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-234" y="487"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

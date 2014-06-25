@@ -7,6 +7,7 @@
 //
 
 #import "AppInitViewController.h"
+#import "Constants.h"
 
 @interface AppInitViewController ()
 
@@ -28,12 +29,14 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+}
+
+-(void)viewDidAppear:(BOOL)animated {
     [self transition];
 }
 
 -(void)transition {
-    
+    [self performSegueWithIdentifier:SEGUE_MAIN_MAP sender:self];
 }
 
 - (void)didReceiveMemoryWarning

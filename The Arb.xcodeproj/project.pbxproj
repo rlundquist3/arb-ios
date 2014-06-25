@@ -35,6 +35,13 @@
 		F71CE6D1195B292E0030EBA9 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71CE6D0195B292E0030EBA9 /* OpenGLES.framework */; };
 		F71CE6D3195B29370030EBA9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71CE6D2195B29370030EBA9 /* QuartzCore.framework */; };
 		F71CE6D5195B29400030EBA9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F71CE6D4195B29400030EBA9 /* SystemConfiguration.framework */; };
+		F71CE6DB195B3DD00030EBA9 /* MainMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F71CE6DA195B3DD00030EBA9 /* MainMapViewController.m */; };
+		F71CE6DE195B42B90030EBA9 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = F71CE6DD195B42B90030EBA9 /* Constants.m */; };
+		F71CE6E1195B4D1C0030EBA9 /* tree-sample.png in Resources */ = {isa = PBXBuildFile; fileRef = F71CE6E0195B4D1C0030EBA9 /* tree-sample.png */; };
+		F71CE6E5195B4F510030EBA9 /* db.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F71CE6E3195B4F510030EBA9 /* db.xcdatamodeld */; };
+		F71CE6EE195B539D0030EBA9 /* TrailMO.m in Sources */ = {isa = PBXBuildFile; fileRef = F71CE6ED195B539D0030EBA9 /* TrailMO.m */; };
+		F71CE6F1195B53AF0030EBA9 /* TrailPointMO.m in Sources */ = {isa = PBXBuildFile; fileRef = F71CE6F0195B53AF0030EBA9 /* TrailPointMO.m */; };
+		F71CE6F4195B5DF70030EBA9 /* TrailDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F71CE6F3195B5DF70030EBA9 /* TrailDBManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +88,18 @@
 		F71CE6D0195B292E0030EBA9 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		F71CE6D2195B29370030EBA9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F71CE6D4195B29400030EBA9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		F71CE6D9195B3DD00030EBA9 /* MainMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainMapViewController.h; path = ../MainMapViewController.h; sourceTree = "<group>"; };
+		F71CE6DA195B3DD00030EBA9 /* MainMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainMapViewController.m; path = ../MainMapViewController.m; sourceTree = "<group>"; };
+		F71CE6DC195B42B90030EBA9 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		F71CE6DD195B42B90030EBA9 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		F71CE6E0195B4D1C0030EBA9 /* tree-sample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tree-sample.png"; path = "../../../../Dropbox/2013-2014/ArbApp/Images/tree-sample.png"; sourceTree = "<group>"; };
+		F71CE6E4195B4F510030EBA9 /* db.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = db.xcdatamodel; sourceTree = "<group>"; };
+		F71CE6EC195B539D0030EBA9 /* TrailMO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrailMO.h; sourceTree = "<group>"; };
+		F71CE6ED195B539D0030EBA9 /* TrailMO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrailMO.m; sourceTree = "<group>"; };
+		F71CE6EF195B53AF0030EBA9 /* TrailPointMO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrailPointMO.h; sourceTree = "<group>"; };
+		F71CE6F0195B53AF0030EBA9 /* TrailPointMO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrailPointMO.m; sourceTree = "<group>"; };
+		F71CE6F2195B5DF70030EBA9 /* TrailDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrailDBManager.h; sourceTree = "<group>"; };
+		F71CE6F3195B5DF70030EBA9 /* TrailDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrailDBManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,11 +186,17 @@
 		F71CE687195A309C0030EBA9 /* The Arb */ = {
 			isa = PBXGroup;
 			children = (
+				F71CE6E2195B4F250030EBA9 /* Database */,
 				F71CE690195A309C0030EBA9 /* AppDelegate.h */,
 				F71CE691195A309C0030EBA9 /* AppDelegate.m */,
 				F71CE6B7195B263A0030EBA9 /* AppInitViewController.h */,
 				F71CE6B8195B263A0030EBA9 /* AppInitViewController.m */,
+				F71CE6D9195B3DD00030EBA9 /* MainMapViewController.h */,
+				F71CE6DA195B3DD00030EBA9 /* MainMapViewController.m */,
+				F71CE6DC195B42B90030EBA9 /* Constants.h */,
+				F71CE6DD195B42B90030EBA9 /* Constants.m */,
 				F71CE6B2195B20C10030EBA9 /* Main.storyboard */,
+				F71CE6DF195B4CD30030EBA9 /* Images */,
 				F71CE693195A309C0030EBA9 /* Images.xcassets */,
 				F71CE688195A309C0030EBA9 /* Supporting Files */,
 			);
@@ -205,6 +230,28 @@
 				F71CE6A3195A309C0030EBA9 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F71CE6DF195B4CD30030EBA9 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				F71CE6E0195B4D1C0030EBA9 /* tree-sample.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		F71CE6E2195B4F250030EBA9 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				F71CE6E3195B4F510030EBA9 /* db.xcdatamodeld */,
+				F71CE6EC195B539D0030EBA9 /* TrailMO.h */,
+				F71CE6ED195B539D0030EBA9 /* TrailMO.m */,
+				F71CE6EF195B53AF0030EBA9 /* TrailPointMO.h */,
+				F71CE6F0195B53AF0030EBA9 /* TrailPointMO.m */,
+				F71CE6F2195B5DF70030EBA9 /* TrailDBManager.h */,
+				F71CE6F3195B5DF70030EBA9 /* TrailDBManager.m */,
+			);
+			name = Database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,6 +339,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F71CE6E1195B4D1C0030EBA9 /* tree-sample.png in Resources */,
 				F71CE68C195A309C0030EBA9 /* InfoPlist.strings in Resources */,
 				F71CE694195A309C0030EBA9 /* Images.xcassets in Resources */,
 				F71CE6B3195B20C10030EBA9 /* Main.storyboard in Resources */,
@@ -314,9 +362,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F71CE6DE195B42B90030EBA9 /* Constants.m in Sources */,
+				F71CE6DB195B3DD00030EBA9 /* MainMapViewController.m in Sources */,
 				F71CE692195A309C0030EBA9 /* AppDelegate.m in Sources */,
+				F71CE6F1195B53AF0030EBA9 /* TrailPointMO.m in Sources */,
 				F71CE6B9195B263A0030EBA9 /* AppInitViewController.m in Sources */,
+				F71CE6EE195B539D0030EBA9 /* TrailMO.m in Sources */,
 				F71CE68E195A309C0030EBA9 /* main.m in Sources */,
+				F71CE6E5195B4F510030EBA9 /* db.xcdatamodeld in Sources */,
+				F71CE6F4195B5DF70030EBA9 /* TrailDBManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -543,6 +597,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F71CE6E3195B4F510030EBA9 /* db.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F71CE6E4195B4F510030EBA9 /* db.xcdatamodel */,
+			);
+			currentVersion = F71CE6E4195B4F510030EBA9 /* db.xcdatamodel */;
+			path = db.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F71CE676195A309B0030EBA9 /* Project object */;
 }
