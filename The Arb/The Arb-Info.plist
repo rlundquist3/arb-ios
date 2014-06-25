@@ -9,7 +9,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIdentifier</key>
-	<string>A.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>edu.kzoo.${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -28,6 +28,8 @@
 	<array>
 		<string>location</string>
 	</array>
+	<key>UIMainStoryboardFile</key>
+	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

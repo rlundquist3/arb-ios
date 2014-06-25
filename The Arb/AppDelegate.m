@@ -7,15 +7,16 @@
 //
 
 #import "AppDelegate.h"
+#import <GoogleMaps/GoogleMaps.h>
 
 @implementation AppDelegate
 
+NSString *API_KEY = @"AIzaSyDaH4drNihEXKczFmLljH9ENMjPlsuwFIg";
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
+    [GMSServices provideAPIKey:API_KEY];
+    
     return YES;
 }
 
