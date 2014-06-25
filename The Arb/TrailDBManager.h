@@ -16,8 +16,13 @@
 
 +(TrailMO *)insert:(NSString *)name color:(NSNumber *)color trail_id:(NSNumber *)trail_id;
 
++(TrailMO *)getTrailWithID:(NSNumber *)trail_id;
++(TrailMO *)getTrailWithName:(NSString *)name;
+
 +(TrailPointMO *)insert:(NSNumber *)point_id trail_id:(NSNumber *)trail_id latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude;
 
-+(TrailMO *)getTrailWithID:(NSNumber *)trail_id;
++(TrailPointMO *)getTrailPointWithID:(NSNumber *)point_id;
++(NSArray *)getAllPointsForTrail:(NSNumber *)trail_id;
++(NSArray *)getAllPointsForTrailWithName:(NSString *)name;
 
 @end

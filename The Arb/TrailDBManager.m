@@ -45,6 +45,14 @@
     return nil;
 }
 
++(TrailMO *)getTrailWithName:(NSString *)name {
+    NSArray *fetchedData = [self makeFetchRequest:[NSString stringWithFormat:@"%@ = \"%@\"", TRAILS_TABLE_COLUMN_NAME, name] table:CORE_DATA_TABLE_TRAILS];
+    if (fetchedData.count > 0) {
+        return [fetchedData firstObject];
+    }
+    return nil;
+}
+
 //TrailPoint methods
 
 +(TrailPointMO *)insert:(NSNumber *)point_id trail_id:(NSNumber *)trail_id latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude {
@@ -80,6 +88,29 @@
         return [fetchedData firstObject];
     }
     return nil;
+}
+
++(NSArray *)getAllPointsForTrail:(NSNumber *)trail_id {
+    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+    NSManagedObjectContext *moc = [delegate managedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:CORE_DATA_TABLE_TRAIL_POINTS inManagedObjectContext:moc];
+    [fetchRequest setEntity:entity];
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:TRAIL_POINTS_TABLE_COLUMN_POINT_ID ascending:YES];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:[NSString stringWithFormat:@"%@ = \"%@\"", TRAIL_POINTS_TABLE_COLUMN_TRAIL_ID, trail_id]];
+    [fetchRequest setSortDescriptors:@[sort]];
+    [fetchRequest setPredicate:predicate];
+    
+    NSError *error;
+    NSArray *fetchedRecords = [moc executeFetchRequest:fetchRequest error:&error];
+    
+    return fetchedRecords;
+}
+
++(NSArray *)getAllPointsForTrailWithName:(NSString *)name {
+    TrailMO* trail = [self getTrailWithName:name];
+    return [self getAllPointsForTrail:trail.trail_id];
 }
 
 +(NSArray*)makeFetchRequest:(NSString*)predicateString table:(NSString *)table moc:(NSManagedObjectContext *)moc {
