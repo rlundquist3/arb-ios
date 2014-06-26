@@ -1,4 +1,4 @@
-the-arb
+The Arb
 =======
 
 Summer 2014
