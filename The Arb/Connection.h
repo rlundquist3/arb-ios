@@ -10,6 +10,6 @@
 
 @interface Connection : NSObject
 
-+(NSData *)makeRequest
++(NSData *)makeRequestFor:(NSString *)info;
 
 @end
