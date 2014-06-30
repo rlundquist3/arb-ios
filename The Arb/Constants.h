@@ -10,6 +10,8 @@
 
 @interface Constants : NSObject
 
+extern NSString *const SERVER_ADDRESS;
+
 extern NSString *const SEGUE_MAIN_MAP;
 
 extern NSString *const CORE_DATA_TABLE_TRAILS;

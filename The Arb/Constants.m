@@ -10,6 +10,8 @@
 
 @implementation Constants
 
+NSString *const SERVER_ADDRESS = @"192.168.1.102";
+
 NSString *const SEGUE_MAIN_MAP = @"SegueMainMap";
 
 NSString *const CORE_DATA_TABLE_TRAILS = @"TrailMO";
