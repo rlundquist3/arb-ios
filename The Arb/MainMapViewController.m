@@ -7,6 +7,7 @@
 //
 
 #import "MainMapViewController.h"
+#import "Connection.h"
 
 @interface MainMapViewController ()
 
@@ -47,6 +48,9 @@
     [marker setSnippet:@"Lillian Anderson Arboretum"];
     //[marker setIcon:[UIImage imageNamed:@"tree-sample"]];
     [marker setMap:_mapView];
+    
+    NSData *connectionTest = [Connection makeRequestFor:@"test"];
+    NSLog(@"%@", [[NSString alloc] initWithData:connectionTest encoding:NSASCIIStringEncoding]);
 }
 
 - (void)didReceiveMemoryWarning

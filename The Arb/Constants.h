@@ -11,6 +11,7 @@
 @interface Constants : NSObject
 
 extern NSString *const SERVER_ADDRESS;
+extern NSString *const SERVER_PORT;
 
 extern NSString *const SEGUE_MAIN_MAP;
 
