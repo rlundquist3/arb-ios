@@ -16,7 +16,7 @@ NSString *const SERVER_PORT = @"8888";
 NSString *const SEGUE_MAIN_MAP = @"SegueMainMap";
 
 NSString *const CORE_DATA_TABLE_TRAILS = @"TrailMO";
-NSString *const CORE_DATA_TABLE_TRAIL_POINTS = @"TrailPointMo";
+NSString *const CORE_DATA_TABLE_TRAIL_POINTS = @"TrailPointMO";
 
 NSString *const TRAILS_TABLE_COLUMN_NAME = @"name";
 NSString *const TRAILS_TABLE_COLUMN_COLOR = @"color";

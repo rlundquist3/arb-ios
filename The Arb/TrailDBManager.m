@@ -90,6 +90,26 @@
     return nil;
 }
 
++(NSArray *)getAllPoints {
+    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+    NSManagedObjectContext *moc = [delegate managedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:CORE_DATA_TABLE_TRAIL_POINTS inManagedObjectContext:moc];
+    [fetchRequest setEntity:entity];
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:TRAIL_POINTS_TABLE_COLUMN_POINT_ID ascending:YES];
+    [fetchRequest setSortDescriptors:@[sort]];
+    
+    NSError *error;
+    NSArray *fetchedRecords = [moc executeFetchRequest:fetchRequest error:&error];
+    
+    return fetchedRecords;
+}
+
++(BOOL)isPopulated {
+    return [[self getAllPoints] count] > 0;
+}
+
 +(NSArray *)getAllPointsForTrail:(NSNumber *)trail_id {
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     NSManagedObjectContext *moc = [delegate managedObjectContext];

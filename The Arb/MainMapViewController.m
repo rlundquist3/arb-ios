@@ -7,7 +7,7 @@
 //
 
 #import "MainMapViewController.h"
-#import "Connection.h"
+#import "DataLoader.h"
 
 @interface MainMapViewController ()
 
@@ -27,8 +27,7 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
@@ -49,8 +48,7 @@
     //[marker setIcon:[UIImage imageNamed:@"tree-sample"]];
     [marker setMap:_mapView];
     
-    NSData *connectionTest = [Connection makeRequestFor:@"test"];
-    NSLog(@"%@", [[NSString alloc] initWithData:connectionTest encoding:NSASCIIStringEncoding]);
+    [DataLoader loadTrails];
 }
 
 - (void)didReceiveMemoryWarning

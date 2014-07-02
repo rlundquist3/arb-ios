@@ -43,6 +43,7 @@
 		F71CE6F4195B5DF70030EBA9 /* TrailDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F71CE6F3195B5DF70030EBA9 /* TrailDBManager.m */; };
 		F71CE6F7195B7BD20030EBA9 /* MainMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F71CE6F6195B7BD20030EBA9 /* MainMapViewController.m */; };
 		F71CE6FA195CA1D10030EBA9 /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = F71CE6F9195CA1D10030EBA9 /* Connection.m */; };
+		F71CE70D196456970030EBA9 /* DataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = F71CE70C196456970030EBA9 /* DataLoader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,8 @@
 		F71CE6F6195B7BD20030EBA9 /* MainMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMapViewController.m; sourceTree = "<group>"; };
 		F71CE6F8195CA1D10030EBA9 /* Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Connection.h; sourceTree = "<group>"; };
 		F71CE6F9195CA1D10030EBA9 /* Connection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Connection.m; sourceTree = "<group>"; };
+		F71CE70B196456970030EBA9 /* DataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataLoader.h; sourceTree = "<group>"; };
+		F71CE70C196456970030EBA9 /* DataLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataLoader.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +199,8 @@
 				F71CE6B8195B263A0030EBA9 /* AppInitViewController.m */,
 				F71CE6F5195B7BD20030EBA9 /* MainMapViewController.h */,
 				F71CE6F6195B7BD20030EBA9 /* MainMapViewController.m */,
+				F71CE70B196456970030EBA9 /* DataLoader.h */,
+				F71CE70C196456970030EBA9 /* DataLoader.m */,
 				F71CE6F8195CA1D10030EBA9 /* Connection.h */,
 				F71CE6F9195CA1D10030EBA9 /* Connection.m */,
 				F71CE6DC195B42B90030EBA9 /* Constants.h */,
@@ -375,6 +380,7 @@
 				F71CE6EE195B539D0030EBA9 /* TrailMO.m in Sources */,
 				F71CE68E195A309C0030EBA9 /* main.m in Sources */,
 				F71CE6E5195B4F510030EBA9 /* db.xcdatamodeld in Sources */,
+				F71CE70D196456970030EBA9 /* DataLoader.m in Sources */,
 				F71CE6F4195B5DF70030EBA9 /* TrailDBManager.m in Sources */,
 				F71CE6FA195CA1D10030EBA9 /* Connection.m in Sources */,
 			);

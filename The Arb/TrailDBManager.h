@@ -22,6 +22,8 @@
 +(TrailPointMO *)insert:(NSNumber *)point_id trail_id:(NSNumber *)trail_id latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude;
 
 +(TrailPointMO *)getTrailPointWithID:(NSNumber *)point_id;
++(BOOL)isPopulated;
++(NSArray *)getAllPoints;
 +(NSArray *)getAllPointsForTrail:(NSNumber *)trail_id;
 +(NSArray *)getAllPointsForTrailWithName:(NSString *)name;
 
