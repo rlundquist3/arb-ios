@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Googlemaps/GoogleMaps.h>
 
 @interface DataLoader : NSObject
 
-+(void)loadTrails;
++(GMSPolyline *)getTrails;
 
 @end

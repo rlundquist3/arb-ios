@@ -19,7 +19,7 @@
 +(TrailMO *)getTrailWithID:(NSNumber *)trail_id;
 +(TrailMO *)getTrailWithName:(NSString *)name;
 
-+(TrailPointMO *)insert:(NSNumber *)point_id trail_id:(NSNumber *)trail_id latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude;
++(TrailPointMO *)insert:(NSNumber *)point_id trail_id:(NSNumber *)trail_id latitude:(NSString *)latitude longitude:(NSString *)longitude;
 
 +(TrailPointMO *)getTrailPointWithID:(NSNumber *)point_id;
 +(BOOL)isPopulated;

@@ -48,7 +48,10 @@
     //[marker setIcon:[UIImage imageNamed:@"tree-sample"]];
     [marker setMap:_mapView];
     
-    [DataLoader loadTrails];
+    GMSPolyline *trails = [DataLoader getTrails];
+    [trails setMap:_mapView];
+    
+    NSLog(@"Trails: %@", trails);
 }
 
 - (void)didReceiveMemoryWarning

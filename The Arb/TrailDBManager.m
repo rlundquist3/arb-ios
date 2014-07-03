@@ -55,7 +55,7 @@
 
 //TrailPoint methods
 
-+(TrailPointMO *)insert:(NSNumber *)point_id trail_id:(NSNumber *)trail_id latitude:(NSNumber *)latitude longitude:(NSNumber *)longitude {
++(TrailPointMO *)insert:(NSNumber *)point_id trail_id:(NSNumber *)trail_id latitude:(NSString *)latitude longitude:(NSString *)longitude {
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     NSManagedObjectContext *moc = [delegate managedObjectContext];
     
@@ -77,6 +77,8 @@
     if (longitude != nil && trailPoint.longitude == nil) {
         [trailPoint setValue:longitude forKey:TRAIL_POINTS_TABLE_COLUMN_LONGITUDE];
     }
+    
+    NSLog(@"TrailPoint inserted: %@, %@", trailPoint.latitude, trailPoint.longitude);
     
     [delegate saveContext];
     return trailPoint;
