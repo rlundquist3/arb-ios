@@ -60,10 +60,11 @@ void (^_completionHandler)(UIBackgroundFetchResult);
         if (_persistentStoreCoordinator != nil) {
             return _persistentStoreCoordinator;
         }
-        NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"ArbApp.sqlite"]];
+        //NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"TrailsTest.sqlite"]];
+        NSURL *storeUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"ArbData" ofType:@"sqlite"]];
         NSError *error = nil;
         _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-        if(![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeUrl options:nil error:&error]) {
+        if(![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeUrl options:@{NSReadOnlyPersistentStoreOption : @YES, NSSQLitePragmasOption: @{@"journal_mode":@"DELETE"}} error:&error]) {
         }
     }
     return _persistentStoreCoordinator;

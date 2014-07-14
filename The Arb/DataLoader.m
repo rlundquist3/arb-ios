@@ -12,27 +12,49 @@
 
 @implementation DataLoader
 
-+(GMSPolyline *)getTrails {
+static DataLoader *sharedDataLoader = nil;
+
++ (DataLoader *)sharedLoader {
+    if (sharedDataLoader == nil) {
+        sharedDataLoader = [[super allocWithZone:NULL] init];
+    }
+    return sharedDataLoader;
+}
+
+- (id)init {
+    if ( (self = [super init]) ) {
+        // your custom initialization
+    }
+    return self;
+}
+
+-(NSMutableDictionary *)getTrails {
     if (![TrailDBManager isPopulated]) {
         [self loadTrails];
     }
     
-    GMSMutablePath *path = [GMSMutablePath path];
+    NSMutableDictionary *paths = [[NSMutableDictionary alloc] init];
     NSArray *points = [TrailDBManager getAllPoints];
     
     NSLog(@"Number of points: %d", points.count);
     
     for (TrailPointMO *point in points) {
-        //NSLog(@"adding to path: %@, %@", point.latitude, point.longitude);
+        GMSMutablePath *path;
+        if ((path = [paths objectForKey:point.trail_id]) == nil) {
+            NSLog(@"New path: %d", paths.count);
+            path = [[GMSMutablePath alloc] init];
+            [paths setObject:path forKey:point.trail_id];
+        }
+        NSLog(@"Path: %@", point.trail_id);
         [path addLatitude:[point.latitude doubleValue] longitude:[point.longitude doubleValue]];
     }
     
-    return [GMSPolyline polylineWithPath:path];
+    return paths;
 }
 
-+(void)loadTrails {
+-(void)loadTrails {
     NSData *trailPointsResponse = [Connection makeRequestFor:@"trail_points"];
-    NSString *responseString = [[NSString alloc] initWithData:trailPointsResponse encoding:NSASCIIStringEncoding];
+    /*NSString *responseString = [[NSString alloc] initWithData:trailPointsResponse encoding:NSASCIIStringEncoding];
     
     NSError *error = NULL;
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"-?\\d+[.]\\d+" options:NSRegularExpressionCaseInsensitive error:&error];
@@ -51,7 +73,25 @@
         
         NSLog(@"Entry: %d", entry);
         entry++;
+    }*/
+    
+    NSXMLParser *parser = [[NSXMLParser alloc] initWithData:trailPointsResponse];
+    [parser setDelegate:self];
+    BOOL result = [parser parse];
+    
+    NSLog(@"Success? %d", result);
+}
+
+-(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
+    
+    NSLog(@"Started element: %@", elementName);
+    if ([elementName isEqualToString:@"rtept"]) {
+        [TrailDBManager insert:[NSNumber numberWithUnsignedInteger:[TrailDBManager numberOfPoints]] trail_id:[attributeDict objectForKey:@"trail"] latitude:[attributeDict objectForKey:@"lat"] longitude:[attributeDict objectForKey:@"lon"]];
     }
+}
+
+-(void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
+    NSLog(@"Error: %@", parseError);
 }
 
 @end

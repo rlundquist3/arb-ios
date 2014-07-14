@@ -48,10 +48,24 @@
     //[marker setIcon:[UIImage imageNamed:@"tree-sample"]];
     [marker setMap:_mapView];
     
-    GMSPolyline *trails = [DataLoader getTrails];
-    [trails setMap:_mapView];
+    NSMutableDictionary *paths = [[DataLoader sharedLoader] getTrails];
     
-    NSLog(@"Trails: %@", trails);
+    NSLog(@"Paths returned: %@", paths);
+    
+    NSEnumerator *enumerator = [paths keyEnumerator];
+    id key;
+    while ((key = [enumerator nextObject])) {
+        GMSPath *path = [paths objectForKey:key];
+        GMSPolyline *trail = [GMSPolyline polylineWithPath:path];
+        [trail setMap:_mapView];
+    }
+    
+    /*for (GMSPath *path in paths) {
+        NSLog(@"Path: %@", path);
+        GMSPolyline *trail = [GMSPolyline polylineWithPath:path];
+        [trail setMap:_mapView];
+        NSLog(@"Put on map");
+    }*/
 }
 
 - (void)didReceiveMemoryWarning

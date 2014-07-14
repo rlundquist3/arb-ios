@@ -55,7 +55,7 @@
 
 //TrailPoint methods
 
-+(TrailPointMO *)insert:(NSNumber *)point_id trail_id:(NSNumber *)trail_id latitude:(NSString *)latitude longitude:(NSString *)longitude {
++(TrailPointMO *)insert:(NSNumber *)point_id trail_id:(NSString *)trail_id latitude:(NSString *)latitude longitude:(NSString *)longitude {
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     NSManagedObjectContext *moc = [delegate managedObjectContext];
     
@@ -112,7 +112,11 @@
     return [[self getAllPoints] count] > 0;
 }
 
-+(NSArray *)getAllPointsForTrail:(NSNumber *)trail_id {
++(NSUInteger)numberOfPoints {
+    return [[self getAllPoints] count];
+}
+
++(NSArray *)getAllPointsForTrail:(NSString *)trail_id {
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     NSManagedObjectContext *moc = [delegate managedObjectContext];
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];

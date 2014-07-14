@@ -40,10 +40,13 @@
 		F71CE6E5195B4F510030EBA9 /* db.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F71CE6E3195B4F510030EBA9 /* db.xcdatamodeld */; };
 		F71CE6EE195B539D0030EBA9 /* TrailMO.m in Sources */ = {isa = PBXBuildFile; fileRef = F71CE6ED195B539D0030EBA9 /* TrailMO.m */; };
 		F71CE6F1195B53AF0030EBA9 /* TrailPointMO.m in Sources */ = {isa = PBXBuildFile; fileRef = F71CE6F0195B53AF0030EBA9 /* TrailPointMO.m */; };
-		F71CE6F4195B5DF70030EBA9 /* TrailDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F71CE6F3195B5DF70030EBA9 /* TrailDBManager.m */; };
 		F71CE6F7195B7BD20030EBA9 /* MainMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F71CE6F6195B7BD20030EBA9 /* MainMapViewController.m */; };
 		F71CE6FA195CA1D10030EBA9 /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = F71CE6F9195CA1D10030EBA9 /* Connection.m */; };
 		F71CE70D196456970030EBA9 /* DataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = F71CE70C196456970030EBA9 /* DataLoader.m */; };
+		F794B8F71974569200AAFE04 /* TrailDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F794B8F91974569200AAFE04 /* TrailDBManager.m */; };
+		F794B9071974712000AAFE04 /* ArbData.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = F794B9041974712000AAFE04 /* ArbData.sqlite */; };
+		F794B9081974712000AAFE04 /* ArbData.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = F794B9051974712000AAFE04 /* ArbData.sqlite-shm */; };
+		F794B9091974712000AAFE04 /* ArbData.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = F794B9061974712000AAFE04 /* ArbData.sqlite-wal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,14 +101,17 @@
 		F71CE6ED195B539D0030EBA9 /* TrailMO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrailMO.m; sourceTree = "<group>"; };
 		F71CE6EF195B53AF0030EBA9 /* TrailPointMO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrailPointMO.h; sourceTree = "<group>"; };
 		F71CE6F0195B53AF0030EBA9 /* TrailPointMO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrailPointMO.m; sourceTree = "<group>"; };
-		F71CE6F2195B5DF70030EBA9 /* TrailDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrailDBManager.h; sourceTree = "<group>"; };
-		F71CE6F3195B5DF70030EBA9 /* TrailDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrailDBManager.m; sourceTree = "<group>"; };
 		F71CE6F5195B7BD20030EBA9 /* MainMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMapViewController.h; sourceTree = "<group>"; };
 		F71CE6F6195B7BD20030EBA9 /* MainMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMapViewController.m; sourceTree = "<group>"; };
 		F71CE6F8195CA1D10030EBA9 /* Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Connection.h; sourceTree = "<group>"; };
 		F71CE6F9195CA1D10030EBA9 /* Connection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Connection.m; sourceTree = "<group>"; };
 		F71CE70B196456970030EBA9 /* DataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataLoader.h; sourceTree = "<group>"; };
 		F71CE70C196456970030EBA9 /* DataLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataLoader.m; sourceTree = "<group>"; };
+		F794B8F51974568F00AAFE04 /* en */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = en; path = en.lproj/TrailDBManager.h; sourceTree = "<group>"; };
+		F794B8F81974569200AAFE04 /* en */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = en; path = en.lproj/TrailDBManager.m; sourceTree = "<group>"; };
+		F794B9041974712000AAFE04 /* ArbData.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = ArbData.sqlite; path = ../../../../Desktop/ArbData.sqlite; sourceTree = "<group>"; };
+		F794B9051974712000AAFE04 /* ArbData.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ArbData.sqlite-shm"; path = "../../../../Desktop/ArbData.sqlite-shm"; sourceTree = "<group>"; };
+		F794B9061974712000AAFE04 /* ArbData.sqlite-wal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "ArbData.sqlite-wal"; path = "../../../../Desktop/ArbData.sqlite-wal"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,13 +259,16 @@
 		F71CE6E2195B4F250030EBA9 /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				F794B9041974712000AAFE04 /* ArbData.sqlite */,
+				F794B9051974712000AAFE04 /* ArbData.sqlite-shm */,
+				F794B9061974712000AAFE04 /* ArbData.sqlite-wal */,
 				F71CE6E3195B4F510030EBA9 /* db.xcdatamodeld */,
 				F71CE6EC195B539D0030EBA9 /* TrailMO.h */,
 				F71CE6ED195B539D0030EBA9 /* TrailMO.m */,
 				F71CE6EF195B53AF0030EBA9 /* TrailPointMO.h */,
 				F71CE6F0195B53AF0030EBA9 /* TrailPointMO.m */,
-				F71CE6F2195B5DF70030EBA9 /* TrailDBManager.h */,
-				F71CE6F3195B5DF70030EBA9 /* TrailDBManager.m */,
+				F794B8F61974568F00AAFE04 /* TrailDBManager.h */,
+				F794B8F91974569200AAFE04 /* TrailDBManager.m */,
 			);
 			name = Database;
 			sourceTree = "<group>";
@@ -350,8 +359,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F71CE6E1195B4D1C0030EBA9 /* tree-sample.png in Resources */,
+				F794B9081974712000AAFE04 /* ArbData.sqlite-shm in Resources */,
+				F794B9091974712000AAFE04 /* ArbData.sqlite-wal in Resources */,
 				F71CE68C195A309C0030EBA9 /* InfoPlist.strings in Resources */,
 				F71CE694195A309C0030EBA9 /* Images.xcassets in Resources */,
+				F794B9071974712000AAFE04 /* ArbData.sqlite in Resources */,
 				F71CE6B3195B20C10030EBA9 /* Main.storyboard in Resources */,
 				F71CE6BD195B288B0030EBA9 /* GoogleMaps.bundle in Resources */,
 			);
@@ -381,7 +393,7 @@
 				F71CE68E195A309C0030EBA9 /* main.m in Sources */,
 				F71CE6E5195B4F510030EBA9 /* db.xcdatamodeld in Sources */,
 				F71CE70D196456970030EBA9 /* DataLoader.m in Sources */,
-				F71CE6F4195B5DF70030EBA9 /* TrailDBManager.m in Sources */,
+				F794B8F71974569200AAFE04 /* TrailDBManager.m in Sources */,
 				F71CE6FA195CA1D10030EBA9 /* Connection.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -419,6 +431,22 @@
 				F71CE6A4195A309C0030EBA9 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F794B8F61974568F00AAFE04 /* TrailDBManager.h */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F794B8F51974568F00AAFE04 /* en */,
+			);
+			name = TrailDBManager.h;
+			sourceTree = "<group>";
+		};
+		F794B8F91974569200AAFE04 /* TrailDBManager.m */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F794B8F81974569200AAFE04 /* en */,
+			);
+			name = TrailDBManager.m;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -501,6 +529,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					/users/rlundquist3/development/ios/arb,
 					"$(PROJECT_DIR)",
@@ -522,6 +551,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					/users/rlundquist3/development/ios/arb,
 					"$(PROJECT_DIR)",

@@ -23,6 +23,7 @@
 
 +(TrailPointMO *)getTrailPointWithID:(NSNumber *)point_id;
 +(BOOL)isPopulated;
++(NSUInteger)numberOfPoints;
 +(NSArray *)getAllPoints;
 +(NSArray *)getAllPointsForTrail:(NSNumber *)trail_id;
 +(NSArray *)getAllPointsForTrailWithName:(NSString *)name;

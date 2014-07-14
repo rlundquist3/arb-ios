@@ -9,8 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <Googlemaps/GoogleMaps.h>
 
-@interface DataLoader : NSObject
+@interface DataLoader : NSObject<NSXMLParserDelegate>
 
-+(GMSPolyline *)getTrails;
++(DataLoader *)sharedLoader;
+
+-(NSMutableDictionary *)getTrails;
 
 @end
