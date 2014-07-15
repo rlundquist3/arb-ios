@@ -8,6 +8,8 @@
 
 #import "MainMapViewController.h"
 #import "DataLoader.h"
+#import "StyleManager.h"
+#import "Constants.h"
 
 @interface MainMapViewController ()
 
@@ -31,41 +33,46 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayTrails:) name:NOTIFICATION_TRAILS_LOADED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayBoundary:) name:NOTIFICATION_BOUNDARY_LOADED object:nil];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        [[DataLoader sharedLoader] getTrails];
+    });
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        [[DataLoader sharedLoader] getBoundary];
+    });
+    
     _arbCoordinates = CLLocationCoordinate2DMake(42.293469, -85.699842);
     
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:_arbCoordinates.latitude longitude:_arbCoordinates.longitude zoom:16];
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:_arbCoordinates.latitude longitude:_arbCoordinates.longitude zoom:14];
     
     _mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     _mapView.myLocationEnabled = YES;
     _mapView.settings.myLocationButton = YES;
     [_mapView setMapType:kGMSTypeHybrid];
     self.view = _mapView;
-    
-    GMSMarker *marker = [[GMSMarker alloc] init];
-    [marker setPosition:_arbCoordinates];
-    [marker setTitle:@"The Arb"];
-    [marker setSnippet:@"Lillian Anderson Arboretum"];
-    //[marker setIcon:[UIImage imageNamed:@"tree-sample"]];
-    [marker setMap:_mapView];
-    
-    NSMutableDictionary *paths = [[DataLoader sharedLoader] getTrails];
-    
-    NSLog(@"Paths returned: %@", paths);
+}
+
+-(void)displayTrails:(NSNotification *)notification {
+    NSDictionary *paths = notification.userInfo;
     
     NSEnumerator *enumerator = [paths keyEnumerator];
     id key;
     while ((key = [enumerator nextObject])) {
         GMSPath *path = [paths objectForKey:key];
         GMSPolyline *trail = [GMSPolyline polylineWithPath:path];
+        [trail setStrokeColor:[StyleManager getGreenColor]];
+        [trail setStrokeWidth:2];
         [trail setMap:_mapView];
     }
-    
-    /*for (GMSPath *path in paths) {
-        NSLog(@"Path: %@", path);
-        GMSPolyline *trail = [GMSPolyline polylineWithPath:path];
-        [trail setMap:_mapView];
-        NSLog(@"Put on map");
-    }*/
+}
+
+-(void)displayBoundary:(NSNotification *)notification {
+    GMSPolyline *boundary = [GMSPolyline polylineWithPath:[notification.userInfo objectForKey:@"boundary"]];
+    [boundary setStrokeColor:[StyleManager getYellowColor]];
+    [boundary setStrokeWidth:2];
+    [boundary setMap:_mapView];
 }
 
 - (void)didReceiveMemoryWarning

@@ -9,6 +9,7 @@
 #import "DataLoader.h"
 #import "Connection.h"
 #import "TrailDBManager.h"
+#import "Constants.h"
 
 @implementation DataLoader
 
@@ -28,7 +29,7 @@ static DataLoader *sharedDataLoader = nil;
     return self;
 }
 
--(NSMutableDictionary *)getTrails {
+-(void)getTrails {
     if (![TrailDBManager isPopulated]) {
         [self loadTrails];
     }
@@ -36,20 +37,40 @@ static DataLoader *sharedDataLoader = nil;
     NSMutableDictionary *paths = [[NSMutableDictionary alloc] init];
     NSArray *points = [TrailDBManager getAllPoints];
     
-    NSLog(@"Number of points: %d", points.count);
-    
     for (TrailPointMO *point in points) {
         GMSMutablePath *path;
         if ((path = [paths objectForKey:point.trail_id]) == nil) {
-            NSLog(@"New path: %d", paths.count);
             path = [[GMSMutablePath alloc] init];
             [paths setObject:path forKey:point.trail_id];
         }
-        NSLog(@"Path: %@", point.trail_id);
         [path addLatitude:[point.latitude doubleValue] longitude:[point.longitude doubleValue]];
+        NSLog(@"Point: %@, %@", point.latitude, point.longitude);
     }
     
-    return paths;
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_TRAILS_LOADED object:self userInfo:paths];
+}
+
+-(void)getBoundary {
+    NSError *error = nil;
+    NSString* filePath = [[NSBundle mainBundle] pathForResource:@"LAABoundary" ofType:@"csv"];
+    NSString* fileContents = [[NSString alloc] initWithContentsOfFile:filePath encoding:NSStringEncodingConversionAllowLossy error:&error];
+    NSArray* lines = [fileContents componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+    
+    GMSMutablePath *path = [[GMSMutablePath alloc] init];
+    
+    for(int i=0; i<lines.count; i++) {
+        // break the string down even further to the columns
+        NSString* current= [lines objectAtIndex:i];
+        NSArray* arr = [current componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@","]];
+        NSString *latitude = [[NSString alloc] initWithFormat:@"%@", [arr objectAtIndex:1]];
+        NSString *longitude = [[NSString alloc] initWithFormat:@"%@", [arr objectAtIndex:2]];
+    
+        [path addLatitude:[latitude doubleValue] longitude:[longitude doubleValue]];
+    }
+    
+    NSDictionary *userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:path, @"boundary", nil];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_BOUNDARY_LOADED object:self userInfo:userInfo];
 }
 
 -(void)loadTrails {
@@ -84,7 +105,6 @@ static DataLoader *sharedDataLoader = nil;
 
 -(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
     
-    NSLog(@"Started element: %@", elementName);
     if ([elementName isEqualToString:@"rtept"]) {
         [TrailDBManager insert:[NSNumber numberWithUnsignedInteger:[TrailDBManager numberOfPoints]] trail_id:[attributeDict objectForKey:@"trail"] latitude:[attributeDict objectForKey:@"lat"] longitude:[attributeDict objectForKey:@"lon"]];
     }

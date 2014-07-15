@@ -11,5 +11,6 @@
 @interface StyleManager : NSObject
 
 +(UIColor *)getGreenColor;
++(UIColor *)getYellowColor;
 
 @end

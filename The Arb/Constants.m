@@ -27,5 +27,7 @@ NSString *const TRAIL_POINTS_TABLE_COLUMN_TRAIL_ID = @"trail_id";
 NSString *const TRAIL_POINTS_TABLE_COLUMN_LATITUDE = @"latitude";
 NSString *const TRAIL_POINTS_TABLE_COLUMN_LONGITUDE = @"longitude";
 
+NSString *const NOTIFICATION_TRAILS_LOADED = @"trails_loaded";
+NSString *const NOTIFICATION_BOUNDARY_LOADED = @"boundary_loaded";
 
 @end

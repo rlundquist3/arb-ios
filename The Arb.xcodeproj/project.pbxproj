@@ -43,10 +43,10 @@
 		F71CE6F7195B7BD20030EBA9 /* MainMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F71CE6F6195B7BD20030EBA9 /* MainMapViewController.m */; };
 		F71CE6FA195CA1D10030EBA9 /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = F71CE6F9195CA1D10030EBA9 /* Connection.m */; };
 		F71CE70D196456970030EBA9 /* DataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = F71CE70C196456970030EBA9 /* DataLoader.m */; };
+		F7226534197585FE00EA0642 /* LAABoundary.csv in Resources */ = {isa = PBXBuildFile; fileRef = F7226533197585FE00EA0642 /* LAABoundary.csv */; };
 		F794B8F71974569200AAFE04 /* TrailDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F794B8F91974569200AAFE04 /* TrailDBManager.m */; };
-		F794B9071974712000AAFE04 /* ArbData.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = F794B9041974712000AAFE04 /* ArbData.sqlite */; };
-		F794B9081974712000AAFE04 /* ArbData.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = F794B9051974712000AAFE04 /* ArbData.sqlite-shm */; };
-		F794B9091974712000AAFE04 /* ArbData.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = F794B9061974712000AAFE04 /* ArbData.sqlite-wal */; };
+		F794B90C197559D400AAFE04 /* StyleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F794B90B197559D400AAFE04 /* StyleManager.m */; };
+		F794B90E19755C2000AAFE04 /* ArbData.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = F794B90D19755C2000AAFE04 /* ArbData.sqlite */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,11 +107,12 @@
 		F71CE6F9195CA1D10030EBA9 /* Connection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Connection.m; sourceTree = "<group>"; };
 		F71CE70B196456970030EBA9 /* DataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataLoader.h; sourceTree = "<group>"; };
 		F71CE70C196456970030EBA9 /* DataLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataLoader.m; sourceTree = "<group>"; };
+		F7226533197585FE00EA0642 /* LAABoundary.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LAABoundary.csv; path = "../../../../Dropbox/2013-2014/ArbApp/Data/LAABoundary/LAABoundary.csv"; sourceTree = "<group>"; };
 		F794B8F51974568F00AAFE04 /* en */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = en; path = en.lproj/TrailDBManager.h; sourceTree = "<group>"; };
 		F794B8F81974569200AAFE04 /* en */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = en; path = en.lproj/TrailDBManager.m; sourceTree = "<group>"; };
-		F794B9041974712000AAFE04 /* ArbData.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = ArbData.sqlite; path = ../../../../Desktop/ArbData.sqlite; sourceTree = "<group>"; };
-		F794B9051974712000AAFE04 /* ArbData.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ArbData.sqlite-shm"; path = "../../../../Desktop/ArbData.sqlite-shm"; sourceTree = "<group>"; };
-		F794B9061974712000AAFE04 /* ArbData.sqlite-wal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "ArbData.sqlite-wal"; path = "../../../../Desktop/ArbData.sqlite-wal"; sourceTree = "<group>"; };
+		F794B90A197559D400AAFE04 /* StyleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyleManager.h; sourceTree = "<group>"; };
+		F794B90B197559D400AAFE04 /* StyleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyleManager.m; sourceTree = "<group>"; };
+		F794B90D19755C2000AAFE04 /* ArbData.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = ArbData.sqlite; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +206,8 @@
 				F71CE6B8195B263A0030EBA9 /* AppInitViewController.m */,
 				F71CE6F5195B7BD20030EBA9 /* MainMapViewController.h */,
 				F71CE6F6195B7BD20030EBA9 /* MainMapViewController.m */,
+				F794B90A197559D400AAFE04 /* StyleManager.h */,
+				F794B90B197559D400AAFE04 /* StyleManager.m */,
 				F71CE70B196456970030EBA9 /* DataLoader.h */,
 				F71CE70C196456970030EBA9 /* DataLoader.m */,
 				F71CE6F8195CA1D10030EBA9 /* Connection.h */,
@@ -259,9 +262,8 @@
 		F71CE6E2195B4F250030EBA9 /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				F794B9041974712000AAFE04 /* ArbData.sqlite */,
-				F794B9051974712000AAFE04 /* ArbData.sqlite-shm */,
-				F794B9061974712000AAFE04 /* ArbData.sqlite-wal */,
+				F794B90D19755C2000AAFE04 /* ArbData.sqlite */,
+				F7226533197585FE00EA0642 /* LAABoundary.csv */,
 				F71CE6E3195B4F510030EBA9 /* db.xcdatamodeld */,
 				F71CE6EC195B539D0030EBA9 /* TrailMO.h */,
 				F71CE6ED195B539D0030EBA9 /* TrailMO.m */,
@@ -359,13 +361,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F71CE6E1195B4D1C0030EBA9 /* tree-sample.png in Resources */,
-				F794B9081974712000AAFE04 /* ArbData.sqlite-shm in Resources */,
-				F794B9091974712000AAFE04 /* ArbData.sqlite-wal in Resources */,
 				F71CE68C195A309C0030EBA9 /* InfoPlist.strings in Resources */,
 				F71CE694195A309C0030EBA9 /* Images.xcassets in Resources */,
-				F794B9071974712000AAFE04 /* ArbData.sqlite in Resources */,
+				F794B90E19755C2000AAFE04 /* ArbData.sqlite in Resources */,
 				F71CE6B3195B20C10030EBA9 /* Main.storyboard in Resources */,
 				F71CE6BD195B288B0030EBA9 /* GoogleMaps.bundle in Resources */,
+				F7226534197585FE00EA0642 /* LAABoundary.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,6 +394,7 @@
 				F71CE68E195A309C0030EBA9 /* main.m in Sources */,
 				F71CE6E5195B4F510030EBA9 /* db.xcdatamodeld in Sources */,
 				F71CE70D196456970030EBA9 /* DataLoader.m in Sources */,
+				F794B90C197559D400AAFE04 /* StyleManager.m in Sources */,
 				F794B8F71974569200AAFE04 /* TrailDBManager.m in Sources */,
 				F71CE6FA195CA1D10030EBA9 /* Connection.m in Sources */,
 			);

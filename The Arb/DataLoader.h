@@ -13,6 +13,7 @@
 
 +(DataLoader *)sharedLoader;
 
--(NSMutableDictionary *)getTrails;
+-(void)getTrails;
+-(void)getBoundary;
 
 @end
