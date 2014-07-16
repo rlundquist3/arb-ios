@@ -48,8 +48,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="The Arb" id="nAr-6H-hn6">
-                        <barButtonItem key="leftBarButtonItem" title="Stuff" id="sa3-Dc-Wzv"/>
+                        <barButtonItem key="leftBarButtonItem" title="Stuff" id="sa3-Dc-Wzv">
+                            <connections>
+                                <action selector="menuButtonClicked:" destination="POy-kb-4qQ" id="Ez8-hk-O4k"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="menuButton" destination="sa3-Dc-Wzv" id="wvm-PC-78F"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3IY-oH-x0I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

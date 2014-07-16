@@ -17,6 +17,7 @@
 @property (nonatomic) CLLocationCoordinate2D arbCoordinates;
 @property (strong, nonatomic) UITableView *menuTableView;
 @property (strong, nonatomic) UIView *greyView;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *menuButton;
 
 @end
 
@@ -71,11 +72,28 @@
     [self.view bringSubviewToFront:_menuTableView];
 }
 
+- (IBAction)menuButtonClicked:(id)sender {
+    if (_menuTableView.hidden) {
+        [self showMenu];
+    } else {
+        [self hideMenu];
+    }
+}
+
 -(void)showMenu {
+    [_mapView setUserInteractionEnabled:NO];
     
     CGRect menuFrame = CGRectMake(0, 0, self.view.frame.size.width*2/3, self.view.frame.size.height);
-    
+    _menuTableView.frame = menuFrame;
     _menuTableView.hidden = NO;
+    
+    CATransition *transition = [CATransition animation];
+    transition.duration = 0.25;
+    transition.type = kCATransitionPush;
+    transition.subtype = kCATransitionFromLeft;
+    [transition setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+    [_menuTableView.layer addAnimation:transition forKey:nil];
+    
     _greyView.frame = self.view.frame;
     
     [UIView animateWithDuration:.5
@@ -85,29 +103,34 @@
                         options:UIViewAnimationOptionCurveEaseInOut
                      animations:^{
                          _greyView.alpha = 0.5;
-                         _menuTableView.frame = menuFrame;
                      }
                      completion:^(BOOL finished){
-                         [_mapView setUserInteractionEnabled:NO];
+                         
                      }];
     [UIView commitAnimations];
 }
 
 -(void)hideMenu {
+    CATransition *transition = [CATransition animation];
+    transition.duration = 0.25;
+    transition.type = kCATransitionPush;
+    transition.subtype = kCATransitionFromRight;
+    [transition setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+    [_menuTableView.layer addAnimation:transition forKey:nil];
+    _menuTableView.hidden = YES;
+    
+    [_mapView setUserInteractionEnabled:YES];
     
     [UIView animateWithDuration:.5
                           delay:0.0
          usingSpringWithDamping:1.0
           initialSpringVelocity:1.0
-                        options: UIViewAnimationOptionCurveEaseOut
+                        options:UIViewAnimationOptionCurveEaseInOut
                      animations:^{
                          _greyView.alpha = 0;
-                         _menuTableView.center = CGPointMake(_menuTableView.center.x, -1 * _menuTableView.frame.size.height/2);
                      }
                      completion:^(BOOL finished){
                          _greyView.frame = CGRectZero;
-                         _menuTableView.hidden = YES;
-                         [_mapView setUserInteractionEnabled:YES];
                      }];
     [UIView commitAnimations];
 }
@@ -120,6 +143,10 @@
     }
     
     return cell;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 3;
 }
 
 -(void)displayTrails:(NSNotification *)notification {
