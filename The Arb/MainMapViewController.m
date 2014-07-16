@@ -18,10 +18,15 @@
 @property (strong, nonatomic) UITableView *menuTableView;
 @property (strong, nonatomic) UIView *greyView;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *menuButton;
+@property (strong, nonatomic) NSArray *menuItems;
+@property (strong, nonatomic) NSMutableArray *trails;
+@property (strong, nonatomic) NSArray *benches;
 
 @end
 
 @implementation MainMapViewController
+
+BOOL trailsOn = NO, benchesOn = NO;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,7 +41,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayTrails:) name:NOTIFICATION_TRAILS_LOADED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupTrails:) name:NOTIFICATION_TRAILS_LOADED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayBoundary:) name:NOTIFICATION_BOUNDARY_LOADED object:nil];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
@@ -50,13 +55,13 @@
     
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:_arbCoordinates.latitude longitude:_arbCoordinates.longitude zoom:15];
     
-    _mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
+    _mapView = [GMSMapView mapWithFrame:self.view.frame camera:camera];
     _mapView.myLocationEnabled = YES;
     _mapView.settings.myLocationButton = YES;
     [_mapView setMapType:kGMSTypeHybrid];
-    self.view = _mapView;
+    [self.view addSubview:_mapView];
     
-    [self displayBenches];
+    [self setupBenches];
     
     _menuTableView = [[UITableView alloc] init];
     _menuTableView.hidden = YES;
@@ -70,6 +75,8 @@
     [_greyView setAlpha:0.0];
     [self.view addSubview:_greyView];
     [self.view bringSubviewToFront:_menuTableView];
+    
+    _menuItems = [[NSArray alloc] initWithObjects:@"Trails", @"Benches", nil];
 }
 
 - (IBAction)menuButtonClicked:(id)sender {
@@ -83,7 +90,7 @@
 -(void)showMenu {
     [_mapView setUserInteractionEnabled:NO];
     
-    CGRect menuFrame = CGRectMake(0, 0, self.view.frame.size.width*2/3, self.view.frame.size.height);
+    CGRect menuFrame = CGRectMake(0, 64, self.view.frame.size.width*2/3, self.view.frame.size.height-60);
     _menuTableView.frame = menuFrame;
     _menuTableView.hidden = NO;
     
@@ -142,15 +149,29 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
+    cell.textLabel.text = [_menuItems objectAtIndex:indexPath.row];
+    
     return cell;
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *item = [_menuItems objectAtIndex:indexPath.row];
+    NSLog(@"%@ selected", item);
+    
+    if ([item isEqualToString:@"Trails"]) {
+        [self toggleTrails];
+    } else if ([item isEqualToString:@"Benches"]) {
+        [self toggleBenches];
+    }
 }
 
--(void)displayTrails:(NSNotification *)notification {
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return _menuItems.count;
+}
+
+-(void)setupTrails:(NSNotification *)notification {
     NSDictionary *paths = notification.userInfo;
+    _trails = [[NSMutableArray alloc] init];
     
     NSEnumerator *enumerator = [paths keyEnumerator];
     id key;
@@ -159,7 +180,21 @@
         GMSPolyline *trail = [GMSPolyline polylineWithPath:path];
         [trail setStrokeColor:[StyleManager getGreenColor]];
         [trail setStrokeWidth:2];
-        [trail setMap:_mapView];
+        [_trails addObject:trail];
+    }
+}
+
+-(void)toggleTrails {
+    if (trailsOn) {
+        for (GMSPolyline *trail in _trails) {
+            [trail setMap:nil];
+        }
+        trailsOn = NO;
+    } else {
+        for (GMSPolyline *trail in _trails) {
+            [trail setMap:_mapView];
+        }
+        trailsOn = YES;
     }
 }
 
@@ -172,22 +207,13 @@
     [boundary setMap:_mapView];*/
 }
 
--(void)displayBenches {
+-(void)setupBenches {
     CLLocationCoordinate2D pos1 = CLLocationCoordinate2DMake(42.290786142013935, -85.705077703266625);
     CLLocationCoordinate2D pos2 = CLLocationCoordinate2DMake(42.292032317894687, -85.696026630823411);
     CLLocationCoordinate2D pos3 = CLLocationCoordinate2DMake(42.289126118386392, -85.69697989054292);
     CLLocationCoordinate2D pos4 = CLLocationCoordinate2DMake(42.292445897949968, -85.702774486370188);
     
-    GMSMarker *bench1 = [GMSMarker markerWithPosition:pos1];
-    GMSMarker *bench2 = [GMSMarker markerWithPosition:pos2];
-    GMSMarker *bench3 = [GMSMarker markerWithPosition:pos3];
-    GMSMarker *bench4 = [GMSMarker markerWithPosition:pos4];
-    NSArray *benches = [[NSArray alloc] initWithObjects:bench1, bench2, bench3, bench4, nil];
-    
-    for (GMSMarker *bench in benches) {
-        [bench setAppearAnimation:kGMSMarkerAnimationPop];
-        [bench setMap:_mapView];
-    }
+    _benches = [[NSArray alloc] initWithObjects:[GMSMarker markerWithPosition:pos1], [GMSMarker markerWithPosition:pos2], [GMSMarker markerWithPosition:pos3], [GMSMarker markerWithPosition:pos4], nil];
     
     /*GMSMutablePath *path = [GMSMutablePath path];
     [path addCoordinate:pos1];
@@ -196,6 +222,24 @@
     [path addCoordinate:pos4];
     GMSPolyline *boundary = [GMSPolyline polylineWithPath:path];
     boundary.map = _mapView;*/
+}
+
+-(void)toggleBenches {
+    NSLog(@"Toggle Benches");
+    if (benchesOn) {
+        for (GMSMarker *bench in _benches) {
+            [bench setAppearAnimation:kGMSMarkerAnimationPop];
+            [bench setMap:nil];
+        }
+        benchesOn = NO;
+    } else {
+        for (GMSMarker *bench in _benches) {
+            [bench setAppearAnimation:kGMSMarkerAnimationPop];
+            [bench setMap:_mapView];
+        }
+        benchesOn = YES;
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning
