@@ -56,16 +56,16 @@ static DataLoader *sharedDataLoader = nil;
     NSString* fileContents = [[NSString alloc] initWithContentsOfFile:filePath encoding:NSStringEncodingConversionAllowLossy error:&error];
     NSArray* lines = [fileContents componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
     
-    GMSMutablePath *path = [[GMSMutablePath alloc] init];
+    GMSMutablePath *path = [GMSMutablePath path];
     
-    for(int i=0; i<lines.count; i++) {
-        // break the string down even further to the columns
-        NSString* current= [lines objectAtIndex:i];
+    for(int i=1; i<lines.count; i++) {
+        NSString* current = [lines objectAtIndex:i];
         NSArray* arr = [current componentsSeparatedByCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@","]];
-        NSString *latitude = [[NSString alloc] initWithFormat:@"%@", [arr objectAtIndex:1]];
-        NSString *longitude = [[NSString alloc] initWithFormat:@"%@", [arr objectAtIndex:2]];
+        NSString *latitude = [[NSString alloc] initWithFormat:@"%@", [arr objectAtIndex:2]];
+        NSString *longitude = [[NSString alloc] initWithFormat:@"%@", [arr objectAtIndex:1]];
     
         [path addLatitude:[latitude doubleValue] longitude:[longitude doubleValue]];
+        NSLog(@"Border point: %@, %@", latitude, longitude);
     }
     
     NSDictionary *userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:path, @"boundary", nil];
