@@ -13,7 +13,7 @@
 
 //Trail methods
 
-+(TrailMO *)insert:(NSString *)name color:(NSNumber *)color trail_id:(NSNumber *)trail_id {
++(TrailMO *)insert:(NSString *)name color:(NSNumber *)color trail_id:(NSNumber *)trail_id polyline:(GMSPolyline *)polyline {
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     NSManagedObjectContext *moc = [delegate managedObjectContext];
     
@@ -32,9 +32,32 @@
     if (trail_id != nil && trail.trail_id == nil) {
         [trail setValue:trail_id forKey:TRAILS_TABLE_COLUMN_TRAIL_ID];
     }
+    if (polyline != nil && trail.polyline == nil) {
+        [trail setValue:polyline forKey:TRAILS_TABLE_COLUMN_POLYLINE];
+    }
     
     [delegate saveContext];
     return trail;
+}
+
++(BOOL)hasTrails {
+    return [self getAllTrails].count > 0;
+}
+
++(NSArray *)getAllTrails {
+    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+    NSManagedObjectContext *moc = [delegate managedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:CORE_DATA_TABLE_TRAILS inManagedObjectContext:moc];
+    [fetchRequest setEntity:entity];
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:TRAILS_TABLE_COLUMN_TRAIL_ID ascending:YES];
+    [fetchRequest setSortDescriptors:@[sort]];
+    
+    NSError *error;
+    NSArray *fetchedRecords = [moc executeFetchRequest:fetchRequest error:&error];
+    
+    return fetchedRecords;
 }
 
 +(TrailMO *)getTrailWithID:(NSNumber *)trail_id {
@@ -104,7 +127,7 @@
     
     NSError *error;
     NSArray *fetchedRecords = [moc executeFetchRequest:fetchRequest error:&error];
-    
+    NSLog(@"Fetched %d points", fetchedRecords.count);
     return fetchedRecords;
 }
 

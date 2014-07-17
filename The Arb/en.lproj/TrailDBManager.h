@@ -11,11 +11,15 @@
 #import "TrailMO.h"
 #import "TrailPointMO.h"
 #import "AppDelegate.h"
+#import <Googlemaps/GoogleMaps.h>
 
 @interface TrailDBManager : NSObject
 
-+(TrailMO *)insert:(NSString *)name color:(NSNumber *)color trail_id:(NSNumber *)trail_id;
++(TrailMO *)insert:(NSString *)name color:(NSNumber *)color trail_id:(NSNumber *)trail_id polyline:(GMSPolyline *)polyline;
 
++(BOOL)hasTrails;
+
++(NSArray *)getAllTrails;
 +(TrailMO *)getTrailWithID:(NSNumber *)trail_id;
 +(TrailMO *)getTrailWithName:(NSString *)name;
 

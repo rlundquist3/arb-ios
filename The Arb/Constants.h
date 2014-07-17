@@ -21,6 +21,7 @@ extern NSString *const CORE_DATA_TABLE_TRAIL_POINTS;
 extern NSString *const TRAILS_TABLE_COLUMN_NAME;
 extern NSString *const TRAILS_TABLE_COLUMN_COLOR;
 extern NSString *const TRAILS_TABLE_COLUMN_TRAIL_ID;
+extern NSString *const TRAILS_TABLE_COLUMN_POLYLINE;
 
 extern NSString *const TRAIL_POINTS_TABLE_COLUMN_POINT_ID;
 extern NSString *const TRAIL_POINTS_TABLE_COLUMN_TRAIL_ID;

@@ -15,15 +15,6 @@
                     <view key="view" contentMode="scaleToFill" id="Rrm-Am-UsX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="The Arb" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CAs-Rl-Exo">
-                                <rect key="frame" x="130" y="273" width="61" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
@@ -34,7 +25,7 @@
             </objects>
             <point key="canvasLocation" x="-761" y="487"/>
         </scene>
-        <!--Main Map View Controller - The Arb-->
+        <!--Main Map View Controller-->
         <scene sceneID="RzZ-zD-4n6">
             <objects>
                 <viewController id="POy-kb-4qQ" customClass="MainMapViewController" sceneMemberID="viewController">
@@ -45,17 +36,36 @@
                     <view key="view" contentMode="scaleToFill" id="aKI-CO-bh3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m0N-pc-Kbm">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bar_title.png" translatesAutoresizingMaskIntoConstraints="NO" id="mkB-Om-RaV">
+                                        <rect key="frame" x="130" y="14" width="61" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yYX-fg-IzW">
+                                        <rect key="frame" x="20" y="21" width="80" height="36"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" image="arrow_unfilled.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="menuButtonClicked:" destination="POy-kb-4qQ" eventType="touchUpInside" id="F2u-8t-Jo6"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.94117647058823528" green="0.90588235294117647" blue="0.80784313725490198" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="The Arb" id="nAr-6H-hn6">
-                        <barButtonItem key="leftBarButtonItem" title="Stuff" id="sa3-Dc-Wzv">
-                            <connections>
-                                <action selector="menuButtonClicked:" destination="POy-kb-4qQ" id="Ez8-hk-O4k"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="nAr-6H-hn6"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="menuButton" destination="sa3-Dc-Wzv" id="wvm-PC-78F"/>
+                        <outlet property="menuButton" destination="yYX-fg-IzW" id="POi-qQ-hyf"/>
+                        <outlet property="titleBar" destination="m0N-pc-Kbm" id="9WC-I1-hhV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3IY-oH-x0I" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -78,6 +88,10 @@
             <point key="canvasLocation" x="-234" y="487"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="arrow_unfilled.png" width="44" height="44"/>
+        <image name="bar_title.png" width="61" height="50"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

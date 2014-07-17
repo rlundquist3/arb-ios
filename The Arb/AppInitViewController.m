@@ -8,6 +8,7 @@
 
 #import "AppInitViewController.h"
 #import "Constants.h"
+#import "DataLoader.h"
 
 @interface AppInitViewController ()
 
@@ -29,6 +30,17 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        [[DataLoader sharedLoader] getTrails];
+    });
+    /*dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+     [[DataLoader sharedLoader] getBoundary];
+     });*/
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.view.frame];
+    [imageView setImage:[UIImage imageNamed:@"title"]];
+    [self.view addSubview:imageView];
 }
 
 -(void)viewDidAppear:(BOOL)animated {
