@@ -43,8 +43,6 @@
 		F71CE70D196456970030EBA9 /* DataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = F71CE70C196456970030EBA9 /* DataLoader.m */; };
 		F7226534197585FE00EA0642 /* LAABoundary.csv in Resources */ = {isa = PBXBuildFile; fileRef = F7226533197585FE00EA0642 /* LAABoundary.csv */; };
 		F72265381976B05400EA0642 /* ArbData.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = F72265351976B05400EA0642 /* ArbData.sqlite */; };
-		F72265391976B05400EA0642 /* ArbData.sqlite-shm in Resources */ = {isa = PBXBuildFile; fileRef = F72265361976B05400EA0642 /* ArbData.sqlite-shm */; };
-		F722653A1976B05400EA0642 /* ArbData.sqlite-wal in Resources */ = {isa = PBXBuildFile; fileRef = F72265371976B05400EA0642 /* ArbData.sqlite-wal */; };
 		F722653D1977048A00EA0642 /* TrailMO.m in Sources */ = {isa = PBXBuildFile; fileRef = F722653C1977048A00EA0642 /* TrailMO.m */; };
 		F722654F1977447200EA0642 /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = F722654E1977447200EA0642 /* title.png */; };
 		F77CE1FD197825CA0060F560 /* checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = F77CE1FC197825CA0060F560 /* checkmark.png */; };
@@ -112,8 +110,6 @@
 		F71CE70C196456970030EBA9 /* DataLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataLoader.m; sourceTree = "<group>"; };
 		F7226533197585FE00EA0642 /* LAABoundary.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LAABoundary.csv; path = "../../../../Dropbox/2013-2014/ArbApp/Data/LAABoundary/LAABoundary.csv"; sourceTree = "<group>"; };
 		F72265351976B05400EA0642 /* ArbData.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = ArbData.sqlite; sourceTree = "<group>"; };
-		F72265361976B05400EA0642 /* ArbData.sqlite-shm */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ArbData.sqlite-shm"; sourceTree = "<group>"; };
-		F72265371976B05400EA0642 /* ArbData.sqlite-wal */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ArbData.sqlite-wal"; sourceTree = "<group>"; };
 		F722653B1977048A00EA0642 /* TrailMO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrailMO.h; sourceTree = "<group>"; };
 		F722653C1977048A00EA0642 /* TrailMO.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrailMO.m; sourceTree = "<group>"; };
 		F722654E1977447200EA0642 /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = title.png; path = "../../../../Dropbox/2013-2014/ArbApp/Images/Exported/title.png"; sourceTree = "<group>"; };
@@ -279,8 +275,6 @@
 			isa = PBXGroup;
 			children = (
 				F72265351976B05400EA0642 /* ArbData.sqlite */,
-				F72265361976B05400EA0642 /* ArbData.sqlite-shm */,
-				F72265371976B05400EA0642 /* ArbData.sqlite-wal */,
 				F7226533197585FE00EA0642 /* LAABoundary.csv */,
 				F71CE6E3195B4F510030EBA9 /* db.xcdatamodeld */,
 				F722653B1977048A00EA0642 /* TrailMO.h */,
@@ -386,10 +380,8 @@
 				F71CE694195A309C0030EBA9 /* Images.xcassets in Resources */,
 				F71CE6B3195B20C10030EBA9 /* Main.storyboard in Resources */,
 				F71CE6BD195B288B0030EBA9 /* GoogleMaps.bundle in Resources */,
-				F72265391976B05400EA0642 /* ArbData.sqlite-shm in Resources */,
 				F7226534197585FE00EA0642 /* LAABoundary.csv in Resources */,
 				F77CE201197827880060F560 /* arrow_filled.png in Resources */,
-				F722653A1976B05400EA0642 /* ArbData.sqlite-wal in Resources */,
 				F722654F1977447200EA0642 /* title.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
