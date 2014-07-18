@@ -18,4 +18,12 @@
     return [UIColor colorWithRed:237.0f/255.0f green:237.0f/255.0f blue:121.0f/255.0f alpha:1];
 }
 
++(UIColor *)getBeigeColor{
+    return [UIColor colorWithRed:240.0f/255.0f green:231.0f/255.0f blue:206.0f/255.0f alpha:1];
+}
+
++(UIColor *)getBlueColor{
+    return [UIColor colorWithRed:0.0f/255.0f green:95.0f/255.0f blue:163.0f/255.0f alpha:1];
+}
+
 @end

@@ -12,5 +12,7 @@
 
 +(UIColor *)getGreenColor;
 +(UIColor *)getYellowColor;
++(UIColor *)getBeigeColor;
++(UIColor *)getBlueColor;
 
 @end

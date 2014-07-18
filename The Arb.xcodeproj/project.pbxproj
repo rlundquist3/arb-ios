@@ -51,6 +51,10 @@
 		F77CE203197827A40060F560 /* arrow_unfilled.png in Resources */ = {isa = PBXBuildFile; fileRef = F77CE202197827A40060F560 /* arrow_unfilled.png */; };
 		F794B8F71974569200AAFE04 /* TrailDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F794B8F91974569200AAFE04 /* TrailDBManager.m */; };
 		F794B90C197559D400AAFE04 /* StyleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F794B90B197559D400AAFE04 /* StyleManager.m */; };
+		F7FA365619794E0A0021AA21 /* ThingsToSeeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FA365519794E0A0021AA21 /* ThingsToSeeViewController.m */; };
+		F7FA365A197956600021AA21 /* ArbTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FA3658197956600021AA21 /* ArbTableViewCell.m */; };
+		F7FA365B197956600021AA21 /* ArbTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7FA3659197956600021AA21 /* ArbTableViewCell.xib */; };
+		F7FA365E19795F320021AA21 /* ArbItemInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F7FA365D19795F320021AA21 /* ArbItemInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +125,13 @@
 		F794B8F81974569200AAFE04 /* en */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = en; path = en.lproj/TrailDBManager.m; sourceTree = "<group>"; };
 		F794B90A197559D400AAFE04 /* StyleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StyleManager.h; sourceTree = "<group>"; };
 		F794B90B197559D400AAFE04 /* StyleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StyleManager.m; sourceTree = "<group>"; };
+		F7FA365419794E0A0021AA21 /* ThingsToSeeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThingsToSeeViewController.h; sourceTree = "<group>"; };
+		F7FA365519794E0A0021AA21 /* ThingsToSeeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThingsToSeeViewController.m; sourceTree = "<group>"; };
+		F7FA3657197956600021AA21 /* ArbTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArbTableViewCell.h; sourceTree = "<group>"; };
+		F7FA3658197956600021AA21 /* ArbTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArbTableViewCell.m; sourceTree = "<group>"; };
+		F7FA3659197956600021AA21 /* ArbTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArbTableViewCell.xib; sourceTree = "<group>"; };
+		F7FA365C19795F320021AA21 /* ArbItemInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArbItemInfo.h; sourceTree = "<group>"; };
+		F7FA365D19795F320021AA21 /* ArbItemInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArbItemInfo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,22 +218,22 @@
 		F71CE687195A309C0030EBA9 /* The Arb */ = {
 			isa = PBXGroup;
 			children = (
-				F71CE6E2195B4F250030EBA9 /* Database */,
 				F71CE690195A309C0030EBA9 /* AppDelegate.h */,
 				F71CE691195A309C0030EBA9 /* AppDelegate.m */,
 				F71CE6B7195B263A0030EBA9 /* AppInitViewController.h */,
 				F71CE6B8195B263A0030EBA9 /* AppInitViewController.m */,
 				F71CE6F5195B7BD20030EBA9 /* MainMapViewController.h */,
 				F71CE6F6195B7BD20030EBA9 /* MainMapViewController.m */,
-				F794B90A197559D400AAFE04 /* StyleManager.h */,
-				F794B90B197559D400AAFE04 /* StyleManager.m */,
-				F71CE70B196456970030EBA9 /* DataLoader.h */,
-				F71CE70C196456970030EBA9 /* DataLoader.m */,
-				F71CE6F8195CA1D10030EBA9 /* Connection.h */,
-				F71CE6F9195CA1D10030EBA9 /* Connection.m */,
-				F71CE6DC195B42B90030EBA9 /* Constants.h */,
-				F71CE6DD195B42B90030EBA9 /* Constants.m */,
+				F7FA365419794E0A0021AA21 /* ThingsToSeeViewController.h */,
+				F7FA365519794E0A0021AA21 /* ThingsToSeeViewController.m */,
+				F7FA365C19795F320021AA21 /* ArbItemInfo.h */,
+				F7FA365D19795F320021AA21 /* ArbItemInfo.m */,
+				F7FA3657197956600021AA21 /* ArbTableViewCell.h */,
+				F7FA3658197956600021AA21 /* ArbTableViewCell.m */,
+				F7FA3659197956600021AA21 /* ArbTableViewCell.xib */,
 				F71CE6B2195B20C10030EBA9 /* Main.storyboard */,
+				F71CE6E2195B4F250030EBA9 /* Database */,
+				F7FA365319784E780021AA21 /* Utilities */,
 				F71CE6DF195B4CD30030EBA9 /* Images */,
 				F71CE693195A309C0030EBA9 /* Images.xcassets */,
 				F71CE688195A309C0030EBA9 /* Supporting Files */,
@@ -285,6 +296,21 @@
 				F794B8F91974569200AAFE04 /* TrailDBManager.m */,
 			);
 			name = Database;
+			sourceTree = "<group>";
+		};
+		F7FA365319784E780021AA21 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F794B90A197559D400AAFE04 /* StyleManager.h */,
+				F794B90B197559D400AAFE04 /* StyleManager.m */,
+				F71CE70B196456970030EBA9 /* DataLoader.h */,
+				F71CE70C196456970030EBA9 /* DataLoader.m */,
+				F71CE6F8195CA1D10030EBA9 /* Connection.h */,
+				F71CE6F9195CA1D10030EBA9 /* Connection.m */,
+				F71CE6DC195B42B90030EBA9 /* Constants.h */,
+				F71CE6DD195B42B90030EBA9 /* Constants.m */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -373,6 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F71CE68C195A309C0030EBA9 /* InfoPlist.strings in Resources */,
+				F7FA365B197956600021AA21 /* ArbTableViewCell.xib in Resources */,
 				F77CE203197827A40060F560 /* arrow_unfilled.png in Resources */,
 				F77CE1FD197825CA0060F560 /* checkmark.png in Resources */,
 				F77CE1FF197826410060F560 /* bar_title.png in Resources */,
@@ -402,17 +429,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				F722653D1977048A00EA0642 /* TrailMO.m in Sources */,
+				F7FA365A197956600021AA21 /* ArbTableViewCell.m in Sources */,
 				F71CE6DE195B42B90030EBA9 /* Constants.m in Sources */,
 				F71CE692195A309C0030EBA9 /* AppDelegate.m in Sources */,
 				F71CE6F7195B7BD20030EBA9 /* MainMapViewController.m in Sources */,
 				F71CE6F1195B53AF0030EBA9 /* TrailPointMO.m in Sources */,
 				F71CE6B9195B263A0030EBA9 /* AppInitViewController.m in Sources */,
+				F7FA365E19795F320021AA21 /* ArbItemInfo.m in Sources */,
 				F71CE68E195A309C0030EBA9 /* main.m in Sources */,
 				F71CE6E5195B4F510030EBA9 /* db.xcdatamodeld in Sources */,
 				F71CE70D196456970030EBA9 /* DataLoader.m in Sources */,
 				F794B90C197559D400AAFE04 /* StyleManager.m in Sources */,
 				F794B8F71974569200AAFE04 /* TrailDBManager.m in Sources */,
 				F71CE6FA195CA1D10030EBA9 /* Connection.m in Sources */,
+				F7FA365619794E0A0021AA21 /* ThingsToSeeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -48,8 +48,6 @@ static DataLoader *sharedDataLoader = nil;
         i++;
     }
     
-    NSLog(@"%d in dictionary", trailsDict.count);
-    
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_TRAILS_LOADED object:self userInfo:trailsDict];
 }
 

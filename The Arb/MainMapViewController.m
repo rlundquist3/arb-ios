@@ -47,6 +47,13 @@ BOOL trailsOn = NO, benchesOn = NO;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupTrails:) name:NOTIFICATION_TRAILS_LOADED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayBoundary:) name:NOTIFICATION_BOUNDARY_LOADED object:nil];
     
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        [[DataLoader sharedLoader] getTrails];
+    });
+    /*dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+     [[DataLoader sharedLoader] getBoundary];
+     });*/
+    
     _arbCoordinates = CLLocationCoordinate2DMake(42.293469, -85.699842);
     
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:_arbCoordinates.latitude longitude:_arbCoordinates.longitude zoom:15];
@@ -66,6 +73,7 @@ BOOL trailsOn = NO, benchesOn = NO;
     _menuTableView.allowsMultipleSelection = YES;
     [_menuTableView setDataSource:self];
     [_menuTableView setDelegate:self];
+    [_menuTableView setBackgroundColor:[StyleManager getBeigeColor]];
     [self.view addSubview:_menuTableView];
     
     _greyView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -75,7 +83,7 @@ BOOL trailsOn = NO, benchesOn = NO;
     [self.view addSubview:_greyView];
     [self.view bringSubviewToFront:_menuTableView];
     
-    _menuItems = [[NSArray alloc] initWithObjects:@"Trails", @"Benches", nil];
+    _menuItems = [[NSArray alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"Trails", @"Benches", nil], [[NSArray alloc] initWithObjects:@"Things to See", nil], nil];
 }
 
 - (IBAction)menuButtonClicked:(id)sender {
@@ -150,7 +158,9 @@ BOOL trailsOn = NO, benchesOn = NO;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     
-    cell.textLabel.text = [_menuItems objectAtIndex:indexPath.row];
+    cell.textLabel.text = [[_menuItems objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    cell.textLabel.textColor = [StyleManager getBlueColor];
+    cell.backgroundColor = [UIColor clearColor];
     
     return cell;
 }
@@ -159,26 +169,32 @@ BOOL trailsOn = NO, benchesOn = NO;
     switch (section) {
         case 0: return @"Map Options";
             break;
+        case 1: return @"Actions";
         default: return @"";
             break;
     }
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *item = [_menuItems objectAtIndex:indexPath.row];
+    NSString *item = [[_menuItems objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     
     UITableViewCell *cell = [_menuTableView cellForRowAtIndexPath:indexPath];
-    [cell setAccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"checkmark"]]];
     
     if ([item isEqualToString:@"Trails"]) {
         [self trailsOn];
+        [cell setAccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"checkmark"]]];
     } else if ([item isEqualToString:@"Benches"]) {
         [self benchesOn];
+        [cell setAccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"checkmark"]]];
+    } else if ([item isEqualToString:@"Things to See"]) {
+        NSLog(@"Things to See clicked");
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        [self performSegueWithIdentifier:SEGUE_THINGS_TO_SEE sender:self];
     }
 }
 
 -(void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *item = [_menuItems objectAtIndex:indexPath.row];
+    NSString *item = [[_menuItems objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     
     UITableViewCell *cell = [_menuTableView cellForRowAtIndexPath:indexPath];
     [cell setAccessoryView:nil];
@@ -190,8 +206,16 @@ BOOL trailsOn = NO, benchesOn = NO;
     }
 }
 
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _menuItems.count;
+    if (section == 0) {
+        return 2;
+    } else {
+        return 1;
+    }
 }
 
 -(void)setupTrails:(NSNotification *)notification {
