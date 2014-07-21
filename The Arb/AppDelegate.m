@@ -64,8 +64,9 @@ void (^_completionHandler)(UIBackgroundFetchResult);
         NSURL *storeUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"ArbData" ofType:@"sqlite"]];
         NSError *error = nil;
         _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-        if(![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeUrl options:@{NSReadOnlyPersistentStoreOption : @YES, NSSQLitePragmasOption: @{@"journal_mode":@"DELETE"}} error:&error]) {
-        }
+        [_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeUrl options:@{NSReadOnlyPersistentStoreOption : @YES} error:&error];
+        /*if(![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeUrl options:@{NSReadOnlyPersistentStoreOption : @YES, NSSQLitePragmasOption: @{@"journal_mode":@"DELETE"}} error:&error]) {
+        }*/
     }
     return _persistentStoreCoordinator;
 }

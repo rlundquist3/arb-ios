@@ -266,6 +266,11 @@ BOOL trailsOn = NO, benchesOn = NO;
     
     _benches = [[NSArray alloc] initWithObjects:[GMSMarker markerWithPosition:pos1], [GMSMarker markerWithPosition:pos2], [GMSMarker markerWithPosition:pos3], [GMSMarker markerWithPosition:pos4], nil];
     
+    for (GMSMarker *bench in _benches) {
+        [bench setAppearAnimation:kGMSMarkerAnimationPop];
+        [bench setIcon:[UIImage imageNamed:@"bench"]];
+    }
+    
     /*GMSMutablePath *path = [GMSMutablePath path];
     [path addCoordinate:pos1];
     [path addCoordinate:pos2];
@@ -278,7 +283,6 @@ BOOL trailsOn = NO, benchesOn = NO;
 -(void)benchesOn {
     if (!benchesOn) {
         for (GMSMarker *bench in _benches) {
-            [bench setAppearAnimation:kGMSMarkerAnimationPop];
             [bench setMap:_mapView];
         }
         benchesOn = YES;
@@ -288,7 +292,6 @@ BOOL trailsOn = NO, benchesOn = NO;
 -(void)benchesOff {
     if (benchesOn) {
         for (GMSMarker *bench in _benches) {
-            [bench setAppearAnimation:kGMSMarkerAnimationPop];
             [bench setMap:nil];
         }
         benchesOn = NO;
