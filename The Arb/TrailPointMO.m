@@ -2,7 +2,7 @@
 //  TrailPointMO.m
 //  The Arb
 //
-//  Created by Riley Lundquist on 6/25/14.
+//  Created by Riley Lundquist on 7/22/14.
 //  Copyright (c) 2014 Riley Lundquist. All rights reserved.
 //
 
@@ -13,8 +13,7 @@
 
 @dynamic latitude;
 @dynamic longitude;
-@dynamic trail_id;
 @dynamic point_id;
-@dynamic trail;
+@dynamic trail_id;
 
 @end

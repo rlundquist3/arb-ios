@@ -15,7 +15,7 @@
 
 @interface TrailDBManager : NSObject
 
-+(TrailMO *)insert:(NSString *)name color:(NSNumber *)color trail_id:(NSNumber *)trail_id polyline:(GMSPolyline *)polyline;
++(TrailMO *)insert:(NSString *)name trail_id:(NSNumber *)trail_id path:(NSString *)path;
 
 +(BOOL)hasTrails;
 

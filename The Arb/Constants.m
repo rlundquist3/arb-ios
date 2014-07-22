@@ -20,9 +20,8 @@ NSString *const CORE_DATA_TABLE_TRAILS = @"TrailMO";
 NSString *const CORE_DATA_TABLE_TRAIL_POINTS = @"TrailPointMO";
 
 NSString *const TRAILS_TABLE_COLUMN_NAME = @"name";
-NSString *const TRAILS_TABLE_COLUMN_COLOR = @"color";
 NSString *const TRAILS_TABLE_COLUMN_TRAIL_ID = @"trail_id";
-NSString *const TRAILS_TABLE_COLUMN_POLYLINE = @"polyline";
+NSString *const TRAILS_TABLE_COLUMN_PATH = @"path";
 
 NSString *const TRAIL_POINTS_TABLE_COLUMN_POINT_ID = @"point_id";
 NSString *const TRAIL_POINTS_TABLE_COLUMN_TRAIL_ID = @"trail_id";

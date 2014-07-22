@@ -13,7 +13,7 @@
 
 //Trail methods
 
-+(TrailMO *)insert:(NSString *)name color:(NSNumber *)color trail_id:(NSNumber *)trail_id polyline:(GMSPolyline *)polyline {
++(TrailMO *)insert:(NSString *)name trail_id:(NSNumber *)trail_id path:(NSString *)path {
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     NSManagedObjectContext *moc = [delegate managedObjectContext];
     
@@ -26,14 +26,11 @@
     if (name != nil && trail.name == nil) {
         [trail setValue:name forKey:TRAILS_TABLE_COLUMN_NAME];
     }
-    if (color != nil && trail.color == nil) {
-        [trail setValue:color forKey:TRAILS_TABLE_COLUMN_COLOR];
-    }
     if (trail_id != nil && trail.trail_id == nil) {
         [trail setValue:trail_id forKey:TRAILS_TABLE_COLUMN_TRAIL_ID];
     }
-    if (polyline != nil && trail.polyline == nil) {
-        [trail setValue:polyline forKey:TRAILS_TABLE_COLUMN_POLYLINE];
+    if (path != nil && trail.path == nil) {
+        [trail setValue:path forKey:TRAILS_TABLE_COLUMN_PATH];
     }
     
     [delegate saveContext];

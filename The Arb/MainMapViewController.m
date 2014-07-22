@@ -55,7 +55,7 @@ BOOL trailsOn = NO, benchesOn = NO;
      [[DataLoader sharedLoader] getBoundary];
      });*/
     
-    _arbCoordinates = CLLocationCoordinate2DMake(42.293469, -85.699842);
+    _arbCoordinates = CLLocationCoordinate2DMake(42.293469, -85.701);
     
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:_arbCoordinates.latitude longitude:_arbCoordinates.longitude zoom:15];
     
@@ -226,8 +226,11 @@ BOOL trailsOn = NO, benchesOn = NO;
     NSEnumerator *enumerator = [returnedTrails keyEnumerator];
     id key;
     while ((key = [enumerator nextObject])) {
-        GMSPolyline *trail = [returnedTrails objectForKey:key];
-        [_trails addObject:trail];
+        GMSPath *trail = [GMSPath pathFromEncodedPath:[returnedTrails objectForKey:key]];
+        GMSPolyline *polyline = [GMSPolyline polylineWithPath:trail];
+        [polyline setStrokeWidth:2];
+        [polyline setStrokeColor:[StyleManager getGreenColor]];
+        [_trails addObject:polyline];
     }
 }
 

@@ -15,6 +15,7 @@
 @implementation DataLoader
 
 static DataLoader *sharedDataLoader = nil;
+long numberOfPoints = 0;
 
 + (DataLoader *)sharedLoader {
     if (sharedDataLoader == nil) {
@@ -44,7 +45,7 @@ static DataLoader *sharedDataLoader = nil;
 
     int i=0;
     for (TrailMO *trail in trails) {
-        [trailsDict setObject:trail.polyline forKey:[NSNumber numberWithInt:i]];
+        [trailsDict setObject:trail.path forKey:[NSNumber numberWithInt:i]];
         i++;
     }
     
@@ -97,16 +98,17 @@ static DataLoader *sharedDataLoader = nil;
      NSLog(@"Entry: %d", entry);
      entry++;
      }*/
-     
-     /*NSXMLParser *parser = [[NSXMLParser alloc] initWithData:trailPointsResponse];
+    
+     NSData *trailPointsResponse = [Connection makeRequestFor:@"trail_points"];
+     NSXMLParser *parser = [[NSXMLParser alloc] initWithData:trailPointsResponse];
      [parser setDelegate:self];
      BOOL result = [parser parse];
      
-     NSLog(@"Success? %d", result);*/
+     NSLog(@"Success? %d", result);
     
     NSMutableDictionary *paths = [[NSMutableDictionary alloc] init];
     NSArray *points = [TrailDBManager getAllPoints];
-    
+
     for (TrailPointMO *point in points) {
         GMSMutablePath *path;
         if ((path = [paths objectForKey:point.trail_id]) == nil) {
@@ -116,22 +118,21 @@ static DataLoader *sharedDataLoader = nil;
         [path addLatitude:[point.latitude doubleValue] longitude:[point.longitude doubleValue]];
         NSLog(@"Point: %@, %@", point.latitude, point.longitude);
     }
-    
+
     NSEnumerator *enumerator = [paths keyEnumerator];
     id key;
     while ((key = [enumerator nextObject])) {
         GMSPath *path = [paths objectForKey:key];
-        GMSPolyline *trail = [GMSPolyline polylineWithPath:path];
-        [trail setStrokeColor:[StyleManager getGreenColor]];
-        [trail setStrokeWidth:2];
-        [TrailDBManager insert:nil color:nil trail_id:key polyline:trail];
+        [TrailDBManager insert:nil trail_id:key path:[path encodedPath]];
     }
 }
 
 -(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
     
     if ([elementName isEqualToString:@"rtept"]) {
-        [TrailDBManager insert:[NSNumber numberWithUnsignedInteger:[TrailDBManager numberOfPoints]] trail_id:[attributeDict objectForKey:@"trail"] latitude:[attributeDict objectForKey:@"lat"] longitude:[attributeDict objectForKey:@"lon"]];
+        NSLog(@"Point %lu", numberOfPoints);
+        [TrailDBManager insert:[NSNumber numberWithLong:numberOfPoints] trail_id:[attributeDict objectForKey:@"trail"] latitude:[attributeDict objectForKey:@"lat"] longitude:[attributeDict objectForKey:@"lon"]];
+        numberOfPoints++;
     }
 }
 
