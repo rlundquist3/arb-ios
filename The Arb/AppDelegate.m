@@ -56,7 +56,7 @@ void (^_completionHandler)(UIBackgroundFetchResult);
 }
 
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
-    @synchronized(self) {
+    /*@synchronized(self) {
         if (_persistentStoreCoordinator != nil) {
             return _persistentStoreCoordinator;
         }
@@ -64,9 +64,19 @@ void (^_completionHandler)(UIBackgroundFetchResult);
         NSURL *storeUrl = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"ArbData" ofType:@"sqlite"]];
         NSError *error = nil;
         _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
-        [_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeUrl options:@{NSReadOnlyPersistentStoreOption : @YES} error:&error];
-        /*if(![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeUrl options:@{NSReadOnlyPersistentStoreOption : @YES, NSSQLitePragmasOption: @{@"journal_mode":@"DELETE"}} error:&error]) {
-        }*/
+        if(![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeUrl options:@{NSReadOnlyPersistentStoreOption : @YES, NSSQLitePragmasOption: @{@"journal_mode":@"DELETE"}} error:&error]) {
+        }
+    }
+    return _persistentStoreCoordinator;*/
+    @synchronized(self) {
+        if (_persistentStoreCoordinator != nil) {
+            return _persistentStoreCoordinator;
+        }
+        NSURL *storeUrl = [NSURL fileURLWithPath: [[self applicationDocumentsDirectory] stringByAppendingPathComponent: @"ArbApp.sqlite"]];
+        NSError *error = nil;
+        _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+        if(![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeUrl options:nil error:&error]) {
+        }
     }
     return _persistentStoreCoordinator;
 }

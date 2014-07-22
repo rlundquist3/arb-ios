@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-
+#import "TrailMO.h"
 
 @interface TrailPointMO : NSManagedObject
 
@@ -17,5 +17,6 @@
 //@property (nonatomic, retain) NSNumber * trail_id;
 @property (nonatomic, retain) NSString * trail_id;
 @property (nonatomic, retain) NSNumber * point_id;
+@property (nonatomic, retain) TrailMO* trail;
 
 @end

@@ -11,7 +11,7 @@
 
 @class TrailPointMO;
 
-@interface TrailMO : NSManagedObject
+@interface TrailMO : NSManagedObject<NSCoding>
 
 @property (nonatomic, retain) NSNumber * color;
 @property (nonatomic, retain) NSNumber * trail_id;

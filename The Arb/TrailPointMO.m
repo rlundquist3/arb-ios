@@ -15,5 +15,6 @@
 @dynamic longitude;
 @dynamic trail_id;
 @dynamic point_id;
+@dynamic trail;
 
 @end
