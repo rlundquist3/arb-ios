@@ -22,14 +22,20 @@
 }
 
 +(void)sendEmailFrom:(NSString *)email subject:(NSString *)subject message:(NSString *)message {
+    NSLog(@"Attempting to send: %@, %@, %@", email, subject, message);
+    
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@:%@/Arb/mail.php", SERVER_ADDRESS, SERVER_PORT]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    
-    NSURLConnection *connection= [[NSURLConnection alloc] initWithRequest:request delegate:self];
     
     [request setHTTPMethod:@"POST"];
     NSString *postString = [NSString stringWithFormat:@"email=%@&subject=%@&message=%@", email, subject, message];
     [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSURLResponse *response;
+    NSError *error;
+    [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    
+    NSLog(@"Response: %@", response);
 }
 
 @end

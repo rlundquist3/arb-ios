@@ -90,14 +90,13 @@ BOOL trailsOn = NO, benchesOn = NO;
 - (IBAction)menuButtonClicked:(id)sender {
     if (_menuTableView.hidden) {
         [self showMenu];
-        [_menuButton setImage:[UIImage imageNamed:@"arrow_filled"] forState:UIControlStateNormal];
     } else {
         [self hideMenu];
-        [_menuButton setImage:[UIImage imageNamed:@"arrow_unfilled"] forState:UIControlStateNormal];
     }
 }
 
 -(void)showMenu {
+    [_menuButton setImage:[UIImage imageNamed:@"arrow_filled"] forState:UIControlStateNormal];
     [_mapView setUserInteractionEnabled:NO];
     
     CGRect menuFrame = CGRectMake(0, 64, self.view.frame.size.width*2/3, self.view.frame.size.height-60);
@@ -122,12 +121,12 @@ BOOL trailsOn = NO, benchesOn = NO;
                          _greyView.alpha = 0.5;
                      }
                      completion:^(BOOL finished){
-                         
                      }];
     [UIView commitAnimations];
 }
 
 -(void)hideMenu {
+    [_menuButton setImage:[UIImage imageNamed:@"arrow_unfilled"] forState:UIControlStateNormal];
     CATransition *transition = [CATransition animation];
     transition.duration = 0.25;
     transition.type = kCATransitionPush;
@@ -189,13 +188,17 @@ BOOL trailsOn = NO, benchesOn = NO;
         [cell setAccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"checkmark"]]];
     } else if ([item isEqualToString:MENU_ITEM_THINGS_TO_SEE]) {
         NSLog(@"Things to See clicked");
+        [self hideMenu];
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         [self performSegueWithIdentifier:SEGUE_THINGS_TO_SEE sender:self];
     } else if ([item isEqualToString:MENU_ITEM_HISTORY]) {
         NSLog(@"History clicked");
+        [self hideMenu];
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
     } else if ([item isEqualToString:MENU_ITEM_CONTACT]) {
         NSLog(@"Contact clicked");
         [self hideMenu];
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
         [self performSegueWithIdentifier:SEGUE_CONTACT sender:self];
     }
 }
