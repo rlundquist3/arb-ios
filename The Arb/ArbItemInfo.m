@@ -10,11 +10,12 @@
 
 @implementation ArbItemInfo
 
-+(instancetype)create:(NSString *)title image:(UIImage *)image info:(NSString *)info {
++(instancetype)create:(NSString *)title image:(UIImage *)image info:(NSString *)info location:(CLLocationCoordinate2D)location {
     ArbItemInfo *instance = [[ArbItemInfo alloc] init];
     [instance setTitle:title];
     [instance setImage:image];
     [instance setInfo:info];
+    [instance setLocation:location];
     return instance;
 }
 

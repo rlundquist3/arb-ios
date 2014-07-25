@@ -15,6 +15,7 @@ NSString *const SERVER_PORT = @"8888";
 
 NSString *const SEGUE_MAIN_MAP = @"SegueMainMap";
 NSString *const SEGUE_THINGS_TO_SEE = @"ThingsToSeeSegue";
+NSString *const SEGUE_CONTACT = @"ContactSegue";
 
 NSString *const CORE_DATA_TABLE_TRAILS = @"TrailMO";
 NSString *const CORE_DATA_TABLE_TRAIL_POINTS = @"TrailPointMO";
@@ -30,5 +31,11 @@ NSString *const TRAIL_POINTS_TABLE_COLUMN_LONGITUDE = @"longitude";
 
 NSString *const NOTIFICATION_TRAILS_LOADED = @"trails_loaded";
 NSString *const NOTIFICATION_BOUNDARY_LOADED = @"boundary_loaded";
+
+NSString *const MENU_ITEM_TRAILS = @"Trails";
+NSString *const MENU_ITEM_BENCHES = @"Benches";
+NSString *const MENU_ITEM_THINGS_TO_SEE = @"Things to See";
+NSString *const MENU_ITEM_CONTACT = @"Contact";
+NSString *const MENU_ITEM_HISTORY = @"History";
 
 @end

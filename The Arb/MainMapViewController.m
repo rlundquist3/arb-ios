@@ -84,7 +84,7 @@ BOOL trailsOn = NO, benchesOn = NO;
     [self.view addSubview:_greyView];
     [self.view bringSubviewToFront:_menuTableView];
     
-    _menuItems = [[NSArray alloc] initWithObjects:[[NSArray alloc] initWithObjects:@"Trails", @"Benches", nil], [[NSArray alloc] initWithObjects:@"Things to See", nil], nil];
+    _menuItems = [[NSArray alloc] initWithObjects:[[NSArray alloc] initWithObjects:MENU_ITEM_TRAILS, MENU_ITEM_BENCHES, nil], [[NSArray alloc] initWithObjects:MENU_ITEM_THINGS_TO_SEE, MENU_ITEM_HISTORY, MENU_ITEM_CONTACT, nil], nil];
 }
 
 - (IBAction)menuButtonClicked:(id)sender {
@@ -181,16 +181,22 @@ BOOL trailsOn = NO, benchesOn = NO;
     
     UITableViewCell *cell = [_menuTableView cellForRowAtIndexPath:indexPath];
     
-    if ([item isEqualToString:@"Trails"]) {
+    if ([item isEqualToString:MENU_ITEM_TRAILS]) {
         [self trailsOn];
         [cell setAccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"checkmark"]]];
-    } else if ([item isEqualToString:@"Benches"]) {
+    } else if ([item isEqualToString:MENU_ITEM_BENCHES]) {
         [self benchesOn];
         [cell setAccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"checkmark"]]];
-    } else if ([item isEqualToString:@"Things to See"]) {
+    } else if ([item isEqualToString:MENU_ITEM_THINGS_TO_SEE]) {
         NSLog(@"Things to See clicked");
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         [self performSegueWithIdentifier:SEGUE_THINGS_TO_SEE sender:self];
+    } else if ([item isEqualToString:MENU_ITEM_HISTORY]) {
+        NSLog(@"History clicked");
+    } else if ([item isEqualToString:MENU_ITEM_CONTACT]) {
+        NSLog(@"Contact clicked");
+        [self hideMenu];
+        [self performSegueWithIdentifier:SEGUE_CONTACT sender:self];
     }
 }
 
@@ -200,9 +206,9 @@ BOOL trailsOn = NO, benchesOn = NO;
     UITableViewCell *cell = [_menuTableView cellForRowAtIndexPath:indexPath];
     [cell setAccessoryView:nil];
     
-    if ([item isEqualToString:@"Trails"]) {
+    if ([item isEqualToString:MENU_ITEM_TRAILS]) {
         [self trailsOff];
-    } else if ([item isEqualToString:@"Benches"]) {
+    } else if ([item isEqualToString:MENU_ITEM_BENCHES]) {
         [self benchesOff];
     }
 }
@@ -213,9 +219,11 @@ BOOL trailsOn = NO, benchesOn = NO;
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
-        return 2;
+        NSArray *options = [_menuItems objectAtIndex:0];
+        return options.count;
     } else {
-        return 1;
+        NSArray *actions = [_menuItems objectAtIndex:1];
+        return actions.count;
     }
 }
 

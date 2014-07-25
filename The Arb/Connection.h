@@ -12,4 +12,6 @@
 
 +(NSData *)makeRequestFor:(NSString *)info;
 
++(void)sendEmailFrom:(NSString *)email subject:(NSString *)subject message:(NSString *)message;
+
 @end

@@ -43,8 +43,8 @@
 		F71CE6F7195B7BD20030EBA9 /* MainMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F71CE6F6195B7BD20030EBA9 /* MainMapViewController.m */; };
 		F71CE6FA195CA1D10030EBA9 /* Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = F71CE6F9195CA1D10030EBA9 /* Connection.m */; };
 		F71CE70D196456970030EBA9 /* DataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = F71CE70C196456970030EBA9 /* DataLoader.m */; };
-		F7226534197585FE00EA0642 /* LAABoundary.csv in Resources */ = {isa = PBXBuildFile; fileRef = F7226533197585FE00EA0642 /* LAABoundary.csv */; };
 		F722654F1977447200EA0642 /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = F722654E1977447200EA0642 /* title.png */; };
+		F7272922198151080045A238 /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7272921198151080045A238 /* ContactViewController.m */; };
 		F77CE1FD197825CA0060F560 /* checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = F77CE1FC197825CA0060F560 /* checkmark.png */; };
 		F77CE1FF197826410060F560 /* bar_title.png in Resources */ = {isa = PBXBuildFile; fileRef = F77CE1FE197826410060F560 /* bar_title.png */; };
 		F77CE201197827880060F560 /* arrow_filled.png in Resources */ = {isa = PBXBuildFile; fileRef = F77CE200197827880060F560 /* arrow_filled.png */; };
@@ -115,8 +115,9 @@
 		F71CE6F9195CA1D10030EBA9 /* Connection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Connection.m; sourceTree = "<group>"; };
 		F71CE70B196456970030EBA9 /* DataLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataLoader.h; sourceTree = "<group>"; };
 		F71CE70C196456970030EBA9 /* DataLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataLoader.m; sourceTree = "<group>"; };
-		F7226533197585FE00EA0642 /* LAABoundary.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LAABoundary.csv; path = "../../../../Dropbox/2013-2014/ArbApp/Data/LAABoundary/LAABoundary.csv"; sourceTree = "<group>"; };
 		F722654E1977447200EA0642 /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = title.png; path = "../../../../Dropbox/2013-2014/ArbApp/Images/Exported/title.png"; sourceTree = "<group>"; };
+		F7272920198151080045A238 /* ContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactViewController.h; sourceTree = "<group>"; };
+		F7272921198151080045A238 /* ContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactViewController.m; sourceTree = "<group>"; };
 		F77CE1FC197825CA0060F560 /* checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = checkmark.png; path = "../../../../Dropbox/2013-2014/ArbApp/Images/Exported/checkmark.png"; sourceTree = "<group>"; };
 		F77CE1FE197826410060F560 /* bar_title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bar_title.png; path = "../../../../Dropbox/2013-2014/ArbApp/Images/Exported/bar_title.png"; sourceTree = "<group>"; };
 		F77CE200197827880060F560 /* arrow_filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrow_filled.png; path = "../../../../Dropbox/2013-2014/ArbApp/Images/Exported/arrow_filled.png"; sourceTree = "<group>"; };
@@ -224,6 +225,8 @@
 				F71CE6B8195B263A0030EBA9 /* AppInitViewController.m */,
 				F71CE6F5195B7BD20030EBA9 /* MainMapViewController.h */,
 				F71CE6F6195B7BD20030EBA9 /* MainMapViewController.m */,
+				F7272920198151080045A238 /* ContactViewController.h */,
+				F7272921198151080045A238 /* ContactViewController.m */,
 				F7FA365419794E0A0021AA21 /* ThingsToSeeViewController.h */,
 				F7FA365519794E0A0021AA21 /* ThingsToSeeViewController.m */,
 				F7FA365C19795F320021AA21 /* ArbItemInfo.h */,
@@ -286,7 +289,6 @@
 		F71CE6E2195B4F250030EBA9 /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				F7226533197585FE00EA0642 /* LAABoundary.csv */,
 				F71CE6E3195B4F510030EBA9 /* db.xcdatamodeld */,
 				F71BDEE4197EB8AF00BE87A5 /* TrailMO.h */,
 				F71BDEE5197EB8AF00BE87A5 /* TrailMO.m */,
@@ -407,7 +409,6 @@
 				F71CE694195A309C0030EBA9 /* Images.xcassets in Resources */,
 				F71CE6B3195B20C10030EBA9 /* Main.storyboard in Resources */,
 				F71CE6BD195B288B0030EBA9 /* GoogleMaps.bundle in Resources */,
-				F7226534197585FE00EA0642 /* LAABoundary.csv in Resources */,
 				F77CE201197827880060F560 /* arrow_filled.png in Resources */,
 				F722654F1977447200EA0642 /* title.png in Resources */,
 			);
@@ -441,6 +442,7 @@
 				F71CE70D196456970030EBA9 /* DataLoader.m in Sources */,
 				F794B90C197559D400AAFE04 /* StyleManager.m in Sources */,
 				F794B8F71974569200AAFE04 /* TrailDBManager.m in Sources */,
+				F7272922198151080045A238 /* ContactViewController.m in Sources */,
 				F71CE6FA195CA1D10030EBA9 /* Connection.m in Sources */,
 				F7FA365619794E0A0021AA21 /* ThingsToSeeViewController.m in Sources */,
 			);

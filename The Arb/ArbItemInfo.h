@@ -7,13 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <GoogleMaps/GoogleMaps.h>
 
 @interface ArbItemInfo : NSObject
 
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) UIImage *image;
 @property (strong, nonatomic) NSString *info;
+@property (nonatomic) CLLocationCoordinate2D location;
 
-+(instancetype)create:(NSString *)title image:(UIImage *)image info:(NSString *)info;
++(instancetype)create:(NSString *)title image:(UIImage *)image info:(NSString *)info location:(CLLocationCoordinate2D)location;
 
 @end

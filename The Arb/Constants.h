@@ -15,6 +15,7 @@ extern NSString *const SERVER_PORT;
 
 extern NSString *const SEGUE_MAIN_MAP;
 extern NSString *const SEGUE_THINGS_TO_SEE;
+extern NSString *const SEGUE_CONTACT;
 
 extern NSString *const CORE_DATA_TABLE_TRAILS;
 extern NSString *const CORE_DATA_TABLE_TRAIL_POINTS;
@@ -30,5 +31,11 @@ extern NSString *const TRAIL_POINTS_TABLE_COLUMN_LONGITUDE;
 
 extern NSString *const NOTIFICATION_TRAILS_LOADED;
 extern NSString *const NOTIFICATION_BOUNDARY_LOADED;
+
+extern NSString *const MENU_ITEM_TRAILS;
+extern NSString *const MENU_ITEM_BENCHES;
+extern NSString *const MENU_ITEM_THINGS_TO_SEE;
+extern NSString *const MENU_ITEM_CONTACT;
+extern NSString *const MENU_ITEM_HISTORY;
 
 @end
