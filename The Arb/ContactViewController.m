@@ -8,6 +8,8 @@
 
 #import "ContactViewController.h"
 #import "Connection.h"
+#import "Constants.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface ContactViewController ()
 
@@ -33,10 +35,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(messageSent:) name:NOTIFICATION_EMAIL_SENT object:nil];
     
     _messageHint.frame = _messageField.frame;
-    
+    [_messageField.layer setBorderColor:[[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor]];
+    [_messageField.layer setBorderWidth:0.5];
+    [_messageField.layer setCornerRadius:5];
+}
+
+-(void)messageSent:(NSNotification *)notification {
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Thanks!" message:@"Your message has been sent. We'll get back to you soon." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alertView show];
+}
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if ([[alertView buttonTitleAtIndex:buttonIndex] isEqualToString:@"OK"]) {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
 }
 
 - (IBAction)sendButtonPressed:(id)sender {

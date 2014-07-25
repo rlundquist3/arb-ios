@@ -31,6 +31,7 @@ extern NSString *const TRAIL_POINTS_TABLE_COLUMN_LONGITUDE;
 
 extern NSString *const NOTIFICATION_TRAILS_LOADED;
 extern NSString *const NOTIFICATION_BOUNDARY_LOADED;
+extern NSString *const NOTIFICATION_EMAIL_SENT;
 
 extern NSString *const MENU_ITEM_TRAILS;
 extern NSString *const MENU_ITEM_BENCHES;

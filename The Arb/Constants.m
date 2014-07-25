@@ -31,6 +31,7 @@ NSString *const TRAIL_POINTS_TABLE_COLUMN_LONGITUDE = @"longitude";
 
 NSString *const NOTIFICATION_TRAILS_LOADED = @"trails_loaded";
 NSString *const NOTIFICATION_BOUNDARY_LOADED = @"boundary_loaded";
+NSString *const NOTIFICATION_EMAIL_SENT = @"email_sent";
 
 NSString *const MENU_ITEM_TRAILS = @"Trails";
 NSString *const MENU_ITEM_BENCHES = @"Benches";
