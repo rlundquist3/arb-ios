@@ -59,7 +59,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="udD-9n-2K2">
                                         <rect key="frame" x="11" y="21" width="101" height="36"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Map" image="back.png">
+                                        <state key="normal" title=" Map" image="back_arrow.png">
                                             <color key="titleColor" red="0.1215686275" green="0.6705882353" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" red="0.1215686275" green="0.6705882353" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -113,10 +113,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bar_title.png" translatesAutoresizingMaskIntoConstraints="NO" id="mkB-Om-RaV">
-                                        <rect key="frame" x="130" y="14" width="61" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yYX-fg-IzW">
                                         <rect key="frame" x="20" y="21" width="80" height="36"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -127,6 +123,13 @@
                                             <action selector="menuButtonClicked:" destination="POy-kb-4qQ" eventType="touchUpInside" id="F2u-8t-Jo6"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Map" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M4N-no-Ako">
+                                        <rect key="frame" x="143" y="30" width="35" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.1215686275" green="0.6705882353" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.94117647058823528" green="0.90588235294117647" blue="0.80784313725490198" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -196,7 +199,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l8Z-2e-Yje">
                                         <rect key="frame" x="11" y="21" width="101" height="36"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Map" image="back.png">
+                                        <state key="normal" title=" Map" image="back_arrow.png">
                                             <color key="titleColor" red="0.1215686275" green="0.6705882353" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" red="0.1215686275" green="0.6705882353" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -299,7 +302,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gkq-99-ICf">
                                         <rect key="frame" x="11" y="21" width="101" height="36"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Map" image="back.png">
+                                        <state key="normal" title=" Map" image="back_arrow.png">
                                             <color key="titleColor" red="0.1215686275" green="0.6705882353" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" red="0.1215686275" green="0.6705882353" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -353,8 +356,7 @@ Mauris nec urna feugiat, mattis ante eget, varius enim. Nunc mollis tellus vel v
     </scenes>
     <resources>
         <image name="arrow_unfilled.png" width="44" height="44"/>
-        <image name="back.png" width="12" height="12"/>
-        <image name="bar_title.png" width="61" height="50"/>
+        <image name="back_arrow.png" width="17" height="44"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

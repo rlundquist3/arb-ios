@@ -84,7 +84,7 @@ BOOL trailsOn = NO, benchesOn = NO;
     [self.view addSubview:_greyView];
     [self.view bringSubviewToFront:_menuTableView];
     
-    _menuItems = [[NSArray alloc] initWithObjects:[[NSArray alloc] initWithObjects:MENU_ITEM_TRAILS, MENU_ITEM_BENCHES, nil], [[NSArray alloc] initWithObjects:MENU_ITEM_THINGS_TO_SEE, MENU_ITEM_HISTORY, MENU_ITEM_CONTACT, nil], nil];
+    _menuItems = [[NSArray alloc] initWithObjects:[[NSArray alloc] initWithObjects:MENU_ITEM_TRAILS, MENU_ITEM_BENCHES, MENU_ITEM_RESET, nil], [[NSArray alloc] initWithObjects:MENU_ITEM_THINGS_TO_SEE, MENU_ITEM_HISTORY, MENU_ITEM_CONTACT, nil], nil];
 }
 
 - (IBAction)menuButtonClicked:(id)sender {
@@ -201,6 +201,10 @@ BOOL trailsOn = NO, benchesOn = NO;
         [self hideMenu];
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         [self performSegueWithIdentifier:SEGUE_CONTACT sender:self];
+    } else if ([item isEqualToString:MENU_ITEM_RESET]) {
+        [self hideMenu];
+        GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:_arbCoordinates.latitude longitude:_arbCoordinates.longitude zoom:15];
+        [_mapView setCamera:camera];
     }
 }
 

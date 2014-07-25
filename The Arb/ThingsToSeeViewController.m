@@ -33,8 +33,6 @@
     
     //Send server request to get items
     _items = [[NSMutableArray alloc] init];
-    /*[_items addObject:[ArbItemInfo create:@"Test" image:nil info:@"A bunch of cool stuff."]];
-    [_items addObject:[ArbItemInfo create:@"Test2" image:nil info:@"Some other information."]];*/
 }
 
 - (IBAction)backButtonPressed:(id)sender {

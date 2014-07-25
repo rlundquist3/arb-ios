@@ -39,5 +39,6 @@ extern NSString *const MENU_ITEM_BENCHES;
 extern NSString *const MENU_ITEM_THINGS_TO_SEE;
 extern NSString *const MENU_ITEM_CONTACT;
 extern NSString *const MENU_ITEM_HISTORY;
+extern NSString *const MENU_ITEM_RESET;
 
 @end
