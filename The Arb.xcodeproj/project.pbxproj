@@ -45,6 +45,7 @@
 		F71CE70D196456970030EBA9 /* DataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = F71CE70C196456970030EBA9 /* DataLoader.m */; };
 		F722654F1977447200EA0642 /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = F722654E1977447200EA0642 /* title.png */; };
 		F7272922198151080045A238 /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F7272921198151080045A238 /* ContactViewController.m */; };
+		F72729251982A1830045A238 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F72729241982A1830045A238 /* HistoryViewController.m */; };
 		F77CE1FD197825CA0060F560 /* checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = F77CE1FC197825CA0060F560 /* checkmark.png */; };
 		F77CE1FF197826410060F560 /* bar_title.png in Resources */ = {isa = PBXBuildFile; fileRef = F77CE1FE197826410060F560 /* bar_title.png */; };
 		F77CE201197827880060F560 /* arrow_filled.png in Resources */ = {isa = PBXBuildFile; fileRef = F77CE200197827880060F560 /* arrow_filled.png */; };
@@ -118,6 +119,8 @@
 		F722654E1977447200EA0642 /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = title.png; path = "../../../../Dropbox/2013-2014/ArbApp/Images/Exported/title.png"; sourceTree = "<group>"; };
 		F7272920198151080045A238 /* ContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactViewController.h; sourceTree = "<group>"; };
 		F7272921198151080045A238 /* ContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactViewController.m; sourceTree = "<group>"; };
+		F72729231982A1830045A238 /* HistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
+		F72729241982A1830045A238 /* HistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		F77CE1FC197825CA0060F560 /* checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = checkmark.png; path = "../../../../Dropbox/2013-2014/ArbApp/Images/Exported/checkmark.png"; sourceTree = "<group>"; };
 		F77CE1FE197826410060F560 /* bar_title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bar_title.png; path = "../../../../Dropbox/2013-2014/ArbApp/Images/Exported/bar_title.png"; sourceTree = "<group>"; };
 		F77CE200197827880060F560 /* arrow_filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrow_filled.png; path = "../../../../Dropbox/2013-2014/ArbApp/Images/Exported/arrow_filled.png"; sourceTree = "<group>"; };
@@ -225,10 +228,12 @@
 				F71CE6B8195B263A0030EBA9 /* AppInitViewController.m */,
 				F71CE6F5195B7BD20030EBA9 /* MainMapViewController.h */,
 				F71CE6F6195B7BD20030EBA9 /* MainMapViewController.m */,
-				F7272920198151080045A238 /* ContactViewController.h */,
-				F7272921198151080045A238 /* ContactViewController.m */,
 				F7FA365419794E0A0021AA21 /* ThingsToSeeViewController.h */,
 				F7FA365519794E0A0021AA21 /* ThingsToSeeViewController.m */,
+				F72729231982A1830045A238 /* HistoryViewController.h */,
+				F72729241982A1830045A238 /* HistoryViewController.m */,
+				F7272920198151080045A238 /* ContactViewController.h */,
+				F7272921198151080045A238 /* ContactViewController.m */,
 				F7FA365C19795F320021AA21 /* ArbItemInfo.h */,
 				F7FA365D19795F320021AA21 /* ArbItemInfo.m */,
 				F7FA3657197956600021AA21 /* ArbTableViewCell.h */,
@@ -434,6 +439,7 @@
 				F71CE6DE195B42B90030EBA9 /* Constants.m in Sources */,
 				F71CE692195A309C0030EBA9 /* AppDelegate.m in Sources */,
 				F71CE6F7195B7BD20030EBA9 /* MainMapViewController.m in Sources */,
+				F72729251982A1830045A238 /* HistoryViewController.m in Sources */,
 				F71CE6B9195B263A0030EBA9 /* AppInitViewController.m in Sources */,
 				F7FA365E19795F320021AA21 /* ArbItemInfo.m in Sources */,
 				F71CE68E195A309C0030EBA9 /* main.m in Sources */,

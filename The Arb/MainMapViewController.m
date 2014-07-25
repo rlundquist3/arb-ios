@@ -195,6 +195,7 @@ BOOL trailsOn = NO, benchesOn = NO;
         NSLog(@"History clicked");
         [self hideMenu];
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        [self performSegueWithIdentifier:SEGUE_HISTORY sender:self];
     } else if ([item isEqualToString:MENU_ITEM_CONTACT]) {
         NSLog(@"Contact clicked");
         [self hideMenu];

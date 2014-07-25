@@ -9,15 +9,15 @@
 #import "ContactViewController.h"
 #import "Connection.h"
 #import "Constants.h"
+#import "MainMapViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
 @interface ContactViewController ()
 
-@property (strong, nonatomic) IBOutlet UIButton *backButton;
 @property (strong, nonatomic) IBOutlet UITextField *emailField;
 @property (strong, nonatomic) IBOutlet UITextField *subjectField;
-@property (strong, nonatomic) IBOutlet UITextField *messageHint;
 @property (strong, nonatomic) IBOutlet UITextView *messageField;
+@property (strong, nonatomic) CLLocationManager *locationManager;
 
 @end
 
@@ -38,10 +38,14 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(messageSent:) name:NOTIFICATION_EMAIL_SENT object:nil];
     
-    _messageHint.frame = _messageField.frame;
     [_messageField.layer setBorderColor:[[[UIColor grayColor] colorWithAlphaComponent:0.5] CGColor]];
     [_messageField.layer setBorderWidth:0.5];
     [_messageField.layer setCornerRadius:5];
+    
+    _locationManager = [[CLLocationManager alloc] init];
+    [_locationManager setDelegate:self];
+    [_locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+    [_locationManager startUpdatingLocation];
 }
 
 -(void)messageSent:(NSNotification *)notification {
@@ -57,7 +61,7 @@
 
 - (IBAction)sendButtonPressed:(id)sender {
     //ADD VALIDATION
-    [Connection sendEmailFrom:_emailField.text subject:_subjectField.text message:_messageField.text];
+    [Connection sendEmailFrom:_emailField.text subject:_subjectField.text message:[NSString stringWithFormat:@"%@\n\nSent from location: %@", _messageField.text, _locationManager.location]];
 }
 
 - (IBAction)backButtonPressed:(id)sender {

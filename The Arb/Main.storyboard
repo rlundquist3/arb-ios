@@ -56,10 +56,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bar_title.png" translatesAutoresizingMaskIntoConstraints="NO" id="b6W-nn-KdT">
-                                        <rect key="frame" x="130" y="14" width="61" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="udD-9n-2K2">
                                         <rect key="frame" x="11" y="21" width="101" height="36"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -72,6 +68,13 @@
                                             <action selector="menuButtonClicked:" destination="POy-kb-4qQ" eventType="touchUpInside" id="dGd-Cl-sqV"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Things to See" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eiP-RN-cZ4">
+                                        <rect key="frame" x="107" y="29" width="106" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.1215686275" green="0.6705882353" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.94117647059999998" green="0.90588235289999997" blue="0.80784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -137,6 +140,7 @@
                         <outlet property="titleBar" destination="m0N-pc-Kbm" id="9WC-I1-hhV"/>
                         <segue destination="8tW-tf-loG" kind="push" identifier="ThingsToSeeSegue" id="mob-xW-EnT"/>
                         <segue destination="pXT-Wo-y3s" kind="push" identifier="ContactSegue" id="68h-3R-6YA"/>
+                        <segue destination="m28-Ip-Lce" kind="push" identifier="HistorySegue" id="FOh-zX-Q31"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3IY-oH-x0I" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -189,10 +193,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bar_title.png" translatesAutoresizingMaskIntoConstraints="NO" id="uHk-CG-TZD">
-                                        <rect key="frame" x="130" y="14" width="61" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l8Z-2e-Yje">
                                         <rect key="frame" x="11" y="21" width="101" height="36"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -202,46 +202,45 @@
                                         </state>
                                         <connections>
                                             <action selector="backButtonPressed:" destination="pXT-Wo-y3s" eventType="touchUpInside" id="uRc-iz-sbL"/>
-                                            <action selector="menuButtonClicked:" destination="POy-kb-4qQ" eventType="touchUpInside" id="IRI-vc-gRg"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Contact Us" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8HX-z6-zKv">
+                                        <rect key="frame" x="115" y="29" width="91" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.1215686275" green="0.6705882353" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.94117647059999998" green="0.90588235289999997" blue="0.80784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your Email Address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Dg-nV-Jgv">
-                                <rect key="frame" x="20" y="188" width="280" height="30"/>
+                                <rect key="frame" x="20" y="143" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Subject" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3vH-bK-WMG">
-                                <rect key="frame" x="20" y="226" width="280" height="30"/>
+                                <rect key="frame" x="20" y="181" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bZt-c4-OdK">
-                                <rect key="frame" x="20" y="264" width="280" height="230"/>
+                                <rect key="frame" x="20" y="219" width="280" height="291"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" text="Send comments, questions, or trail maintenance issues to Arboretum Staff here. " translatesAutoresizingMaskIntoConstraints="NO" id="uZB-Gs-MyM">
-                                <rect key="frame" x="20" y="113" width="280" height="67"/>
+                                <rect key="frame" x="20" y="72" width="280" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Contact Us" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ynN-od-pgG">
-                                <rect key="frame" x="20" y="84" width="280" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MR9-Vd-Cx1">
-                                <rect key="frame" x="254" y="502" width="46" height="30"/>
+                                <rect key="frame" x="254" y="518" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Send">
                                     <color key="titleColor" red="0.1215686275" green="0.6705882353" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -257,7 +256,6 @@
                     <navigationItem key="navigationItem" id="nX5-fc-M0x"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="backButton" destination="l8Z-2e-Yje" id="xiz-Mp-Yd9"/>
                         <outlet property="emailField" destination="6Dg-nV-Jgv" id="n6T-gM-cj4"/>
                         <outlet property="messageField" destination="bZt-c4-OdK" id="fax-JN-RGF"/>
                         <outlet property="subjectField" destination="3vH-bK-WMG" id="GzJ-8W-ECv"/>
@@ -266,6 +264,91 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wp5-FG-3e2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1094" y="-911"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="lbm-4Y-laK">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="iaB-Lo-wz4" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Cha-K2-Fru">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="m28-Ip-Lce" kind="relationship" relationship="rootViewController" id="VoL-is-PF1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qME-Xz-HbD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="612" y="-1597"/>
+        </scene>
+        <!--History View Controller-->
+        <scene sceneID="7UU-qw-kCe">
+            <objects>
+                <viewController id="m28-Ip-Lce" customClass="HistoryViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0ZU-4j-OtT"/>
+                        <viewControllerLayoutGuide type="bottom" id="Jt6-5z-59k"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="a9d-yM-yKI">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ATp-aK-eG0">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gkq-99-ICf">
+                                        <rect key="frame" x="11" y="21" width="101" height="36"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Map" image="back.png">
+                                            <color key="titleColor" red="0.1215686275" green="0.6705882353" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" red="0.1215686275" green="0.6705882353" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backButtonPressed:" destination="m28-Ip-Lce" eventType="touchUpInside" id="mbL-3I-0vW"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="History" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1AV-G7-TyY">
+                                        <rect key="frame" x="115" y="29" width="91" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.1215686275" green="0.6705882353" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.94117647059999998" green="0.90588235289999997" blue="0.80784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y15-qF-VZr">
+                                <rect key="frame" x="20" y="113" width="280" height="435"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <mutableString key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet nunc dapibus, convallis sem ac, lobortis orci. Curabitur vitae neque at enim commodo molestie sit amet in odio. Nullam ut augue orci. Aliquam ultrices ipsum at purus auctor sagittis. In vehicula mattis orci rhoncus sodales. Suspendisse potenti. In egestas turpis in dignissim pretium. Etiam dapibus ac orci in molestie. Maecenas vel interdum eros. In non odio eget nulla luctus porttitor. Phasellus sed semper nisl. Morbi vehicula, lorem a dictum ultricies, est metus semper metus, vitae egestas sem est eget nisl.
+
+Pellentesque lacinia facilisis lectus, in fringilla sem commodo vitae. Donec dictum, dolor at blandit fringilla, mauris lectus egestas orci, ut laoreet erat est non lacus. Vivamus consequat leo enim, vel mollis nibh consectetur nec. Donec accumsan eros rutrum felis facilisis tempor. Aliquam tincidunt neque a metus commodo placerat. Quisque gravida eu orci a volutpat. In luctus fermentum odio, vel volutpat arcu dignissim eget. Nullam consectetur pellentesque quam, vitae ullamcorper erat molestie vel.
+
+Ut dictum feugiat nunc, id feugiat sem. Nullam dolor nisi, consectetur sit amet nunc a, pretium laoreet neque. Nullam imperdiet vehicula nulla, quis tristique sapien volutpat eu. Proin venenatis, urna nec imperdiet scelerisque, diam sapien tempor sem, non tempus orci purus ac quam. Nam viverra dolor nec risus fringilla, ac dictum diam hendrerit. Aliquam at elit quam. Maecenas ornare nisl quis tellus cursus fermentum. Praesent elementum dolor id neque sollicitudin gravida.
+
+Donec consectetur risus et nisi aliquet vestibulum. Vivamus laoreet sodales tellus, non placerat quam adipiscing quis. Aliquam venenatis purus a orci auctor, ultricies sagittis turpis elementum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc pretium risus vitae nisl tempus scelerisque. Ut purus dolor, malesuada fermentum eleifend et, fermentum eleifend lectus. In purus risus, laoreet posuere sem sit amet, fringilla pulvinar quam. Cras posuere ligula vel urna consectetur posuere. Maecenas augue tortor, aliquam ac sollicitudin vitae, sollicitudin sed orci. Nullam lobortis, nulla non bibendum laoreet, sem augue eleifend libero, vitae semper lectus mauris eget quam. Etiam facilisis lacus a leo tincidunt, eget pharetra sem posuere. Nulla ac tortor feugiat felis varius molestie tincidunt non elit. Aenean mi est, auctor nec vulputate varius, accumsan sed metus. Sed rhoncus odio eget libero porttitor cursus. Cras iaculis, leo id pretium vulputate, velit lectus eleifend sapien, ac mattis felis orci quis enim.
+
+Mauris nec urna feugiat, mattis ante eget, varius enim. Nunc mollis tellus vel velit lacinia, pharetra bibendum ipsum condimentum. Integer molestie, nibh ac porttitor adipiscing, tortor purus hendrerit lectus, et dictum quam nibh eget eros. Duis at sapien et velit ultrices consectetur. Nam imperdiet vel tellus condimentum mattis. Aenean sapien lorem, ultrices vitae feugiat sed, adipiscing at eros. Curabitur vehicula metus non fermentum varius. Donec lacinia et lorem eget ultrices. Integer ut turpis pretium, congue mauris non, interdum libero. Proin adipiscing iaculis sapien quis blandit. Praesent tempor adipiscing porttitor. Aliquam velit ligula, vestibulum tincidunt metus ornare, venenatis luctus mauris. Aenean vel tincidunt neque. Mauris justo tellus, dapibus sed dapibus lobortis, pellentesque id eros. Duis sem nulla, tristique non tortor sit amet, tincidunt ornare lorem.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="The Lillian Anderson Arboretum" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zbK-7X-gua">
+                                <rect key="frame" x="20" y="84" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Elx-0i-bbA"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Aqp-xw-92Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1094" y="-1597"/>
         </scene>
     </scenes>
     <resources>
@@ -279,6 +362,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="FOh-zX-Q31"/>
         <segue reference="mob-xW-EnT"/>
         <segue reference="68h-3R-6YA"/>
     </inferredMetricsTieBreakers>

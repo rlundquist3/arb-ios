@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface ContactViewController : UIViewController<UIAlertViewDelegate>
+@interface ContactViewController : UIViewController<UIAlertViewDelegate, CLLocationManagerDelegate>
 
 @end
