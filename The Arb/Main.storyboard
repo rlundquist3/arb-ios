@@ -234,6 +234,7 @@
                                 <rect key="frame" x="20" y="72" width="280" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.0" green="0.37254901959999998" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -316,7 +317,7 @@
                                 <color key="backgroundColor" red="0.94117647059999998" green="0.90588235289999997" blue="0.80784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y15-qF-VZr">
-                                <rect key="frame" x="20" y="113" width="280" height="435"/>
+                                <rect key="frame" x="20" y="154" width="280" height="345"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet nunc dapibus, convallis sem ac, lobortis orci. Curabitur vitae neque at enim commodo molestie sit amet in odio. Nullam ut augue orci. Aliquam ultrices ipsum at purus auctor sagittis. In vehicula mattis orci rhoncus sodales. Suspendisse potenti. In egestas turpis in dignissim pretium. Etiam dapibus ac orci in molestie. Maecenas vel interdum eros. In non odio eget nulla luctus porttitor. Phasellus sed semper nisl. Morbi vehicula, lorem a dictum ultricies, est metus semper metus, vitae egestas sem est eget nisl.
@@ -328,16 +329,14 @@ Ut dictum feugiat nunc, id feugiat sem. Nullam dolor nisi, consectetur sit amet 
 Donec consectetur risus et nisi aliquet vestibulum. Vivamus laoreet sodales tellus, non placerat quam adipiscing quis. Aliquam venenatis purus a orci auctor, ultricies sagittis turpis elementum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc pretium risus vitae nisl tempus scelerisque. Ut purus dolor, malesuada fermentum eleifend et, fermentum eleifend lectus. In purus risus, laoreet posuere sem sit amet, fringilla pulvinar quam. Cras posuere ligula vel urna consectetur posuere. Maecenas augue tortor, aliquam ac sollicitudin vitae, sollicitudin sed orci. Nullam lobortis, nulla non bibendum laoreet, sem augue eleifend libero, vitae semper lectus mauris eget quam. Etiam facilisis lacus a leo tincidunt, eget pharetra sem posuere. Nulla ac tortor feugiat felis varius molestie tincidunt non elit. Aenean mi est, auctor nec vulputate varius, accumsan sed metus. Sed rhoncus odio eget libero porttitor cursus. Cras iaculis, leo id pretium vulputate, velit lectus eleifend sapien, ac mattis felis orci quis enim.
 
 Mauris nec urna feugiat, mattis ante eget, varius enim. Nunc mollis tellus vel velit lacinia, pharetra bibendum ipsum condimentum. Integer molestie, nibh ac porttitor adipiscing, tortor purus hendrerit lectus, et dictum quam nibh eget eros. Duis at sapien et velit ultrices consectetur. Nam imperdiet vel tellus condimentum mattis. Aenean sapien lorem, ultrices vitae feugiat sed, adipiscing at eros. Curabitur vehicula metus non fermentum varius. Donec lacinia et lorem eget ultrices. Integer ut turpis pretium, congue mauris non, interdum libero. Proin adipiscing iaculis sapien quis blandit. Praesent tempor adipiscing porttitor. Aliquam velit ligula, vestibulum tincidunt metus ornare, venenatis luctus mauris. Aenean vel tincidunt neque. Mauris justo tellus, dapibus sed dapibus lobortis, pellentesque id eros. Duis sem nulla, tristique non tortor sit amet, tincidunt ornare lorem.</string>
+                                <color key="textColor" red="0.0" green="0.37254901959999998" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="The Lillian Anderson Arboretum" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zbK-7X-gua">
-                                <rect key="frame" x="20" y="84" width="280" height="21"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="arb_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="cHR-OH-bRL">
+                                <rect key="frame" x="10" y="90" width="300" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -430,6 +429,7 @@ Mauris nec urna feugiat, mattis ante eget, varius enim. Nunc mollis tellus vel v
         </scene>
     </scenes>
     <resources>
+        <image name="arb_logo.png" width="1101" height="206"/>
         <image name="arrow_unfilled.png" width="44" height="44"/>
         <image name="back_arrow.png" width="17" height="44"/>
     </resources>
