@@ -48,6 +48,7 @@
 		F72729251982A1830045A238 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F72729241982A1830045A238 /* HistoryViewController.m */; };
 		F72729281982AF460045A238 /* ThingsToSeeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F72729271982AF460045A238 /* ThingsToSeeManager.m */; };
 		F727292A1982DBED0045A238 /* back_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = F72729291982DBED0045A238 /* back_arrow.png */; };
+		F749F3BE1986E19F00F2AADC /* ArbItemExpandedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F749F3BD1986E19F00F2AADC /* ArbItemExpandedViewController.m */; };
 		F77CE1FD197825CA0060F560 /* checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = F77CE1FC197825CA0060F560 /* checkmark.png */; };
 		F77CE1FF197826410060F560 /* bar_title.png in Resources */ = {isa = PBXBuildFile; fileRef = F77CE1FE197826410060F560 /* bar_title.png */; };
 		F77CE201197827880060F560 /* arrow_filled.png in Resources */ = {isa = PBXBuildFile; fileRef = F77CE200197827880060F560 /* arrow_filled.png */; };
@@ -126,6 +127,8 @@
 		F72729261982AF460045A238 /* ThingsToSeeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThingsToSeeManager.h; sourceTree = "<group>"; };
 		F72729271982AF460045A238 /* ThingsToSeeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThingsToSeeManager.m; sourceTree = "<group>"; };
 		F72729291982DBED0045A238 /* back_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = back_arrow.png; path = "../../../../Dropbox/2013-2014/ArbApp/Images/Exported/back_arrow.png"; sourceTree = "<group>"; };
+		F749F3BC1986E19F00F2AADC /* ArbItemExpandedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArbItemExpandedViewController.h; sourceTree = "<group>"; };
+		F749F3BD1986E19F00F2AADC /* ArbItemExpandedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArbItemExpandedViewController.m; sourceTree = "<group>"; };
 		F77CE1FC197825CA0060F560 /* checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = checkmark.png; path = "../../../../Dropbox/2013-2014/ArbApp/Images/Exported/checkmark.png"; sourceTree = "<group>"; };
 		F77CE1FE197826410060F560 /* bar_title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bar_title.png; path = "../../../../Dropbox/2013-2014/ArbApp/Images/Exported/bar_title.png"; sourceTree = "<group>"; };
 		F77CE200197827880060F560 /* arrow_filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrow_filled.png; path = "../../../../Dropbox/2013-2014/ArbApp/Images/Exported/arrow_filled.png"; sourceTree = "<group>"; };
@@ -310,6 +313,8 @@
 			children = (
 				F7FA365419794E0A0021AA21 /* ThingsToSeeViewController.h */,
 				F7FA365519794E0A0021AA21 /* ThingsToSeeViewController.m */,
+				F749F3BC1986E19F00F2AADC /* ArbItemExpandedViewController.h */,
+				F749F3BD1986E19F00F2AADC /* ArbItemExpandedViewController.m */,
 				F7FA365C19795F320021AA21 /* ArbItemInfo.h */,
 				F7FA365D19795F320021AA21 /* ArbItemInfo.m */,
 				F72729261982AF460045A238 /* ThingsToSeeManager.h */,
@@ -469,6 +474,7 @@
 				F7272922198151080045A238 /* ContactViewController.m in Sources */,
 				F71CE6FA195CA1D10030EBA9 /* Connection.m in Sources */,
 				F7FA365619794E0A0021AA21 /* ThingsToSeeViewController.m in Sources */,
+				F749F3BE1986E19F00F2AADC /* ArbItemExpandedViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

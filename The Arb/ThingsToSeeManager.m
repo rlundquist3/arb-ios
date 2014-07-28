@@ -32,17 +32,17 @@ static ThingsToSeeManager *selfInstance;
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"<item><name>(.+)<\\/name><image>(.+)<\\/image><description>(.+)<\\/description><coords><lat>(-?\\d+\\.\\d+)<\\/lat><lon>(-?\\d+\\.\\d+)<\\/lon><\\/coords><dates><start>(.+)<\\/start><end>(.+)<\\/end><\\/dates><\\/item>" options:NSRegularExpressionCaseInsensitive error:&error];
     NSArray *matches = [regex matchesInString:xml options:0 range:NSMakeRange(0, xml.length)];
     
-    NSString *name, *image, *description, *latitude, *longitude, *start, *end;
+    NSString *name, *image, *info, *latitude, *longitude, *start, *end;
     for(NSTextCheckingResult *match in matches) {
         name = [xml substringWithRange:[match rangeAtIndex:1]];
         image = [xml substringWithRange:[match rangeAtIndex:2]];
-        description = [xml substringWithRange:[match rangeAtIndex:3]];
+        info = [xml substringWithRange:[match rangeAtIndex:3]];
         latitude = [xml substringWithRange:[match rangeAtIndex:4]];
         longitude = [xml substringWithRange:[match rangeAtIndex:5]];
         start = [xml substringWithRange:[match rangeAtIndex:6]];
         end = [xml substringWithRange:[match rangeAtIndex:7]];
         
-        ArbItemInfo *item = [ArbItemInfo create:name image:nil/*[UIImage imageNamed:image]*/ info:description location:CLLocationCoordinate2DMake([latitude doubleValue], [longitude doubleValue]) start:start end:end];
+        ArbItemInfo *item = [ArbItemInfo create:name image:nil/*[UIImage imageNamed:image]*/ info:info location:CLLocationCoordinate2DMake([latitude doubleValue], [longitude doubleValue]) start:start end:end];
         NSLog(@"Item: %@", item.title);
         
         [_items addObject:item];

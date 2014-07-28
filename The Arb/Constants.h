@@ -17,6 +17,7 @@ extern NSString *const SEGUE_MAIN_MAP;
 extern NSString *const SEGUE_THINGS_TO_SEE;
 extern NSString *const SEGUE_CONTACT;
 extern NSString *const SEGUE_HISTORY;
+extern NSString *const SEGUE_EXPANDED_VIEW;
 
 extern NSString *const CORE_DATA_TABLE_TRAILS;
 extern NSString *const CORE_DATA_TABLE_TRAIL_POINTS;

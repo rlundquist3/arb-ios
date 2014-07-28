@@ -9,11 +9,14 @@
 #import "ThingsToSeeViewController.h"
 #import "ArbTableViewCell.h"
 #import "ThingsToSeeManager.h"
+#import "ArbItemExpandedViewController.h"
 #import "StyleManager.h"
+#import "Constants.h"
 
 @interface ThingsToSeeViewController ()
 
 @property (strong, nonatomic) IBOutlet UIButton *backButton;
+@property (strong, nonatomic) NSIndexPath *selectedIndexPath;
 
 @end
 
@@ -56,6 +59,11 @@
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    _selectedIndexPath = indexPath;
+    [self performSegueWithIdentifier:SEGUE_EXPANDED_VIEW sender:self];
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [[ThingsToSeeManager getInstance] items].count;
 }
@@ -68,8 +76,12 @@
     return 220;
 }
 
-- (void)didReceiveMemoryWarning
-{
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    ArbItemExpandedViewController *destination = segue.destinationViewController;
+    destination.item = [[[ThingsToSeeManager getInstance] items] objectAtIndex:_selectedIndexPath.row];
+}
+
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }

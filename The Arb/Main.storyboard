@@ -85,6 +85,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="backButton" destination="udD-9n-2K2" id="cYP-3J-In0"/>
+                        <segue destination="ss7-M8-q0o" kind="push" identifier="ExplandedViewSegue" id="cPN-Tr-DqE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ifx-bp-C8a" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -347,6 +348,85 @@ Mauris nec urna feugiat, mattis ante eget, varius enim. Nunc mollis tellus vel v
             </objects>
             <point key="canvasLocation" x="1094" y="-1597"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="4Ks-68-qjL">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="H7Q-g9-UTz" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="HDF-Yg-Irs">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ss7-M8-q0o" kind="relationship" relationship="rootViewController" id="K23-pO-nrC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kTb-gQ-5lA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1576" y="-207"/>
+        </scene>
+        <!--Arb Item Expanded View Controller-->
+        <scene sceneID="YBF-Lj-vSz">
+            <objects>
+                <viewController id="ss7-M8-q0o" customClass="ArbItemExpandedViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5DE-va-abi"/>
+                        <viewControllerLayoutGuide type="bottom" id="t3A-Xg-PE6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Nny-bE-CeA">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OD1-Vr-Ney">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QFM-JK-p47">
+                                        <rect key="frame" x="11" y="21" width="101" height="36"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="List" image="back_arrow.png">
+                                            <color key="titleColor" red="0.1215686275" green="0.6705882353" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" red="0.1215686275" green="0.6705882353" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backButtonPressed:" destination="ss7-M8-q0o" eventType="touchUpInside" id="8CS-hr-lFu"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Item" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TqK-cW-pj4">
+                                        <rect key="frame" x="57" y="29" width="207" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.1215686275" green="0.6705882353" blue="0.56078431370000004" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.94117647059999998" green="0.90588235289999997" blue="0.80784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="03c-l5-0Qi">
+                                <rect key="frame" x="20" y="294" width="280" height="274"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mq6-LI-oa7">
+                                <rect key="frame" x="53" y="71" width="215" height="215"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="jUO-ST-vCo"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="description" destination="03c-l5-0Qi" id="GGo-M0-tKb"/>
+                        <outlet property="header" destination="TqK-cW-pj4" id="s0x-u0-A4F"/>
+                        <outlet property="imageView" destination="Mq6-LI-oa7" id="rpI-x3-TXB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9zi-W5-N7H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2064" y="-207"/>
+        </scene>
     </scenes>
     <resources>
         <image name="arrow_unfilled.png" width="44" height="44"/>
@@ -358,8 +438,9 @@ Mauris nec urna feugiat, mattis ante eget, varius enim. Nunc mollis tellus vel v
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="FOh-zX-Q31"/>
+        <segue reference="cPN-Tr-DqE"/>
         <segue reference="mob-xW-EnT"/>
         <segue reference="68h-3R-6YA"/>
+        <segue reference="FOh-zX-Q31"/>
     </inferredMetricsTieBreakers>
 </document>
