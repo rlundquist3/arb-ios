@@ -88,10 +88,6 @@ BOOL trailsOn = NO, benchesOn = NO;
     [self.view bringSubviewToFront:_menuTableView];
     
     _menuItems = [[NSArray alloc] initWithObjects:[[NSArray alloc] initWithObjects:MENU_ITEM_TRAILS, MENU_ITEM_BENCHES, MENU_ITEM_RESET, nil], [[NSArray alloc] initWithObjects:MENU_ITEM_THINGS_TO_SEE, MENU_ITEM_HISTORY, MENU_ITEM_CONTACT, nil], nil];
-    
-    [self trailsOn];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [_menuTableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionTop];
 }
 
 - (IBAction)menuButtonClicked:(id)sender {
@@ -253,6 +249,13 @@ BOOL trailsOn = NO, benchesOn = NO;
         [polyline setStrokeColor:[StyleManager getGreenColor]];
         [_trails addObject:polyline];
     }
+    
+    [self trailsOn];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [_menuTableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionTop];
+    //Why isn't the check displayed?
+    [[_menuTableView cellForRowAtIndexPath:indexPath] setAccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"checkmark"]]];
+    
 }
 
 -(void)trailsOn {
