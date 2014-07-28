@@ -15,7 +15,9 @@
 @property (strong, nonatomic) UIImage *image;
 @property (strong, nonatomic) NSString *info;
 @property (nonatomic) CLLocationCoordinate2D location;
+@property (strong, nonatomic) NSString *start;
+@property (strong, nonatomic) NSString *end;
 
-+(instancetype)create:(NSString *)title image:(UIImage *)image info:(NSString *)info location:(CLLocationCoordinate2D)location;
++(instancetype)create:(NSString *)title image:(UIImage *)image info:(NSString *)info location:(CLLocationCoordinate2D)location start:(NSString *)start end:(NSString *)end;
 
 @end

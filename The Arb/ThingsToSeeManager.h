@@ -15,4 +15,6 @@
 
 +(instancetype)getInstance;
 
+-(void)loadInfo;
+
 @end

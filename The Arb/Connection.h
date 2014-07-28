@@ -10,7 +10,7 @@
 
 @interface Connection : NSObject
 
-+(NSData *)makeRequestFor:(NSString *)info;
++(NSData *)sendRequestFor:(NSString *)info;
 
 +(void)sendEmailFrom:(NSString *)email subject:(NSString *)subject message:(NSString *)message;
 

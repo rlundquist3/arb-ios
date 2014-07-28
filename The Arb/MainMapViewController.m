@@ -10,6 +10,7 @@
 #import "DataLoader.h"
 #import "StyleManager.h"
 #import "Constants.h"
+#import "ThingsToSeeManager.h"
 
 @interface MainMapViewController ()
 
@@ -47,10 +48,12 @@ BOOL trailsOn = NO, benchesOn = NO;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupTrails:) name:NOTIFICATION_TRAILS_LOADED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayBoundary:) name:NOTIFICATION_BOUNDARY_LOADED object:nil];
     
-    [[DataLoader sharedLoader] getTrails];
-    /*dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         [[DataLoader sharedLoader] getTrails];
-    });*/
+    });
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        [[ThingsToSeeManager getInstance] loadInfo];
+    });
     /*dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
      [[DataLoader sharedLoader] getBoundary];
      });*/
@@ -85,6 +88,10 @@ BOOL trailsOn = NO, benchesOn = NO;
     [self.view bringSubviewToFront:_menuTableView];
     
     _menuItems = [[NSArray alloc] initWithObjects:[[NSArray alloc] initWithObjects:MENU_ITEM_TRAILS, MENU_ITEM_BENCHES, MENU_ITEM_RESET, nil], [[NSArray alloc] initWithObjects:MENU_ITEM_THINGS_TO_SEE, MENU_ITEM_HISTORY, MENU_ITEM_CONTACT, nil], nil];
+    
+    [self trailsOn];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [_menuTableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionTop];
 }
 
 - (IBAction)menuButtonClicked:(id)sender {
@@ -187,21 +194,19 @@ BOOL trailsOn = NO, benchesOn = NO;
         [self benchesOn];
         [cell setAccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"checkmark"]]];
     } else if ([item isEqualToString:MENU_ITEM_THINGS_TO_SEE]) {
-        NSLog(@"Things to See clicked");
         [self hideMenu];
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         [self performSegueWithIdentifier:SEGUE_THINGS_TO_SEE sender:self];
     } else if ([item isEqualToString:MENU_ITEM_HISTORY]) {
-        NSLog(@"History clicked");
         [self hideMenu];
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         [self performSegueWithIdentifier:SEGUE_HISTORY sender:self];
     } else if ([item isEqualToString:MENU_ITEM_CONTACT]) {
-        NSLog(@"Contact clicked");
         [self hideMenu];
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         [self performSegueWithIdentifier:SEGUE_CONTACT sender:self];
     } else if ([item isEqualToString:MENU_ITEM_RESET]) {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
         [self hideMenu];
         GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:_arbCoordinates.latitude longitude:_arbCoordinates.longitude zoom:15];
         [_mapView setCamera:camera];

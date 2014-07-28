@@ -233,19 +233,11 @@
 				F71CE6B8195B263A0030EBA9 /* AppInitViewController.m */,
 				F71CE6F5195B7BD20030EBA9 /* MainMapViewController.h */,
 				F71CE6F6195B7BD20030EBA9 /* MainMapViewController.m */,
-				F7FA365419794E0A0021AA21 /* ThingsToSeeViewController.h */,
-				F7FA365519794E0A0021AA21 /* ThingsToSeeViewController.m */,
 				F72729231982A1830045A238 /* HistoryViewController.h */,
 				F72729241982A1830045A238 /* HistoryViewController.m */,
 				F7272920198151080045A238 /* ContactViewController.h */,
 				F7272921198151080045A238 /* ContactViewController.m */,
-				F7FA365C19795F320021AA21 /* ArbItemInfo.h */,
-				F7FA365D19795F320021AA21 /* ArbItemInfo.m */,
-				F72729261982AF460045A238 /* ThingsToSeeManager.h */,
-				F72729271982AF460045A238 /* ThingsToSeeManager.m */,
-				F7FA3657197956600021AA21 /* ArbTableViewCell.h */,
-				F7FA3658197956600021AA21 /* ArbTableViewCell.m */,
-				F7FA3659197956600021AA21 /* ArbTableViewCell.xib */,
+				F727292B1982DFAF0045A238 /* Things to See */,
 				F71CE6B2195B20C10030EBA9 /* Main.storyboard */,
 				F71CE6E2195B4F250030EBA9 /* Database */,
 				F7FA365319784E780021AA21 /* Utilities */,
@@ -311,6 +303,22 @@
 				F794B8F91974569200AAFE04 /* TrailDBManager.m */,
 			);
 			name = Database;
+			sourceTree = "<group>";
+		};
+		F727292B1982DFAF0045A238 /* Things to See */ = {
+			isa = PBXGroup;
+			children = (
+				F7FA365419794E0A0021AA21 /* ThingsToSeeViewController.h */,
+				F7FA365519794E0A0021AA21 /* ThingsToSeeViewController.m */,
+				F7FA365C19795F320021AA21 /* ArbItemInfo.h */,
+				F7FA365D19795F320021AA21 /* ArbItemInfo.m */,
+				F72729261982AF460045A238 /* ThingsToSeeManager.h */,
+				F72729271982AF460045A238 /* ThingsToSeeManager.m */,
+				F7FA3657197956600021AA21 /* ArbTableViewCell.h */,
+				F7FA3658197956600021AA21 /* ArbTableViewCell.m */,
+				F7FA3659197956600021AA21 /* ArbTableViewCell.xib */,
+			);
+			name = "Things to See";
 			sourceTree = "<group>";
 		};
 		F7FA365319784E780021AA21 /* Utilities */ = {

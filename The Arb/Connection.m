@@ -11,7 +11,7 @@
 
 @implementation Connection
 
-+(NSData *)makeRequestFor:(NSString *)type {
++(NSData *)sendRequestFor:(NSString *)type {
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@:%@/Arb/main.php?type=%@", SERVER_ADDRESS, SERVER_PORT, type]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     

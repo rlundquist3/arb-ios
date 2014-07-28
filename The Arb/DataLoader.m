@@ -99,7 +99,7 @@ long numberOfPoints = 0;
      entry++;
      }*/
     
-     NSData *trailPointsResponse = [Connection makeRequestFor:@"trail_points"];
+     NSData *trailPointsResponse = [Connection sendRequestFor:@"trail_points"];
      NSXMLParser *parser = [[NSXMLParser alloc] initWithData:trailPointsResponse];
      [parser setDelegate:self];
      BOOL result = [parser parse];

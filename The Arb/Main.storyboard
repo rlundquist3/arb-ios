@@ -78,11 +78,6 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.94117647059999998" green="0.90588235289999997" blue="0.80784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="U6e-7H-3f0">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -90,7 +85,6 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="backButton" destination="udD-9n-2K2" id="cYP-3J-In0"/>
-                        <outlet property="tableView" destination="U6e-7H-3f0" id="Irr-me-AAu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ifx-bp-C8a" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -324,7 +318,7 @@
                                 <rect key="frame" x="20" y="113" width="280" height="435"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <mutableString key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet nunc dapibus, convallis sem ac, lobortis orci. Curabitur vitae neque at enim commodo molestie sit amet in odio. Nullam ut augue orci. Aliquam ultrices ipsum at purus auctor sagittis. In vehicula mattis orci rhoncus sodales. Suspendisse potenti. In egestas turpis in dignissim pretium. Etiam dapibus ac orci in molestie. Maecenas vel interdum eros. In non odio eget nulla luctus porttitor. Phasellus sed semper nisl. Morbi vehicula, lorem a dictum ultricies, est metus semper metus, vitae egestas sem est eget nisl.
+                                <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet nunc dapibus, convallis sem ac, lobortis orci. Curabitur vitae neque at enim commodo molestie sit amet in odio. Nullam ut augue orci. Aliquam ultrices ipsum at purus auctor sagittis. In vehicula mattis orci rhoncus sodales. Suspendisse potenti. In egestas turpis in dignissim pretium. Etiam dapibus ac orci in molestie. Maecenas vel interdum eros. In non odio eget nulla luctus porttitor. Phasellus sed semper nisl. Morbi vehicula, lorem a dictum ultricies, est metus semper metus, vitae egestas sem est eget nisl.
 
 Pellentesque lacinia facilisis lectus, in fringilla sem commodo vitae. Donec dictum, dolor at blandit fringilla, mauris lectus egestas orci, ut laoreet erat est non lacus. Vivamus consequat leo enim, vel mollis nibh consectetur nec. Donec accumsan eros rutrum felis facilisis tempor. Aliquam tincidunt neque a metus commodo placerat. Quisque gravida eu orci a volutpat. In luctus fermentum odio, vel volutpat arcu dignissim eget. Nullam consectetur pellentesque quam, vitae ullamcorper erat molestie vel.
 
@@ -332,7 +326,7 @@ Ut dictum feugiat nunc, id feugiat sem. Nullam dolor nisi, consectetur sit amet 
 
 Donec consectetur risus et nisi aliquet vestibulum. Vivamus laoreet sodales tellus, non placerat quam adipiscing quis. Aliquam venenatis purus a orci auctor, ultricies sagittis turpis elementum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc pretium risus vitae nisl tempus scelerisque. Ut purus dolor, malesuada fermentum eleifend et, fermentum eleifend lectus. In purus risus, laoreet posuere sem sit amet, fringilla pulvinar quam. Cras posuere ligula vel urna consectetur posuere. Maecenas augue tortor, aliquam ac sollicitudin vitae, sollicitudin sed orci. Nullam lobortis, nulla non bibendum laoreet, sem augue eleifend libero, vitae semper lectus mauris eget quam. Etiam facilisis lacus a leo tincidunt, eget pharetra sem posuere. Nulla ac tortor feugiat felis varius molestie tincidunt non elit. Aenean mi est, auctor nec vulputate varius, accumsan sed metus. Sed rhoncus odio eget libero porttitor cursus. Cras iaculis, leo id pretium vulputate, velit lectus eleifend sapien, ac mattis felis orci quis enim.
 
-Mauris nec urna feugiat, mattis ante eget, varius enim. Nunc mollis tellus vel velit lacinia, pharetra bibendum ipsum condimentum. Integer molestie, nibh ac porttitor adipiscing, tortor purus hendrerit lectus, et dictum quam nibh eget eros. Duis at sapien et velit ultrices consectetur. Nam imperdiet vel tellus condimentum mattis. Aenean sapien lorem, ultrices vitae feugiat sed, adipiscing at eros. Curabitur vehicula metus non fermentum varius. Donec lacinia et lorem eget ultrices. Integer ut turpis pretium, congue mauris non, interdum libero. Proin adipiscing iaculis sapien quis blandit. Praesent tempor adipiscing porttitor. Aliquam velit ligula, vestibulum tincidunt metus ornare, venenatis luctus mauris. Aenean vel tincidunt neque. Mauris justo tellus, dapibus sed dapibus lobortis, pellentesque id eros. Duis sem nulla, tristique non tortor sit amet, tincidunt ornare lorem.</mutableString>
+Mauris nec urna feugiat, mattis ante eget, varius enim. Nunc mollis tellus vel velit lacinia, pharetra bibendum ipsum condimentum. Integer molestie, nibh ac porttitor adipiscing, tortor purus hendrerit lectus, et dictum quam nibh eget eros. Duis at sapien et velit ultrices consectetur. Nam imperdiet vel tellus condimentum mattis. Aenean sapien lorem, ultrices vitae feugiat sed, adipiscing at eros. Curabitur vehicula metus non fermentum varius. Donec lacinia et lorem eget ultrices. Integer ut turpis pretium, congue mauris non, interdum libero. Proin adipiscing iaculis sapien quis blandit. Praesent tempor adipiscing porttitor. Aliquam velit ligula, vestibulum tincidunt metus ornare, venenatis luctus mauris. Aenean vel tincidunt neque. Mauris justo tellus, dapibus sed dapibus lobortis, pellentesque id eros. Duis sem nulla, tristique non tortor sit amet, tincidunt ornare lorem.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
