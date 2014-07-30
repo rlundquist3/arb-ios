@@ -24,6 +24,7 @@
 @property (strong, nonatomic) NSMutableArray *trails;
 @property (strong, nonatomic) NSArray *benches;
 @property (strong, nonatomic) NSMutableArray *displayMarkers;
+@property (strong, nonatomic) NSMutableArray *displayedItems;
 
 @end
 
@@ -51,9 +52,6 @@ BOOL trailsOn = NO, benchesOn = NO;
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         [[DataLoader sharedLoader] getTrails];
-    });
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        [[ThingsToSeeManager getInstance] loadInfo];
     });
     /*dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
      [[DataLoader sharedLoader] getBoundary];
@@ -99,11 +97,13 @@ BOOL trailsOn = NO, benchesOn = NO;
         GMSMarker *newMarker = [GMSMarker markerWithPosition:CLLocationCoordinate2DMake([_itemToAdd.latitude doubleValue], [_itemToAdd.longitude doubleValue])];
         [newMarker setAppearAnimation:kGMSMarkerAnimationPop];
         [newMarker setIcon:[UIImage imageNamed:@"item_marker"]];
+        [newMarker setTitle:_itemToAdd.title];
+        [newMarker setSnippet:_itemToAdd.info];
         [newMarker setMap:_mapView];
         [_displayMarkers addObject:newMarker];
+        [_displayedItems addObject:_itemToAdd];
         _itemToAdd = nil;
         
-        //Clean this
         if (trailsOn)
             for (GMSPolyline *trail in _trails) {
                 [trail setMap:_mapView];
@@ -205,10 +205,10 @@ BOOL trailsOn = NO, benchesOn = NO;
     UITableViewCell *cell = [_menuTableView cellForRowAtIndexPath:indexPath];
     
     if ([item isEqualToString:MENU_ITEM_TRAILS]) {
-        [self trailsOn];
+        [self showTrails];
         [cell setAccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"checkmark"]]];
     } else if ([item isEqualToString:MENU_ITEM_BENCHES]) {
-        [self benchesOn];
+        [self showBenches];
         [cell setAccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"checkmark"]]];
     } else if ([item isEqualToString:MENU_ITEM_THINGS_TO_SEE]) {
         [self hideMenu];
@@ -228,7 +228,13 @@ BOOL trailsOn = NO, benchesOn = NO;
         GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:_arbCoordinates.latitude longitude:_arbCoordinates.longitude zoom:15];
         [_mapView setCamera:camera];
     } else if ([item isEqualToString:MENU_ITEM_CLEAR]) {
-        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        NSArray *selectedIndexPaths = [_menuTableView indexPathsForSelectedRows];
+        for (NSIndexPath *indexPath in selectedIndexPaths) {
+            [_menuTableView deselectRowAtIndexPath:indexPath animated:YES];
+            UITableViewCell *cell = [_menuTableView cellForRowAtIndexPath:indexPath];
+            [cell setAccessoryView:nil];
+        }
+        
         [self hideMenu];
         [_mapView clear];
     }
@@ -241,9 +247,9 @@ BOOL trailsOn = NO, benchesOn = NO;
     [cell setAccessoryView:nil];
     
     if ([item isEqualToString:MENU_ITEM_TRAILS]) {
-        [self trailsOff];
+        [self hideTrails];
     } else if ([item isEqualToString:MENU_ITEM_BENCHES]) {
-        [self benchesOff];
+        [self hideBenches];
     }
 }
 
@@ -275,7 +281,7 @@ BOOL trailsOn = NO, benchesOn = NO;
         [_trails addObject:polyline];
     }
     
-    [self trailsOn];
+    [self showTrails];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [_menuTableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionTop];
     //Why isn't the check displayed?
@@ -283,7 +289,7 @@ BOOL trailsOn = NO, benchesOn = NO;
     
 }
 
--(void)trailsOn {
+-(void)showTrails {
     if (!trailsOn) {
         for (GMSPolyline *trail in _trails) {
             [trail setMap:_mapView];
@@ -292,7 +298,7 @@ BOOL trailsOn = NO, benchesOn = NO;
     }
 }
 
--(void)trailsOff {
+-(void)hideTrails {
     if (trailsOn) {
         for (GMSPolyline *trail in _trails) {
             [trail setMap:nil];
@@ -333,7 +339,7 @@ BOOL trailsOn = NO, benchesOn = NO;
     boundary.map = _mapView;*/
 }
 
--(void)benchesOn {
+-(void)showBenches {
     if (!benchesOn) {
         for (GMSMarker *bench in _benches) {
             [bench setMap:_mapView];
@@ -342,7 +348,7 @@ BOOL trailsOn = NO, benchesOn = NO;
     }
 }
 
--(void)benchesOff {
+-(void)hideBenches {
     if (benchesOn) {
         for (GMSMarker *bench in _benches) {
             [bench setMap:nil];

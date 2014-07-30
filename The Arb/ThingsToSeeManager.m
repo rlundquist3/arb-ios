@@ -17,7 +17,7 @@ static ThingsToSeeManager *selfInstance;
     @synchronized(self) {
         if(selfInstance == nil) {
             selfInstance = [[self alloc] init];
-            [selfInstance setItems:[[NSMutableArray alloc] initWithCapacity:100]];
+            [selfInstance setItems:[[NSMutableArray alloc] init]];
         }
     }
     return selfInstance;
