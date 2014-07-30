@@ -317,7 +317,7 @@
                                 <color key="backgroundColor" red="0.94117647059999998" green="0.90588235289999997" blue="0.80784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y15-qF-VZr">
-                                <rect key="frame" x="20" y="154" width="280" height="345"/>
+                                <rect key="frame" x="20" y="154" width="280" height="414"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sit amet nunc dapibus, convallis sem ac, lobortis orci. Curabitur vitae neque at enim commodo molestie sit amet in odio. Nullam ut augue orci. Aliquam ultrices ipsum at purus auctor sagittis. In vehicula mattis orci rhoncus sodales. Suspendisse potenti. In egestas turpis in dignissim pretium. Etiam dapibus ac orci in molestie. Maecenas vel interdum eros. In non odio eget nulla luctus porttitor. Phasellus sed semper nisl. Morbi vehicula, lorem a dictum ultricies, est metus semper metus, vitae egestas sem est eget nisl.

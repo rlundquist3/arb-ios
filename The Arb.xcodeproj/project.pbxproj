@@ -51,6 +51,7 @@
 		F749F3BE1986E19F00F2AADC /* ArbItemExpandedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F749F3BD1986E19F00F2AADC /* ArbItemExpandedViewController.m */; };
 		F749F3C01986EB8E00F2AADC /* arb_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = F749F3BF1986EB8E00F2AADC /* arb_logo.png */; };
 		F749F3C219896BFD00F2AADC /* item_marker.png in Resources */ = {isa = PBXBuildFile; fileRef = F749F3C119896BFD00F2AADC /* item_marker.png */; };
+		F749F3C41989825800F2AADC /* forward_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = F749F3C31989825800F2AADC /* forward_arrow.png */; };
 		F77CE1FD197825CA0060F560 /* checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = F77CE1FC197825CA0060F560 /* checkmark.png */; };
 		F77CE1FF197826410060F560 /* bar_title.png in Resources */ = {isa = PBXBuildFile; fileRef = F77CE1FE197826410060F560 /* bar_title.png */; };
 		F77CE201197827880060F560 /* arrow_filled.png in Resources */ = {isa = PBXBuildFile; fileRef = F77CE200197827880060F560 /* arrow_filled.png */; };
@@ -133,6 +134,7 @@
 		F749F3BD1986E19F00F2AADC /* ArbItemExpandedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArbItemExpandedViewController.m; sourceTree = "<group>"; };
 		F749F3BF1986EB8E00F2AADC /* arb_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arb_logo.png; path = "../../../../Dropbox/2013-2014/ArbApp/Images/Exported/arb_logo.png"; sourceTree = "<group>"; };
 		F749F3C119896BFD00F2AADC /* item_marker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = item_marker.png; path = "../../../../Dropbox/2013-2014/ArbApp/Images/Exported/item_marker.png"; sourceTree = "<group>"; };
+		F749F3C31989825800F2AADC /* forward_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = forward_arrow.png; path = "../../../../Dropbox/2013-2014/ArbApp/Images/Exported/forward_arrow.png"; sourceTree = "<group>"; };
 		F77CE1FC197825CA0060F560 /* checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = checkmark.png; path = "../../../../Dropbox/2013-2014/ArbApp/Images/Exported/checkmark.png"; sourceTree = "<group>"; };
 		F77CE1FE197826410060F560 /* bar_title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bar_title.png; path = "../../../../Dropbox/2013-2014/ArbApp/Images/Exported/bar_title.png"; sourceTree = "<group>"; };
 		F77CE200197827880060F560 /* arrow_filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrow_filled.png; path = "../../../../Dropbox/2013-2014/ArbApp/Images/Exported/arrow_filled.png"; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 				F749F3C119896BFD00F2AADC /* item_marker.png */,
 				F749F3BF1986EB8E00F2AADC /* arb_logo.png */,
 				F72729291982DBED0045A238 /* back_arrow.png */,
+				F749F3C31989825800F2AADC /* forward_arrow.png */,
 				F77CE202197827A40060F560 /* arrow_unfilled.png */,
 				F77CE200197827880060F560 /* arrow_filled.png */,
 				F77CE1FE197826410060F560 /* bar_title.png */,
@@ -433,6 +436,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F71CE68C195A309C0030EBA9 /* InfoPlist.strings in Resources */,
+				F749F3C41989825800F2AADC /* forward_arrow.png in Resources */,
 				F7FA365B197956600021AA21 /* ArbTableViewCell.xib in Resources */,
 				F77CE203197827A40060F560 /* arrow_unfilled.png in Resources */,
 				F749F3C01986EB8E00F2AADC /* arb_logo.png in Resources */,
