@@ -23,6 +23,7 @@
 @property (strong, nonatomic) NSArray *menuItems;
 @property (strong, nonatomic) NSMutableArray *trails;
 @property (strong, nonatomic) NSArray *benches;
+@property (strong, nonatomic) NSMutableArray *displayMarkers;
 
 @end
 
@@ -87,7 +88,27 @@ BOOL trailsOn = NO, benchesOn = NO;
     [self.view addSubview:_greyView];
     [self.view bringSubviewToFront:_menuTableView];
     
-    _menuItems = [[NSArray alloc] initWithObjects:[[NSArray alloc] initWithObjects:MENU_ITEM_TRAILS, MENU_ITEM_BENCHES, MENU_ITEM_RESET, nil], [[NSArray alloc] initWithObjects:MENU_ITEM_THINGS_TO_SEE, MENU_ITEM_HISTORY, MENU_ITEM_CONTACT, nil], nil];
+    _menuItems = [[NSArray alloc] initWithObjects:[[NSArray alloc] initWithObjects:MENU_ITEM_TRAILS, MENU_ITEM_BENCHES, MENU_ITEM_RESET, MENU_ITEM_CLEAR, nil], [[NSArray alloc] initWithObjects:MENU_ITEM_THINGS_TO_SEE, MENU_ITEM_HISTORY, MENU_ITEM_CONTACT, nil], nil];
+    
+    _displayMarkers = [[NSMutableArray alloc] init];
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    if (_itemToAdd != nil) {
+        NSLog(@"View did appear");
+        GMSMarker *newMarker = [GMSMarker markerWithPosition:CLLocationCoordinate2DMake([_itemToAdd.latitude doubleValue], [_itemToAdd.longitude doubleValue])];
+        [newMarker setAppearAnimation:kGMSMarkerAnimationPop];
+        [newMarker setIcon:[UIImage imageNamed:@"item_marker"]];
+        [newMarker setMap:_mapView];
+        [_displayMarkers addObject:newMarker];
+        _itemToAdd = nil;
+        
+        //Clean this
+        if (trailsOn)
+            for (GMSPolyline *trail in _trails) {
+                [trail setMap:_mapView];
+            }
+    }
 }
 
 - (IBAction)menuButtonClicked:(id)sender {
@@ -206,6 +227,10 @@ BOOL trailsOn = NO, benchesOn = NO;
         [self hideMenu];
         GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:_arbCoordinates.latitude longitude:_arbCoordinates.longitude zoom:15];
         [_mapView setCamera:camera];
+    } else if ([item isEqualToString:MENU_ITEM_CLEAR]) {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        [self hideMenu];
+        [_mapView clear];
     }
 }
 

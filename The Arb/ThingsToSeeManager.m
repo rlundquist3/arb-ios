@@ -42,7 +42,7 @@ static ThingsToSeeManager *selfInstance;
         start = [xml substringWithRange:[match rangeAtIndex:6]];
         end = [xml substringWithRange:[match rangeAtIndex:7]];
         
-        ArbItemInfo *item = [ArbItemInfo create:name image:nil/*[UIImage imageNamed:image]*/ info:info location:CLLocationCoordinate2DMake([latitude doubleValue], [longitude doubleValue]) start:start end:end];
+        ArbItemInfo *item = [ArbItemInfo create:name image:nil/*[UIImage imageNamed:image]*/ info:info latitude:latitude longitude:longitude start:start end:end];
         NSLog(@"Item: %@", item.title);
         
         [_items addObject:item];

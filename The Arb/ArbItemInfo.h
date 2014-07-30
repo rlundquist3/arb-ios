@@ -14,10 +14,11 @@
 @property (strong, nonatomic) NSString *title;
 @property (strong, nonatomic) UIImage *image;
 @property (strong, nonatomic) NSString *info;
-@property (nonatomic) CLLocationCoordinate2D location;
+@property (strong, nonatomic) NSString *latitude;
+@property (strong, nonatomic) NSString *longitude;
 @property (strong, nonatomic) NSString *start;
 @property (strong, nonatomic) NSString *end;
 
-+(instancetype)create:(NSString *)title image:(UIImage *)image info:(NSString *)info location:(CLLocationCoordinate2D)location start:(NSString *)start end:(NSString *)end;
++(instancetype)create:(NSString *)title image:(UIImage *)image info:(NSString *)info latitude:(NSString *)latitude longitude:(NSString *)longitude start:(NSString *)start end:(NSString *)end;
 
 @end

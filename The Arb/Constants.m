@@ -18,6 +18,7 @@ NSString *const SEGUE_THINGS_TO_SEE = @"ThingsToSeeSegue";
 NSString *const SEGUE_CONTACT = @"ContactSegue";
 NSString *const SEGUE_HISTORY = @"HistorySegue";
 NSString *const SEGUE_EXPANDED_VIEW = @"ExplandedViewSegue";
+NSString *const SEGUE_ITEM_ON_MAP = @"ItemOnMapSegue";
 
 NSString *const CORE_DATA_TABLE_TRAILS = @"TrailMO";
 NSString *const CORE_DATA_TABLE_TRAIL_POINTS = @"TrailPointMO";
@@ -40,6 +41,7 @@ NSString *const MENU_ITEM_BENCHES = @"Benches";
 NSString *const MENU_ITEM_THINGS_TO_SEE = @"Things to See";
 NSString *const MENU_ITEM_CONTACT = @"Contact";
 NSString *const MENU_ITEM_HISTORY = @"History";
-NSString *const MENU_ITEM_RESET = @"Reset Map";
+NSString *const MENU_ITEM_RESET = @"Reset Map Position";
+NSString *const MENU_ITEM_CLEAR = @"Clear Map";
 
 @end

@@ -17,7 +17,7 @@
                         <rect key="frame" x="8" y="8" width="140" height="140"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </imageView>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jo9-H7-bXY">
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jo9-H7-bXY">
                         <rect key="frame" x="0.0" y="156" width="320" height="69"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -36,7 +36,7 @@
                             <action selector="expandButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Q4U-Re-qGl"/>
                         </connections>
                     </button>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Arb Item" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fJ7-uX-e6u">
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Arb Item" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fJ7-uX-e6u">
                         <rect key="frame" x="156" y="8" width="158" height="73"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>

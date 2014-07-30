@@ -18,6 +18,7 @@ extern NSString *const SEGUE_THINGS_TO_SEE;
 extern NSString *const SEGUE_CONTACT;
 extern NSString *const SEGUE_HISTORY;
 extern NSString *const SEGUE_EXPANDED_VIEW;
+extern NSString *const SEGUE_ITEM_ON_MAP;
 
 extern NSString *const CORE_DATA_TABLE_TRAILS;
 extern NSString *const CORE_DATA_TABLE_TRAIL_POINTS;
@@ -41,5 +42,6 @@ extern NSString *const MENU_ITEM_THINGS_TO_SEE;
 extern NSString *const MENU_ITEM_CONTACT;
 extern NSString *const MENU_ITEM_HISTORY;
 extern NSString *const MENU_ITEM_RESET;
+extern NSString *const MENU_ITEM_CLEAR;
 
 @end

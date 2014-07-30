@@ -7,12 +7,15 @@
 //
 
 #import "ArbItemExpandedViewController.h"
+#import "Constants.h"
+#import "MainMapViewController.h"
 
 @interface ArbItemExpandedViewController ()
 
 @property (strong, nonatomic) IBOutlet UILabel *header;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UITextView *description;
+@property (strong, nonatomic) IBOutlet UIButton *viewOnMapButton;
 
 @end
 
@@ -38,6 +41,21 @@
     } else {
         [_imageView setFrame:CGRectZero];
     }
+    
+    if (_item.latitude == nil || _item.longitude == nil) {
+        _viewOnMapButton.hidden = YES;
+    }
+}
+
+- (IBAction)viewOnMapPressed:(id)sender {
+    [self performSegueWithIdentifier:SEGUE_ITEM_ON_MAP sender:self];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    MainMapViewController *destination = [segue.destinationViewController topViewController];
+    NSLog(@"preparing for segue");
+    [destination setItemToAdd:_item];
+    NSLog(@"item added");
 }
 
 - (IBAction)backButtonPressed:(id)sender {
