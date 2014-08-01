@@ -99,15 +99,21 @@ BOOL trailsOn = NO, benchesOn = NO;
         [newMarker setIcon:[UIImage imageNamed:@"item_marker"]];
         [newMarker setTitle:_itemToAdd.title];
         [newMarker setSnippet:_itemToAdd.info];
-        [newMarker setMap:_mapView];
+        //[newMarker setMap:_mapView];
         [_displayMarkers addObject:newMarker];
         [_displayedItems addObject:_itemToAdd];
+        
+        for (GMSMarker *marker in _displayMarkers)
+            [marker setMap:_mapView];
+        
         _itemToAdd = nil;
         
         if (trailsOn)
-            for (GMSPolyline *trail in _trails) {
+            for (GMSPolyline *trail in _trails)
                 [trail setMap:_mapView];
-            }
+        if (benchesOn)
+            for (GMSMarker *bench in _benches)
+                [bench setMap:_mapView];
     }
 }
 

@@ -60,7 +60,16 @@
 }
 
 - (IBAction)sendButtonPressed:(id)sender {
-    //ADD VALIDATION
+    BOOL send = YES;
+    
+    NSError *error = nil;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@".+@.+\\..+" options:NSRegularExpressionCaseInsensitive error:&error];
+    if ([regex numberOfMatchesInString:_emailField.text options:0 range:NSMakeRange(0, _emailField.text.length)] != 1) {
+        UIAlertView *emailAlert = [[UIAlertView alloc] initWithTitle:@"Oops" message:@"Please enter a valid email address." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [emailAlert show];
+        send = NO;
+    }
+    
     [Connection sendEmailFrom:_emailField.text subject:_subjectField.text message:[NSString stringWithFormat:@"%@\n\nSent from location: %@", _messageField.text, _locationManager.location]];
 }
 
