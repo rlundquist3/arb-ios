@@ -14,4 +14,6 @@
 
 +(void)sendEmailFrom:(NSString *)email subject:(NSString *)subject message:(NSString *)message;
 
++(UIImage *)loadImageWithName:(NSString *)url;
+
 @end

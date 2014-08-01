@@ -10,9 +10,10 @@
 
 @implementation ArbItemInfo
 
-+(instancetype)create:(NSString *)title image:(UIImage *)image info:(NSString *)info latitude:(NSString *)latitude longitude:(NSString *)longitude start:(NSString *)start end:(NSString *)end {
++(instancetype)create:(NSString *)title imageName:(NSString *)imageName image:(UIImage *)image info:(NSString *)info latitude:(NSString *)latitude longitude:(NSString *)longitude start:(NSString *)start end:(NSString *)end {
     ArbItemInfo *instance = [[ArbItemInfo alloc] init];
     [instance setTitle:title];
+    [instance setImageName:imageName];
     [instance setImage:image];
     [instance setInfo:info];
     [instance setLatitude:latitude];

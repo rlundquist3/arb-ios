@@ -22,7 +22,6 @@
 }
 
 +(void)sendEmailFrom:(NSString *)email subject:(NSString *)subject message:(NSString *)message {
-    
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@:%@/Arb/mail.php", SERVER_ADDRESS, SERVER_PORT]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     
@@ -39,6 +38,13 @@
     NSLog(@"Response: %@", response);
     
     [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_EMAIL_SENT object:self];
+}
+
++(UIImage *)loadImageWithName:(NSString *)name {
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://%@:%@/Arb/images/%@", SERVER_ADDRESS, SERVER_PORT, name]];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    
+    return [UIImage imageWithData:data];
 }
 
 @end

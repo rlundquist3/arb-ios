@@ -29,23 +29,34 @@ static ThingsToSeeManager *selfInstance;
     NSLog(@"Item Data: %@", xml);
     
     NSError *error = NULL;
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"<item><name>(.+)<\\/name><image>(.+)<\\/image><description>(.+)<\\/description><coords><lat>(-?\\d+\\.\\d+)<\\/lat><lon>(-?\\d+\\.\\d+)<\\/lon><\\/coords><dates><start>(.+)<\\/start><end>(.+)<\\/end><\\/dates><\\/item>" options:NSRegularExpressionCaseInsensitive error:&error];
+    NSRegularExpressionOptions options = NSRegularExpressionDotMatchesLineSeparators |NSRegularExpressionCaseInsensitive;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"<item><name>([^\\/]+)<\\/name><image>([^\\/]+)<\\/image><description>([^\\/]+)<\\/description><coords><lat>(-?\\d+\\.\\d+)<\\/lat><lon>(-?\\d+\\.\\d+)<\\/lon><\\/coords><dates><start>([^\\/]+)<\\/start><end>([^\\/]+)<\\/end><\\/dates><\\/item>" options:options error:&error];
     NSArray *matches = [regex matchesInString:xml options:0 range:NSMakeRange(0, xml.length)];
     
-    NSString *name, *image, *info, *latitude, *longitude, *start, *end;
+    NSString *name, *imageName, *info, *latitude, *longitude, *start, *end;
     for(NSTextCheckingResult *match in matches) {
         name = [xml substringWithRange:[match rangeAtIndex:1]];
-        image = [xml substringWithRange:[match rangeAtIndex:2]];
+        imageName = [xml substringWithRange:[match rangeAtIndex:2]];
         info = [xml substringWithRange:[match rangeAtIndex:3]];
         latitude = [xml substringWithRange:[match rangeAtIndex:4]];
         longitude = [xml substringWithRange:[match rangeAtIndex:5]];
         start = [xml substringWithRange:[match rangeAtIndex:6]];
         end = [xml substringWithRange:[match rangeAtIndex:7]];
         
-        ArbItemInfo *item = [ArbItemInfo create:name image:nil/*[UIImage imageNamed:image]*/ info:info latitude:latitude longitude:longitude start:start end:end];
+        ArbItemInfo *item = [ArbItemInfo create:name imageName:imageName image:nil info:info latitude:latitude longitude:longitude start:start end:end];
         NSLog(@"Item: %@", item.title);
         
         [_items addObject:item];
+    }
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        [self loadImages];
+    });
+}
+
+-(void)loadImages {
+    for (ArbItemInfo *item in _items) {
+        [item setImage:[Connection loadImageWithName:item.imageName]];
     }
 }
 
