@@ -118,6 +118,8 @@ long numberOfPoints = 0;
         [path addLatitude:[point.latitude doubleValue] longitude:[point.longitude doubleValue]];
         NSLog(@"Point: %@, %@", point.latitude, point.longitude);
     }
+    
+    
 
     NSEnumerator *enumerator = [paths keyEnumerator];
     id key;

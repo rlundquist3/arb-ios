@@ -39,6 +39,7 @@
     [_tableView setDataSource:self];
     [_tableView setDelegate:self];
     [_tableView setSeparatorColor:[StyleManager getBlueColor]];
+    [_tableView setBackgroundColor:[StyleManager getBeigeColor]];
     [self.view addSubview:_tableView];
 }
 
