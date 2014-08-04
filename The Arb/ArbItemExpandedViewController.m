@@ -38,6 +38,13 @@
     [_description setText:_item.info];
     if (_item.image != nil) {
         [_imageView setImage:_item.image];
+        double height = 215;
+        double width = _item.image.size.width/(_item.image.size.height/215);
+        if (width > 300) {
+            width = 300;
+            height =_item.image.size.height/(_item.image.size.width/215);
+        }
+        [_imageView setFrame:CGRectMake(self.view.frame.size.width/2 - width/2, 70, width, height)];
     } else {
         [_imageView setFrame:CGRectZero];
     }
