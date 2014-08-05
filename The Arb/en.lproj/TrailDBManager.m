@@ -79,8 +79,12 @@
     AppDelegate *delegate = [UIApplication sharedApplication].delegate;
     NSManagedObjectContext *moc = [delegate managedObjectContext];
     
+    NSLog(@"moc ok");
+    
     TrailPointMO *trailPoint;
     trailPoint = [self getTrailPointWithID:point_id];
+    
+    NSLog(@"starting to set values");
     
     if (trailPoint == nil)
         trailPoint = [NSEntityDescription insertNewObjectForEntityForName:CORE_DATA_TABLE_TRAIL_POINTS inManagedObjectContext:moc];
