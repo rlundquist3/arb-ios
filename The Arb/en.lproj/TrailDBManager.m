@@ -76,36 +76,35 @@
 //TrailPoint methods
 
 +(TrailPointMO *)insert:(NSNumber *)point_id trail_id:(NSString *)trail_id latitude:(NSString *)latitude longitude:(NSString *)longitude {
-    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
-    NSManagedObjectContext *moc = [delegate managedObjectContext];
     
-    NSLog(@"moc ok");
-    
-    TrailPointMO *trailPoint;
-    trailPoint = [self getTrailPointWithID:point_id];
-    
-    NSLog(@"starting to set values");
-    
-    if (trailPoint == nil)
-        trailPoint = [NSEntityDescription insertNewObjectForEntityForName:CORE_DATA_TABLE_TRAIL_POINTS inManagedObjectContext:moc];
-    
-    if (point_id != nil && trailPoint.point_id == nil) {
-        [trailPoint setValue:point_id forKey:TRAIL_POINTS_TABLE_COLUMN_POINT_ID];
+    @autoreleasepool {
+        AppDelegate *delegate = [UIApplication sharedApplication].delegate;
+        NSManagedObjectContext *moc = [delegate managedObjectContext];
+        
+        TrailPointMO *trailPoint;
+        trailPoint = [self getTrailPointWithID:point_id];
+        
+        if (trailPoint == nil)
+            trailPoint = [NSEntityDescription insertNewObjectForEntityForName:CORE_DATA_TABLE_TRAIL_POINTS inManagedObjectContext:moc];
+        
+        if (point_id != nil && trailPoint.point_id == nil) {
+            [trailPoint setValue:point_id forKey:TRAIL_POINTS_TABLE_COLUMN_POINT_ID];
+        }
+        if (trail_id != nil && trailPoint.trail_id == nil) {
+            [trailPoint setValue:trail_id forKey:TRAIL_POINTS_TABLE_COLUMN_TRAIL_ID];
+        }
+        if (latitude != nil && trailPoint.latitude == nil) {
+            [trailPoint setValue:latitude forKey:TRAIL_POINTS_TABLE_COLUMN_LATITUDE];
+        }
+        if (longitude != nil && trailPoint.longitude == nil) {
+            [trailPoint setValue:longitude forKey:TRAIL_POINTS_TABLE_COLUMN_LONGITUDE];
+        }
+        
+        NSLog(@"TrailPoint inserted: %@, %@", trailPoint.latitude, trailPoint.longitude);
+        
+        [delegate saveContext];
+        return trailPoint;
     }
-    if (trail_id != nil && trailPoint.trail_id == nil) {
-        [trailPoint setValue:trail_id forKey:TRAIL_POINTS_TABLE_COLUMN_TRAIL_ID];
-    }
-    if (latitude != nil && trailPoint.latitude == nil) {
-        [trailPoint setValue:latitude forKey:TRAIL_POINTS_TABLE_COLUMN_LATITUDE];
-    }
-    if (longitude != nil && trailPoint.longitude == nil) {
-        [trailPoint setValue:longitude forKey:TRAIL_POINTS_TABLE_COLUMN_LONGITUDE];
-    }
-    
-    NSLog(@"TrailPoint inserted: %@, %@", trailPoint.latitude, trailPoint.longitude);
-    
-    [delegate saveContext];
-    return trailPoint;
 }
 
 +(TrailPointMO *)getTrailPointWithID:(NSNumber *)point_id {

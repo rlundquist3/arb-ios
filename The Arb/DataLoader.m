@@ -56,11 +56,34 @@ long numberOfPoints = 0;
     NSLog(@"Load Trails");
     
     NSData *trailPointsResponse = [Connection sendRequestFor:@"trail_points"];
-    NSXMLParser *parser = [[NSXMLParser alloc] initWithData:trailPointsResponse];
+    //NSData *trailPointsResponse = [[NSData alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"ArbTrailsNumbered" ofType:@"xml"]];
+    
+    /*NSXMLParser *parser = [[NSXMLParser alloc] initWithData:trailPointsResponse];
     [parser setDelegate:self];
     BOOL result = [parser parse];
      
-    NSLog(@"Success? %d", result);
+    NSLog(@"Success? %d", result);*/
+    
+    NSError *error = nil;
+    NSString *pointsXML = [[NSString alloc] initWithData:trailPointsResponse encoding:NSASCIIStringEncoding];
+    NSRegularExpressionOptions options = NSRegularExpressionCaseInsensitive;
+    NSRegularExpression *pointsRegex = [NSRegularExpression regularExpressionWithPattern:@"lat=\"(-?\\d+\\.\\d+)\" lon=\"(-?\\d+\\.\\d+)\" trail=\"(\\d+)" options:options error:&error];
+    NSArray *pointsMatches = [pointsRegex matchesInString:pointsXML options:0 range:NSMakeRange(0, pointsXML.length)];
+    NSLog(@"Number of matches: %d", pointsMatches.count);
+    
+    NSString *latitude, *longitude, *trail;
+    for (NSTextCheckingResult *match in pointsMatches) {
+        @autoreleasepool {
+            NSLog(@"Point %lu", numberOfPoints);
+            
+            latitude = [pointsXML substringWithRange:[match rangeAtIndex:1]];
+            longitude = [pointsXML substringWithRange:[match rangeAtIndex:2]];
+            trail = [pointsXML substringWithRange:[match rangeAtIndex:3]];
+            
+            [TrailDBManager insert:[NSNumber numberWithLong:numberOfPoints] trail_id:trail latitude:latitude longitude:longitude];
+            numberOfPoints++;
+        }
+    }
     
     NSMutableDictionary *paths = [[NSMutableDictionary alloc] init];
     NSArray *points = [TrailDBManager getAllPoints];
@@ -75,11 +98,28 @@ long numberOfPoints = 0;
         NSLog(@"Point: %@, %@", point.latitude, point.longitude);
     }
 
+    NSData *trailInfoResponse = [Connection sendRequestFor:@"trail_info"];
+    NSString *infoXML = [[NSString alloc] initWithData:trailInfoResponse encoding:NSASCIIStringEncoding];
+    
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"<trail><id>(\\d+)<\\/id><name>([^\\/]+)<\\/name><\\/trail>" options:options error:&error];
+    NSArray *matches = [regex matchesInString:infoXML options:0 range:NSMakeRange(0, infoXML.length)];
+    
+    NSMutableDictionary *trailNames = [[NSMutableDictionary alloc] init];
+    NSString *trailId, *trailName;
+    for (NSTextCheckingResult *match in matches) {
+        trailId = [infoXML substringWithRange:[match rangeAtIndex:1]];
+        trailName = [infoXML substringWithRange:[match rangeAtIndex:2]];
+        
+        [trailNames setObject:trailName forKey:trailId];
+    }
+
     NSEnumerator *enumerator = [paths keyEnumerator];
     id key;
     while ((key = [enumerator nextObject])) {
         GMSPath *path = [paths objectForKey:key];
-        [TrailDBManager insert:nil trail_id:key path:[path encodedPath]];
+        NSString *name = [trailNames objectForKey:key];
+        [TrailDBManager insert:name trail_id:key path:[path encodedPath]];
+        NSLog(@"Inserted trail: %@", name);
     }
 }
 
@@ -87,7 +127,11 @@ long numberOfPoints = 0;
     
     if ([elementName isEqualToString:@"rtept"]) {
         NSLog(@"Point %lu", numberOfPoints);
-        [TrailDBManager insert:[NSNumber numberWithLong:numberOfPoints] trail_id:[attributeDict objectForKey:@"trail"] latitude:[attributeDict objectForKey:@"lat"] longitude:[attributeDict objectForKey:@"lon"]];
+        
+        @autoreleasepool {
+            [TrailDBManager insert:[NSNumber numberWithLong:numberOfPoints] trail_id:[attributeDict objectForKey:@"trail"] latitude:[attributeDict objectForKey:@"lat"] longitude:[attributeDict objectForKey:@"lon"]];
+        }
+        
         numberOfPoints++;
     }
 }

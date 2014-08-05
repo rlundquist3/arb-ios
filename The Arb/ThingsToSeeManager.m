@@ -29,7 +29,7 @@ static ThingsToSeeManager *selfInstance;
     NSLog(@"Item Data: %@", xml);
     
     NSError *error = NULL;
-    NSRegularExpressionOptions options = NSRegularExpressionDotMatchesLineSeparators |NSRegularExpressionCaseInsensitive;
+    NSRegularExpressionOptions options = NSRegularExpressionDotMatchesLineSeparators | NSRegularExpressionCaseInsensitive;
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"<item><name>([^\\/]+)<\\/name><image>([^\\/]+)<\\/image><description>([^\\/]+)<\\/description><coords><lat>(-?\\d+\\.\\d+)<\\/lat><lon>(-?\\d+\\.\\d+)<\\/lon><\\/coords><dates><start>([^\\/]+)<\\/start><end>([^\\/]+)<\\/end><\\/dates><\\/item>" options:options error:&error];
     NSArray *matches = [regex matchesInString:xml options:0 range:NSMakeRange(0, xml.length)];
     

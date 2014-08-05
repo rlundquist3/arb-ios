@@ -50,6 +50,7 @@ BOOL trailsOn = NO, benchesOn = NO;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupTrails:) name:NOTIFICATION_TRAILS_LOADED object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayBoundary:) name:NOTIFICATION_BOUNDARY_LOADED object:nil];
     
+    //Comment out dispatch after trail db restructuring
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         [[DataLoader sharedLoader] getTrails];
     });
@@ -292,6 +293,10 @@ BOOL trailsOn = NO, benchesOn = NO;
     [_menuTableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionTop];
     //Why isn't the check displayed?
     [[_menuTableView cellForRowAtIndexPath:indexPath] setAccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"checkmark"]]];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        [[ThingsToSeeManager getInstance] loadInfo];
+    });
     
 }
 
