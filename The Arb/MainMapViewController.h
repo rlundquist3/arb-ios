@@ -10,7 +10,7 @@
 #import <Googlemaps/GoogleMaps.h>
 #import "ArbItemInfo.h"
 
-@interface MainMapViewController : UIViewController<GMSMapViewDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface MainMapViewController : UIViewController<GMSMapViewDelegate, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
 
 @property (strong, nonatomic) ArbItemInfo *itemToAdd;
 

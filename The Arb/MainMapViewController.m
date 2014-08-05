@@ -11,6 +11,7 @@
 #import "StyleManager.h"
 #import "Constants.h"
 #import "ThingsToSeeManager.h"
+#import "TrailDBManager.h"
 
 @interface MainMapViewController ()
 
@@ -68,6 +69,7 @@ BOOL trailsOn = NO, benchesOn = NO;
     _mapView.myLocationEnabled = YES;
     _mapView.settings.myLocationButton = YES;
     [_mapView setMapType:kGMSTypeHybrid];
+    [_mapView setDelegate:self];
     [self.view addSubview:_mapView];
     
     [self setupBenches];
@@ -283,8 +285,13 @@ BOOL trailsOn = NO, benchesOn = NO;
     while ((key = [enumerator nextObject])) {
         GMSPath *trail = [GMSPath pathFromEncodedPath:[returnedTrails objectForKey:key]];
         GMSPolyline *polyline = [GMSPolyline polylineWithPath:trail];
+        [polyline setTappable:YES];
         [polyline setStrokeWidth:2];
         [polyline setStrokeColor:[StyleManager getGreenColor]];
+        
+        NSString *title = [[key componentsSeparatedByCharactersInSet:[[NSCharacterSet letterCharacterSet] invertedSet]] componentsJoinedByString:@" "];
+        [polyline setTitle:title];
+        
         [_trails addObject:polyline];
     }
     
@@ -367,6 +374,18 @@ BOOL trailsOn = NO, benchesOn = NO;
         benchesOn = NO;
     }
 }
+
+-(void)mapView:(GMSMapView *)mapView didTapOverlay:(GMSOverlay *)overlay {
+    if ([overlay isKindOfClass:GMSPolyline.class]) {
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:overlay.title message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+    }
+}
+
+/*-(void)mapView:(GMSMapView *)mapView didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
+    NSLog(@"Tapped at coordinate: %f, %f", coordinate.latitude, coordinate.longitude);
+}*/
 
 - (void)didReceiveMemoryWarning
 {

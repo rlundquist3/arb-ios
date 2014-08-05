@@ -45,7 +45,7 @@ long numberOfPoints = 0;
 
     int i=0;
     for (TrailMO *trail in trails) {
-        [trailsDict setObject:trail.path forKey:[NSNumber numberWithInt:i]];
+        [trailsDict setObject:trail.path forKey:[NSString stringWithFormat:@"%@%@", trail.name, [NSNumber numberWithInt:i]]];
         i++;
     }
     
