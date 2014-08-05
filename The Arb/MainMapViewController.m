@@ -32,6 +32,7 @@
 @implementation MainMapViewController
 
 BOOL trailsOn = NO, benchesOn = NO;
+float topLimit = 42.30, bottomLimit = 42.285, leftLimit = -85.71, rightLimit = -85.69;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -69,6 +70,7 @@ BOOL trailsOn = NO, benchesOn = NO;
     _mapView.myLocationEnabled = YES;
     _mapView.settings.myLocationButton = YES;
     [_mapView setMapType:kGMSTypeHybrid];
+    [_mapView setMinZoom:14 maxZoom:INFINITY];
     [_mapView setDelegate:self];
     [self.view addSubview:_mapView];
     
@@ -309,18 +311,18 @@ BOOL trailsOn = NO, benchesOn = NO;
 
 -(void)showTrails {
     if (!trailsOn) {
-        for (GMSPolyline *trail in _trails) {
+        for (GMSPolyline *trail in _trails)
             [trail setMap:_mapView];
-        }
+        
         trailsOn = YES;
     }
 }
 
 -(void)hideTrails {
     if (trailsOn) {
-        for (GMSPolyline *trail in _trails) {
+        for (GMSPolyline *trail in _trails)
             [trail setMap:nil];
-        }
+        
         trailsOn = NO;
     }
 }
@@ -347,48 +349,74 @@ BOOL trailsOn = NO, benchesOn = NO;
         [bench setAppearAnimation:kGMSMarkerAnimationPop];
         [bench setIcon:[UIImage imageNamed:@"bench"]];
     }
-    
-    /*GMSMutablePath *path = [GMSMutablePath path];
-    [path addCoordinate:pos1];
-    [path addCoordinate:pos2];
-    [path addCoordinate:pos3];
-    [path addCoordinate:pos4];
-    GMSPolyline *boundary = [GMSPolyline polylineWithPath:path];
-    boundary.map = _mapView;*/
 }
 
 -(void)showBenches {
     if (!benchesOn) {
-        for (GMSMarker *bench in _benches) {
+        for (GMSMarker *bench in _benches)
             [bench setMap:_mapView];
-        }
+        
         benchesOn = YES;
     }
 }
 
 -(void)hideBenches {
     if (benchesOn) {
-        for (GMSMarker *bench in _benches) {
+        for (GMSMarker *bench in _benches)
             [bench setMap:nil];
-        }
+        
         benchesOn = NO;
     }
 }
 
 -(void)mapView:(GMSMapView *)mapView didTapOverlay:(GMSOverlay *)overlay {
     if ([overlay isKindOfClass:GMSPolyline.class]) {
-        
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:overlay.title message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alertView show];
     }
+}
+
+- (void)mapView:(GMSMapView *)mapView didChangeCameraPosition:(GMSCameraPosition *)position {
+    
+    
+    // Reposition GMSMarker introduced in viewDidLoad to updated position
+    //currentPosition.position = position.target;
+    
+    if (position.target.latitude > topLimit) {
+        GMSCameraPosition *goBackCamera = [GMSCameraPosition cameraWithLatitude:topLimit
+                                                                      longitude:position.target.longitude
+                                                                           zoom:position.zoom];
+        [self.mapView animateToCameraPosition:goBackCamera];
+    }
+    
+    if (position.target.latitude < bottomLimit) {
+        GMSCameraPosition *goBackCamera = [GMSCameraPosition cameraWithLatitude:bottomLimit
+                                                                      longitude:position.target.longitude
+                                                                           zoom:position.zoom];
+        [self.mapView animateToCameraPosition:goBackCamera];
+    }
+    
+    if (position.target.longitude < leftLimit) {
+        GMSCameraPosition *goBackCamera = [GMSCameraPosition cameraWithLatitude:position.target.latitude
+                                                                      longitude:leftLimit
+                                                                           zoom:position.zoom];
+        [self.mapView animateToCameraPosition:goBackCamera];
+    }
+    
+    if (position.target.longitude > rightLimit) {
+        GMSCameraPosition *goBackCamera = [GMSCameraPosition cameraWithLatitude:position.target.latitude
+                                                                      longitude:rightLimit
+                                                                           zoom:position.zoom];
+        [self.mapView animateToCameraPosition:goBackCamera];
+    }
+    
 }
 
 /*-(void)mapView:(GMSMapView *)mapView didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
     NSLog(@"Tapped at coordinate: %f, %f", coordinate.latitude, coordinate.longitude);
 }*/
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
