@@ -59,14 +59,18 @@
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    MainMapViewController *destination = [segue.destinationViewController topViewController];
-    NSLog(@"preparing for segue");
-    [destination setItemToAdd:_item];
-    NSLog(@"item added");
+    if ([segue.identifier isEqualToString:SEGUE_ITEM_ON_MAP]) {
+        MainMapViewController *destination = [segue.destinationViewController topViewController];
+        NSLog(@"preparing for segue");
+        [destination setItemToAdd:_item];
+        NSLog(@"item added");
+    }
 }
 
 - (IBAction)backButtonPressed:(id)sender {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    NSLog(@"to list");
+    //[self.navigationController popToRootViewControllerAnimated:YES];
+    [self performSegueWithIdentifier:SEGUE_BACK_TO_LIST sender:self];
 }
 
 - (void)didReceiveMemoryWarning

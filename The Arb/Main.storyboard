@@ -29,6 +29,7 @@
         <scene sceneID="1Ss-tY-Itp">
             <objects>
                 <navigationController definesPresentationContext="YES" id="DGt-sH-RMk" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="dzz-Kf-RhJ"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="E5z-Tm-ugV">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -359,9 +360,6 @@ Mauris nec urna feugiat, mattis ante eget, varius enim. Nunc mollis tellus vel v
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="HDF-Yg-Irs">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
-                    <connections>
-                        <segue destination="ss7-M8-q0o" kind="relationship" relationship="rootViewController" id="K23-pO-nrC"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kTb-gQ-5lA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -444,6 +442,7 @@ Mauris nec urna feugiat, mattis ante eget, varius enim. Nunc mollis tellus vel v
                         <outlet property="imageView" destination="Mq6-LI-oa7" id="rpI-x3-TXB"/>
                         <outlet property="viewOnMapButton" destination="HKn-85-5bZ" id="7Em-SM-A4V"/>
                         <segue destination="br6-Xa-Ncg" kind="modal" identifier="ItemOnMapSegue" id="8Tr-L6-LJ1"/>
+                        <segue destination="8tW-tf-loG" kind="custom" identifier="BackToListSegue" id="XO4-ok-NSH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9zi-W5-N7H" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -464,8 +463,7 @@ Mauris nec urna feugiat, mattis ante eget, varius enim. Nunc mollis tellus vel v
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="8Tr-L6-LJ1"/>
-        <segue reference="cPN-Tr-DqE"/>
-        <segue reference="mob-xW-EnT"/>
+        <segue reference="XO4-ok-NSH"/>
         <segue reference="68h-3R-6YA"/>
         <segue reference="FOh-zX-Q31"/>
     </inferredMetricsTieBreakers>
