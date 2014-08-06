@@ -38,6 +38,7 @@ extern NSString *const NOTIFICATION_EMAIL_SENT;
 
 extern NSString *const MENU_ITEM_TRAILS;
 extern NSString *const MENU_ITEM_BENCHES;
+extern NSString *const MENU_ITEM_BOUNDARY;
 extern NSString *const MENU_ITEM_THINGS_TO_SEE;
 extern NSString *const MENU_ITEM_CONTACT;
 extern NSString *const MENU_ITEM_HISTORY;

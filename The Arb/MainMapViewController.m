@@ -24,6 +24,7 @@
 @property (strong, nonatomic) NSArray *menuItems;
 @property (strong, nonatomic) NSMutableArray *trails;
 @property (strong, nonatomic) NSArray *benches;
+@property (strong, nonatomic) GMSPolygon *boundary;
 @property (strong, nonatomic) NSMutableArray *displayMarkers;
 @property (strong, nonatomic) NSMutableArray *displayedItems;
 
@@ -31,7 +32,7 @@
 
 @implementation MainMapViewController
 
-BOOL trailsOn = NO, benchesOn = NO;
+BOOL trailsOn = NO, benchesOn = NO, boundaryOn = NO;
 float topLimit = 42.30, bottomLimit = 42.285, leftLimit = -85.71, rightLimit = -85.69;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -50,15 +51,15 @@ float topLimit = 42.30, bottomLimit = 42.285, leftLimit = -85.71, rightLimit = -
     [[self navigationController] setNavigationBarHidden:YES animated:NO];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupTrails:) name:NOTIFICATION_TRAILS_LOADED object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(displayBoundary:) name:NOTIFICATION_BOUNDARY_LOADED object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupBoundary:) name:NOTIFICATION_BOUNDARY_LOADED object:nil];
     
     //Comment out dispatch after trail db restructuring
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         [[DataLoader sharedLoader] getTrails];
     });
-    /*dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
      [[DataLoader sharedLoader] getBoundary];
-     });*/
+    });
     
     _arbCoordinates = CLLocationCoordinate2DMake(42.293469, -85.701);
     
@@ -91,7 +92,7 @@ float topLimit = 42.30, bottomLimit = 42.285, leftLimit = -85.71, rightLimit = -
     [self.view addSubview:_greyView];
     [self.view bringSubviewToFront:_menuTableView];
     
-    _menuItems = [[NSArray alloc] initWithObjects:[[NSArray alloc] initWithObjects:MENU_ITEM_TRAILS, MENU_ITEM_BENCHES, MENU_ITEM_RESET, MENU_ITEM_CLEAR, nil], [[NSArray alloc] initWithObjects:MENU_ITEM_THINGS_TO_SEE, MENU_ITEM_HISTORY, MENU_ITEM_CONTACT, nil], nil];
+    _menuItems = [[NSArray alloc] initWithObjects:[[NSArray alloc] initWithObjects:MENU_ITEM_TRAILS, MENU_ITEM_BENCHES, MENU_ITEM_BOUNDARY, MENU_ITEM_RESET, MENU_ITEM_CLEAR, nil], [[NSArray alloc] initWithObjects:MENU_ITEM_THINGS_TO_SEE, MENU_ITEM_HISTORY, MENU_ITEM_CONTACT, nil], nil];
     
     _displayMarkers = [[NSMutableArray alloc] init];
 }
@@ -221,6 +222,9 @@ float topLimit = 42.30, bottomLimit = 42.285, leftLimit = -85.71, rightLimit = -
     } else if ([item isEqualToString:MENU_ITEM_BENCHES]) {
         [self showBenches];
         [cell setAccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"checkmark"]]];
+    } else if ([item isEqualToString:MENU_ITEM_BOUNDARY]) {
+        [self showBoundary];
+        [cell setAccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"checkmark"]]];
     } else if ([item isEqualToString:MENU_ITEM_THINGS_TO_SEE]) {
         [self hideMenu];
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -261,6 +265,8 @@ float topLimit = 42.30, bottomLimit = 42.285, leftLimit = -85.71, rightLimit = -
         [self hideTrails];
     } else if ([item isEqualToString:MENU_ITEM_BENCHES]) {
         [self hideBenches];
+    } else if ([item isEqualToString:MENU_ITEM_BOUNDARY]) {
+        [self hideBoundary];
     }
 }
 
@@ -328,13 +334,33 @@ float topLimit = 42.30, bottomLimit = 42.285, leftLimit = -85.71, rightLimit = -
 }
 
 
--(void)displayBoundary:(NSNotification *)notification {
-    /*GMSPath *path = [notification.userInfo objectForKey:@"boundary"];
+-(void)setupBoundary:(NSNotification *)notification {
+    GMSPath *path = [notification.userInfo objectForKey:@"boundary"];
     NSLog(@"Size: %d", path.count);
-    GMSPolyline *boundary = [GMSPolyline polylineWithPath:path];
-    //[boundary setStrokeColor:[StyleManager getYellowColor]];
-    //[boundary setStrokeWidth:2];
-    [boundary setMap:_mapView];*/
+     
+     for (int i=0; i<path.count; i++) {
+         NSLog(@"Coordinates: %f, %f", [path coordinateAtIndex:i].latitude, [path coordinateAtIndex:i].longitude);
+     }
+    _boundary = [GMSPolygon polygonWithPath:path];
+    [_boundary setStrokeColor:[StyleManager getYellowColor]];
+    [_boundary setStrokeWidth:2];
+    [_boundary setFillColor:[UIColor clearColor]];
+}
+
+-(void)showBoundary {
+    if (!boundaryOn) {
+        [_boundary setMap:_mapView];
+        
+        boundaryOn = YES;
+    }
+}
+
+-(void)hideBoundary {
+    if (boundaryOn) {
+        [_boundary setMap:nil];
+        
+        boundaryOn = NO;
+    }
 }
 
 -(void)setupBenches {

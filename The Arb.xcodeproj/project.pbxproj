@@ -48,6 +48,7 @@
 		F72729251982A1830045A238 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F72729241982A1830045A238 /* HistoryViewController.m */; };
 		F72729281982AF460045A238 /* ThingsToSeeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F72729271982AF460045A238 /* ThingsToSeeManager.m */; };
 		F727292A1982DBED0045A238 /* back_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = F72729291982DBED0045A238 /* back_arrow.png */; };
+		F734F97119927DF9000D6C7E /* LAABoundary.csv in Resources */ = {isa = PBXBuildFile; fileRef = F734F97019927DF9000D6C7E /* LAABoundary.csv */; };
 		F749F3BE1986E19F00F2AADC /* ArbItemExpandedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F749F3BD1986E19F00F2AADC /* ArbItemExpandedViewController.m */; };
 		F749F3C01986EB8E00F2AADC /* arb_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = F749F3BF1986EB8E00F2AADC /* arb_logo.png */; };
 		F749F3C219896BFD00F2AADC /* item_marker.png in Resources */ = {isa = PBXBuildFile; fileRef = F749F3C119896BFD00F2AADC /* item_marker.png */; };
@@ -131,6 +132,7 @@
 		F72729261982AF460045A238 /* ThingsToSeeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThingsToSeeManager.h; sourceTree = "<group>"; };
 		F72729271982AF460045A238 /* ThingsToSeeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThingsToSeeManager.m; sourceTree = "<group>"; };
 		F72729291982DBED0045A238 /* back_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = back_arrow.png; path = "../../../../Dropbox/2013-2014/ArbApp/Images/Exported/back_arrow.png"; sourceTree = "<group>"; };
+		F734F97019927DF9000D6C7E /* LAABoundary.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LAABoundary.csv; sourceTree = "<group>"; };
 		F749F3BC1986E19F00F2AADC /* ArbItemExpandedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArbItemExpandedViewController.h; sourceTree = "<group>"; };
 		F749F3BD1986E19F00F2AADC /* ArbItemExpandedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArbItemExpandedViewController.m; sourceTree = "<group>"; };
 		F749F3BF1986EB8E00F2AADC /* arb_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arb_logo.png; path = "../../../../Dropbox/2013-2014/ArbApp/Images/Exported/arb_logo.png"; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 				F71BDEE2197EB8AE00BE87A5 /* TrailPointMO.m */,
 				F794B8F61974568F00AAFE04 /* TrailDBManager.h */,
 				F794B8F91974569200AAFE04 /* TrailDBManager.m */,
+				F734F97019927DF9000D6C7E /* LAABoundary.csv */,
 			);
 			name = Database;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 				F77CE1FF197826410060F560 /* bar_title.png in Resources */,
 				F749F3C6198985C700F2AADC /* location.png in Resources */,
 				F71BDEDD197D91FF00BE87A5 /* bench.png in Resources */,
+				F734F97119927DF9000D6C7E /* LAABoundary.csv in Resources */,
 				F71CE694195A309C0030EBA9 /* Images.xcassets in Resources */,
 				F71CE6B3195B20C10030EBA9 /* Main.storyboard in Resources */,
 				F727292A1982DBED0045A238 /* back_arrow.png in Resources */,

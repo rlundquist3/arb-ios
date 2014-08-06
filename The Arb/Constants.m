@@ -38,6 +38,7 @@ NSString *const NOTIFICATION_EMAIL_SENT = @"email_sent";
 
 NSString *const MENU_ITEM_TRAILS = @"Trails";
 NSString *const MENU_ITEM_BENCHES = @"Benches";
+NSString *const MENU_ITEM_BOUNDARY = @"Boundary";
 NSString *const MENU_ITEM_THINGS_TO_SEE = @"Things to See";
 NSString *const MENU_ITEM_CONTACT = @"Contact";
 NSString *const MENU_ITEM_HISTORY = @"History";
