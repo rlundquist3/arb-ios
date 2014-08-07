@@ -351,6 +351,7 @@ float topLimit = 42.30, bottomLimit = 42.285, leftLimit = -85.71, rightLimit = -
         if (![usedNames containsObject:trail.title]) {
             GMSMarker *label = [GMSMarker markerWithPosition:[trail.path coordinateAtIndex:trail.path.count/2]];
             [label setTitle:trail.title];
+            [label setIcon:[UIImage imageNamed:@"trail_name"]];
             [_trailNames addObject:label];
             [usedNames addObject:trail.title];
         }
@@ -431,12 +432,12 @@ float topLimit = 42.30, bottomLimit = 42.285, leftLimit = -85.71, rightLimit = -
     }
 }
 
--(void)mapView:(GMSMapView *)mapView didTapOverlay:(GMSOverlay *)overlay {
+/*-(void)mapView:(GMSMapView *)mapView didTapOverlay:(GMSOverlay *)overlay {
     if ([overlay isKindOfClass:GMSPolyline.class]) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:overlay.title message:nil delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alertView show];
     }
-}
+}*/
 
 - (void)mapView:(GMSMapView *)mapView didChangeCameraPosition:(GMSCameraPosition *)position {
     
