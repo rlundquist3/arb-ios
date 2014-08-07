@@ -56,9 +56,17 @@ float topLimit = 42.30, bottomLimit = 42.285, leftLimit = -85.71, rightLimit = -
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setupBoundary:) name:NOTIFICATION_BOUNDARY_LOADED object:nil];
     
     //Comment out dispatch after trail db restructuring
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-        [[DataLoader sharedLoader] getTrails];
-    });
+    if (_trails == nil) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+            [[DataLoader sharedLoader] getTrails];
+        });
+    } else {
+        [self showTrails];
+    }
+    if ([ThingsToSeeManager getInstance].items.count == 0)
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+            [[ThingsToSeeManager getInstance] loadInfo];
+        });
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
      [[DataLoader sharedLoader] getBoundary];
     });
@@ -85,6 +93,7 @@ float topLimit = 42.30, bottomLimit = 42.285, leftLimit = -85.71, rightLimit = -
     [_menuTableView setDataSource:self];
     [_menuTableView setDelegate:self];
     [_menuTableView setBackgroundColor:[StyleManager getBeigeColor]];
+    [_menuTableView setSeparatorColor:[StyleManager getBlueColor]];
     [self.view addSubview:_menuTableView];
     
     _greyView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -318,10 +327,9 @@ float topLimit = 42.30, bottomLimit = 42.285, leftLimit = -85.71, rightLimit = -
     //Why isn't the check displayed?
     [[_menuTableView cellForRowAtIndexPath:indexPath] setAccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"checkmark"]]];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+    /*dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         [[ThingsToSeeManager getInstance] loadInfo];
-    });
-    
+    });*/
 }
 
 -(void)showTrails {
@@ -347,7 +355,6 @@ float topLimit = 42.30, bottomLimit = 42.285, leftLimit = -85.71, rightLimit = -
     NSMutableArray *usedNames = [[NSMutableArray alloc] init];
     
     for (GMSPolyline *trail in _trails) {
-        NSLog(@"%@ in %@", trail.title, usedNames);
         if (![usedNames containsObject:trail.title]) {
             GMSMarker *label = [GMSMarker markerWithPosition:[trail.path coordinateAtIndex:trail.path.count/2]];
             [label setTitle:trail.title];
