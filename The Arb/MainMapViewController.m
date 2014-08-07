@@ -12,6 +12,7 @@
 #import "Constants.h"
 #import "ThingsToSeeManager.h"
 #import "TrailDBManager.h"
+#import <GoogleMaps/GMSGeometryUtils.h>
 
 @interface MainMapViewController ()
 
@@ -23,6 +24,7 @@
 @property (strong, nonatomic) UIView *greyView;
 @property (strong, nonatomic) NSArray *menuItems;
 @property (strong, nonatomic) NSMutableArray *trails;
+@property (strong, nonatomic) NSMutableArray *trailNames;
 @property (strong, nonatomic) NSArray *benches;
 @property (strong, nonatomic) GMSPolygon *boundary;
 @property (strong, nonatomic) NSMutableArray *displayMarkers;
@@ -32,7 +34,7 @@
 
 @implementation MainMapViewController
 
-BOOL trailsOn = NO, benchesOn = NO, boundaryOn = NO;
+BOOL trailsOn = NO, trailNamesOn = NO, benchesOn = NO, boundaryOn = NO;
 float topLimit = 42.30, bottomLimit = 42.285, leftLimit = -85.71, rightLimit = -85.69;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -92,7 +94,7 @@ float topLimit = 42.30, bottomLimit = 42.285, leftLimit = -85.71, rightLimit = -
     [self.view addSubview:_greyView];
     [self.view bringSubviewToFront:_menuTableView];
     
-    _menuItems = [[NSArray alloc] initWithObjects:[[NSArray alloc] initWithObjects:MENU_ITEM_TRAILS, MENU_ITEM_BENCHES, MENU_ITEM_BOUNDARY, MENU_ITEM_RESET, MENU_ITEM_CLEAR, nil], [[NSArray alloc] initWithObjects:MENU_ITEM_THINGS_TO_SEE, MENU_ITEM_HISTORY, MENU_ITEM_CONTACT, nil], nil];
+    _menuItems = [[NSArray alloc] initWithObjects:[[NSArray alloc] initWithObjects:MENU_ITEM_TRAILS, MENU_ITEM_TRAIL_NAMES, MENU_ITEM_BENCHES, MENU_ITEM_BOUNDARY, MENU_ITEM_RESET, MENU_ITEM_CLEAR, nil], [[NSArray alloc] initWithObjects:MENU_ITEM_THINGS_TO_SEE, MENU_ITEM_HISTORY, MENU_ITEM_CONTACT, nil], nil];
     
     _displayMarkers = [[NSMutableArray alloc] init];
 }
@@ -219,6 +221,9 @@ float topLimit = 42.30, bottomLimit = 42.285, leftLimit = -85.71, rightLimit = -
     if ([item isEqualToString:MENU_ITEM_TRAILS]) {
         [self showTrails];
         [cell setAccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"checkmark"]]];
+    } else if ([item isEqualToString:MENU_ITEM_TRAIL_NAMES]) {
+        [self showTrailNames];
+        [cell setAccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"checkmark"]]];
     } else if ([item isEqualToString:MENU_ITEM_BENCHES]) {
         [self showBenches];
         [cell setAccessoryView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"checkmark"]]];
@@ -263,6 +268,8 @@ float topLimit = 42.30, bottomLimit = 42.285, leftLimit = -85.71, rightLimit = -
     
     if ([item isEqualToString:MENU_ITEM_TRAILS]) {
         [self hideTrails];
+    } else if ([item isEqualToString:MENU_ITEM_TRAIL_NAMES]) {
+        [self hideTrailNames];
     } else if ([item isEqualToString:MENU_ITEM_BENCHES]) {
         [self hideBenches];
     } else if ([item isEqualToString:MENU_ITEM_BOUNDARY]) {
@@ -303,6 +310,8 @@ float topLimit = 42.30, bottomLimit = 42.285, leftLimit = -85.71, rightLimit = -
         [_trails addObject:polyline];
     }
     
+    [self setupTrailNames];
+    
     [self showTrails];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [_menuTableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionTop];
@@ -333,14 +342,41 @@ float topLimit = 42.30, bottomLimit = 42.285, leftLimit = -85.71, rightLimit = -
     }
 }
 
+-(void)setupTrailNames {
+    _trailNames = [[NSMutableArray alloc] init];
+    NSMutableArray *usedNames = [[NSMutableArray alloc] init];
+    
+    for (GMSPolyline *trail in _trails) {
+        NSLog(@"%@ in %@", trail.title, usedNames);
+        if (![usedNames containsObject:trail.title]) {
+            GMSMarker *label = [GMSMarker markerWithPosition:[trail.path coordinateAtIndex:trail.path.count/2]];
+            [label setTitle:trail.title];
+            [_trailNames addObject:label];
+            [usedNames addObject:trail.title];
+        }
+    }
+}
+
+-(void)showTrailNames {
+    if (!trailNamesOn) {
+        for (GMSMarker *label in _trailNames)
+            [label setMap:_mapView];
+        
+        trailNamesOn = YES;
+    }
+}
+
+-(void)hideTrailNames {
+    if (trailNamesOn) {
+        for (GMSMarker *label in _trailNames)
+            [label setMap:nil];
+        
+        trailNamesOn = NO;
+    }
+}
 
 -(void)setupBoundary:(NSNotification *)notification {
     GMSPath *path = [notification.userInfo objectForKey:@"boundary"];
-    NSLog(@"Size: %d", path.count);
-     
-     for (int i=0; i<path.count; i++) {
-         NSLog(@"Coordinates: %f, %f", [path coordinateAtIndex:i].latitude, [path coordinateAtIndex:i].longitude);
-     }
     _boundary = [GMSPolygon polygonWithPath:path];
     [_boundary setStrokeColor:[StyleManager getYellowColor]];
     [_boundary setStrokeWidth:2];

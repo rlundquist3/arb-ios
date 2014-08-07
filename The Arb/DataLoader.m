@@ -155,7 +155,6 @@ long numberOfPoints = 0;
         NSString *longitude = [[NSString alloc] initWithFormat:@"%@", [arr objectAtIndex:1]];
         
         [path addLatitude:[latitude doubleValue] longitude:[longitude doubleValue]];
-        NSLog(@"Border point: %@, %@", latitude, longitude);
     }
     
     NSDictionary *userInfo = [[NSDictionary alloc] initWithObjectsAndKeys:path, @"boundary", nil];
